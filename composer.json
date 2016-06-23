@@ -1,0 +1,32 @@
+{
+  "name": "zver/string-helper",
+  "description": "Class to manipulate with strings",
+  "keywords": [
+    "helper",
+    "string",
+    "strings",
+    "chars",
+    "chararters",
+    "symbols",
+    "manipulate"
+  ],
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/"
+    }
+  },
+  "require": {
+    "zver/encoding": "1.*"
+  },
+  "require-dev": {
+    "codeception/codeception": "2.*",
+    "codeception/c3": "2.*",
+    "phpdocumentor/phpdocumentor": "2.*",
+    "cvuorinen/phpdoc-markdown-public": "*"
+  }
+}
