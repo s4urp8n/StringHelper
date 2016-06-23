@@ -5,7 +5,7 @@ Help you manipulate strings
 ### Example usage
 
 ```php
-$upper=String::load('some string')
+$upper=StringHelper::load('some string')
                 ->toUpperCase()
                 ->get();
 ```
