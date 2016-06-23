@@ -26,6 +26,7 @@
   "require-dev": {
     "codeception/codeception": "2.*",
     "codeception/c3": "2.*",
+    "s4urp8n/encoding": "1.*",
     "phpdocumentor/phpdocumentor": "2.*",
     "cvuorinen/phpdoc-markdown-public": "*"
   }
