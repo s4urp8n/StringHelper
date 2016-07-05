@@ -3498,5 +3498,60 @@ class StringHelperCest
         $I->assertEquals(StringHelper::getScrollPaginationInfo(50, 10, 30, ',,', '--', ' from '), '31--40 from 50');
         $I->assertEquals(StringHelper::getScrollPaginationInfo(50, 10, 40, ',,', '--', ' from '), '41--50 from 50');
     }
+
+    public function testEqualsSomeAndEqualsIgnoreCase(UnitTester $I)
+    {
+        $values = ['str', 'count', 'me'];
+        $valuesIgnoreCase = ['StR', 'coUNt', 'mE'];
+        $valuesStrict = ['str', null];
+        $valuesEmpty = [];
+
+        $testDataEqualsSome = [
+            ['str' => 'str', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $values, 'result' => true],
+            ['str' => 'count', 'values' => $values, 'result' => true],
+            ['str' => 'count2', 'values' => $values, 'result' => false],
+            ['str' => 'Me', 'values' => $values, 'result' => false],
+            ['str' => 'ME', 'values' => $values, 'result' => false],
+            ['str' => 'sTr', 'values' => $values, 'result' => false],
+            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
+            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+        ];
+
+        $testDataEqualsSomeIgnoreCase = [
+            ['str' => 'str', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $values, 'result' => true],
+            ['str' => 'count', 'values' => $values, 'result' => true],
+            ['str' => 'count2', 'values' => $values, 'result' => false],
+            ['str' => 'Me', 'values' => $values, 'result' => true],
+            ['str' => 'ME', 'values' => $values, 'result' => true],
+            ['str' => 'sTr', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
+            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+        ];
+
+        foreach ($testDataEqualsSome as $testData)
+        {
+            $I->assertEquals(
+                $testData['result'], StringHelper::load($testData['str'])
+                                                 ->isEqualsSome($testData['values'])
+            );
+        }
+
+        foreach ($testDataEqualsSomeIgnoreCase as $testData)
+        {
+            $I->assertEquals(
+                $testData['result'], StringHelper::load($testData['str'])
+                                                 ->isEqualsSomeIgnoreCase($testData['values'])
+            );
+        }
+
+    }
     
 }

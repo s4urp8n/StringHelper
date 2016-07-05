@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:       
-  2016-06-23 09:55:13       
+  2016-07-05 12:32:03       
                             
  Summary:                   
   Classes: 100.00% (1/1)    
-  Methods: 100.00% (104/104)
-  Lines:   100.00% (510/510)
+  Methods: 100.00% (106/106)
+  Lines:   100.00% (521/521)
 
 \Zver::StringHelper
-  Methods: 100.00% (104/104)   Lines: 100.00% (492/492)
+  Methods: 100.00% (106/106)   Lines: 100.00% (503/503)

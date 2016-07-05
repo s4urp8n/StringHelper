@@ -1,9 +1,9 @@
 <?php
 $coverage = new SebastianBergmann\CodeCoverage\CodeCoverage;
 $coverage->setData(array (
-  'C:\\OpenServer\\domains\\StringHelper\\src\\Zver\\StringHelper.php' => 
+  'C:\\OpenServer\\domains\\string-helper\\src\\Zver\\StringHelper.php' => 
   array (
-    11 => 
+    23 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -14,10 +14,10 @@ $coverage->setData(array (
       6 => 'StringHelperCest:testCompare',
       7 => 'StringHelperCest:testIsStartsWith',
       8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testDefaultEncoding',
-      10 => 'StringHelperCest:testEncodingSet',
-      11 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      12 => 'StringHelperCest:testEncodingSavesAllTime',
+      9 => 'StringHelperCest:testEncodingSet',
+      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      11 => 'StringHelperCest:testEncodingSavesAllTime',
+      12 => 'StringHelperCest:testConvertEncoding',
       13 => 'StringHelperCest:testConvertEncodingReplace',
       14 => 'StringHelperCest:testMatches',
       15 => 'StringHelperCest:testCases',
@@ -67,8 +67,206 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    12 => NULL,
+    24 => 
+    array (
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testIsMatchTest',
+      4 => 'StringHelperCest:testIses',
+      5 => 'StringHelperCest:testEmpty',
+      6 => 'StringHelperCest:testCompare',
+      7 => 'StringHelperCest:testIsStartsWith',
+      8 => 'StringHelperCest:testIsEndsWith',
+      9 => 'StringHelperCest:testEncodingSet',
+      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      11 => 'StringHelperCest:testEncodingSavesAllTime',
+      12 => 'StringHelperCest:testConvertEncoding',
+      13 => 'StringHelperCest:testConvertEncodingReplace',
+      14 => 'StringHelperCest:testMatches',
+      15 => 'StringHelperCest:testCases',
+      16 => 'StringHelperCest:testRandomCase',
+      17 => 'StringHelperCest:testUcFirst',
+      18 => 'StringHelperCest:testNl',
+      19 => 'StringHelperCest:testSetBeginning',
+      20 => 'StringHelperCest:testSetEnding',
+      21 => 'StringHelperCest:testJSON',
+      22 => 'StringHelperCest:testSerialization',
+      23 => 'StringHelperCest:testEntities',
+      24 => 'StringHelperCest:testURLCoding',
+      25 => 'StringHelperCest:testUUE',
+      26 => 'StringHelperCest:testBase64Coding',
+      27 => 'StringHelperCest:testUTF8Coding',
+      28 => 'StringHelperCest:testSerialized',
+      29 => 'StringHelperCest:testPunycode',
+      30 => 'StringHelperCest:testLoadFromFile',
+      31 => 'StringHelperCest:testSaveToFile',
+      32 => 'StringHelperCest:testFill',
+      33 => 'StringHelperCest:testContains',
+      34 => 'StringHelperCest:testGetPosition',
+      35 => 'StringHelperCest:testLen',
+      36 => 'StringHelperCest:testSubstringCount',
+      37 => 'StringHelperCest:testSubstring',
+      38 => 'StringHelperCest:testSplit',
+      39 => 'StringHelperCest:testReplaceRemove',
+      40 => 'StringHelperCest:testConcatAppendPrepend',
+      41 => 'StringHelperCest:testReverse',
+      42 => 'StringHelperCest:testRepeat',
+      43 => 'StringHelperCest:testGetParts',
+      44 => 'StringHelperCest:testRemoveBeginningEnding',
+      45 => 'StringHelperCest:testTransliteration',
+      46 => 'StringHelperCest:testSlugify',
+      47 => 'StringHelperCest:testHyphenate',
+      48 => 'StringHelperCest:testUnderscore',
+      49 => 'StringHelperCest:testShuffleCharacters',
+      50 => 'StringHelperCest:testFooterYears',
+      51 => 'StringHelperCest:testRemoveTags',
+      52 => 'StringHelperCest:testSoundex',
+      53 => 'StringHelperCest:testMetaphone',
+      54 => 'StringHelperCest:testLevenshtein',
+      55 => 'StringHelperCest:testToCharactersArray',
+      56 => 'StringHelperCest:testToLinesArray',
+      57 => 'StringHelperCest:testTrim',
+      58 => 'StringHelperCest:testPreview',
+      59 => 'StringHelperCest:testPreviewEnd',
+      60 => 'StringHelperCest:testPreviewPunctuations',
+      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    25 => 
+    array (
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testIsMatchTest',
+      4 => 'StringHelperCest:testIses',
+      5 => 'StringHelperCest:testEmpty',
+      6 => 'StringHelperCest:testCompare',
+      7 => 'StringHelperCest:testIsStartsWith',
+      8 => 'StringHelperCest:testIsEndsWith',
+      9 => 'StringHelperCest:testEncodingSet',
+      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      11 => 'StringHelperCest:testEncodingSavesAllTime',
+      12 => 'StringHelperCest:testConvertEncoding',
+      13 => 'StringHelperCest:testConvertEncodingReplace',
+      14 => 'StringHelperCest:testMatches',
+      15 => 'StringHelperCest:testCases',
+      16 => 'StringHelperCest:testRandomCase',
+      17 => 'StringHelperCest:testUcFirst',
+      18 => 'StringHelperCest:testNl',
+      19 => 'StringHelperCest:testSetBeginning',
+      20 => 'StringHelperCest:testSetEnding',
+      21 => 'StringHelperCest:testJSON',
+      22 => 'StringHelperCest:testSerialization',
+      23 => 'StringHelperCest:testEntities',
+      24 => 'StringHelperCest:testURLCoding',
+      25 => 'StringHelperCest:testUUE',
+      26 => 'StringHelperCest:testBase64Coding',
+      27 => 'StringHelperCest:testUTF8Coding',
+      28 => 'StringHelperCest:testSerialized',
+      29 => 'StringHelperCest:testPunycode',
+      30 => 'StringHelperCest:testLoadFromFile',
+      31 => 'StringHelperCest:testSaveToFile',
+      32 => 'StringHelperCest:testFill',
+      33 => 'StringHelperCest:testContains',
+      34 => 'StringHelperCest:testGetPosition',
+      35 => 'StringHelperCest:testLen',
+      36 => 'StringHelperCest:testSubstringCount',
+      37 => 'StringHelperCest:testSubstring',
+      38 => 'StringHelperCest:testSplit',
+      39 => 'StringHelperCest:testReplaceRemove',
+      40 => 'StringHelperCest:testConcatAppendPrepend',
+      41 => 'StringHelperCest:testReverse',
+      42 => 'StringHelperCest:testRepeat',
+      43 => 'StringHelperCest:testGetParts',
+      44 => 'StringHelperCest:testRemoveBeginningEnding',
+      45 => 'StringHelperCest:testTransliteration',
+      46 => 'StringHelperCest:testSlugify',
+      47 => 'StringHelperCest:testHyphenate',
+      48 => 'StringHelperCest:testUnderscore',
+      49 => 'StringHelperCest:testShuffleCharacters',
+      50 => 'StringHelperCest:testFooterYears',
+      51 => 'StringHelperCest:testRemoveTags',
+      52 => 'StringHelperCest:testSoundex',
+      53 => 'StringHelperCest:testMetaphone',
+      54 => 'StringHelperCest:testLevenshtein',
+      55 => 'StringHelperCest:testToCharactersArray',
+      56 => 'StringHelperCest:testToLinesArray',
+      57 => 'StringHelperCest:testTrim',
+      58 => 'StringHelperCest:testPreview',
+      59 => 'StringHelperCest:testPreviewEnd',
+      60 => 'StringHelperCest:testPreviewPunctuations',
+      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    28 => 
+    array (
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testIsMatchTest',
+      4 => 'StringHelperCest:testIses',
+      5 => 'StringHelperCest:testEmpty',
+      6 => 'StringHelperCest:testCompare',
+      7 => 'StringHelperCest:testIsStartsWith',
+      8 => 'StringHelperCest:testIsEndsWith',
+      9 => 'StringHelperCest:testEncodingSet',
+      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      11 => 'StringHelperCest:testEncodingSavesAllTime',
+      12 => 'StringHelperCest:testConvertEncoding',
+      13 => 'StringHelperCest:testConvertEncodingReplace',
+      14 => 'StringHelperCest:testMatches',
+      15 => 'StringHelperCest:testCases',
+      16 => 'StringHelperCest:testRandomCase',
+      17 => 'StringHelperCest:testUcFirst',
+      18 => 'StringHelperCest:testNl',
+      19 => 'StringHelperCest:testSetBeginning',
+      20 => 'StringHelperCest:testSetEnding',
+      21 => 'StringHelperCest:testJSON',
+      22 => 'StringHelperCest:testSerialization',
+      23 => 'StringHelperCest:testEntities',
+      24 => 'StringHelperCest:testURLCoding',
+      25 => 'StringHelperCest:testUUE',
+      26 => 'StringHelperCest:testBase64Coding',
+      27 => 'StringHelperCest:testUTF8Coding',
+      28 => 'StringHelperCest:testSerialized',
+      29 => 'StringHelperCest:testPunycode',
+      30 => 'StringHelperCest:testLoadFromFile',
+      31 => 'StringHelperCest:testSaveToFile',
+      32 => 'StringHelperCest:testFill',
+      33 => 'StringHelperCest:testContains',
+      34 => 'StringHelperCest:testGetPosition',
+      35 => 'StringHelperCest:testLen',
+      36 => 'StringHelperCest:testSubstringCount',
+      37 => 'StringHelperCest:testSubstring',
+      38 => 'StringHelperCest:testSplit',
+      39 => 'StringHelperCest:testReplaceRemove',
+      40 => 'StringHelperCest:testConcatAppendPrepend',
+      41 => 'StringHelperCest:testReverse',
+      42 => 'StringHelperCest:testRepeat',
+      43 => 'StringHelperCest:testGetParts',
+      44 => 'StringHelperCest:testRemoveBeginningEnding',
+      45 => 'StringHelperCest:testTransliteration',
+      46 => 'StringHelperCest:testSlugify',
+      47 => 'StringHelperCest:testHyphenate',
+      48 => 'StringHelperCest:testUnderscore',
+      49 => 'StringHelperCest:testShuffleCharacters',
+      50 => 'StringHelperCest:testFooterYears',
+      51 => 'StringHelperCest:testRemoveTags',
+      52 => 'StringHelperCest:testSoundex',
+      53 => 'StringHelperCest:testMetaphone',
+      54 => 'StringHelperCest:testLevenshtein',
+      55 => 'StringHelperCest:testToCharactersArray',
+      56 => 'StringHelperCest:testToLinesArray',
+      57 => 'StringHelperCest:testTrim',
+      58 => 'StringHelperCest:testPreview',
+      59 => 'StringHelperCest:testPreviewEnd',
+      60 => 'StringHelperCest:testPreviewPunctuations',
+      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
     29 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
@@ -133,6 +331,7 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     30 => 
     array (
@@ -198,8 +397,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    31 => 
+    41 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -263,8 +463,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    34 => 
+    43 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -328,8 +529,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    35 => 
+    44 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -393,8 +595,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    36 => 
+    45 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -458,8 +661,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    47 => 
+    46 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -523,8 +727,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    49 => 
+    48 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -588,6 +793,7 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     50 => 
     array (
@@ -653,6 +859,7 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     51 => 
     array (
@@ -718,136 +925,19 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     52 => 
     array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testIsMatchTest',
-      4 => 'StringHelperCest:testIses',
-      5 => 'StringHelperCest:testEmpty',
-      6 => 'StringHelperCest:testCompare',
-      7 => 'StringHelperCest:testIsStartsWith',
-      8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testEncodingSet',
-      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      11 => 'StringHelperCest:testEncodingSavesAllTime',
-      12 => 'StringHelperCest:testConvertEncoding',
-      13 => 'StringHelperCest:testConvertEncodingReplace',
-      14 => 'StringHelperCest:testMatches',
-      15 => 'StringHelperCest:testCases',
-      16 => 'StringHelperCest:testRandomCase',
-      17 => 'StringHelperCest:testUcFirst',
-      18 => 'StringHelperCest:testNl',
-      19 => 'StringHelperCest:testSetBeginning',
-      20 => 'StringHelperCest:testSetEnding',
-      21 => 'StringHelperCest:testJSON',
-      22 => 'StringHelperCest:testSerialization',
-      23 => 'StringHelperCest:testEntities',
-      24 => 'StringHelperCest:testURLCoding',
-      25 => 'StringHelperCest:testUUE',
-      26 => 'StringHelperCest:testBase64Coding',
-      27 => 'StringHelperCest:testUTF8Coding',
-      28 => 'StringHelperCest:testSerialized',
-      29 => 'StringHelperCest:testPunycode',
-      30 => 'StringHelperCest:testLoadFromFile',
-      31 => 'StringHelperCest:testSaveToFile',
-      32 => 'StringHelperCest:testFill',
-      33 => 'StringHelperCest:testContains',
-      34 => 'StringHelperCest:testGetPosition',
-      35 => 'StringHelperCest:testLen',
-      36 => 'StringHelperCest:testSubstringCount',
-      37 => 'StringHelperCest:testSubstring',
-      38 => 'StringHelperCest:testSplit',
-      39 => 'StringHelperCest:testReplaceRemove',
-      40 => 'StringHelperCest:testConcatAppendPrepend',
-      41 => 'StringHelperCest:testReverse',
-      42 => 'StringHelperCest:testRepeat',
-      43 => 'StringHelperCest:testGetParts',
-      44 => 'StringHelperCest:testRemoveBeginningEnding',
-      45 => 'StringHelperCest:testTransliteration',
-      46 => 'StringHelperCest:testSlugify',
-      47 => 'StringHelperCest:testHyphenate',
-      48 => 'StringHelperCest:testUnderscore',
-      49 => 'StringHelperCest:testShuffleCharacters',
-      50 => 'StringHelperCest:testFooterYears',
-      51 => 'StringHelperCest:testRemoveTags',
-      52 => 'StringHelperCest:testSoundex',
-      53 => 'StringHelperCest:testMetaphone',
-      54 => 'StringHelperCest:testLevenshtein',
-      55 => 'StringHelperCest:testToCharactersArray',
-      56 => 'StringHelperCest:testToLinesArray',
-      57 => 'StringHelperCest:testTrim',
-      58 => 'StringHelperCest:testPreview',
-      59 => 'StringHelperCest:testPreviewEnd',
-      60 => 'StringHelperCest:testPreviewPunctuations',
-      61 => 'StringHelperCest:testSpanify',
+      0 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      1 => 'StringHelperCest:testSetEnding',
+      2 => 'StringHelperCest:testConcatAppendPrepend',
     ),
-    54 => 
+    53 => 
     array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testIsMatchTest',
-      4 => 'StringHelperCest:testIses',
-      5 => 'StringHelperCest:testEmpty',
-      6 => 'StringHelperCest:testCompare',
-      7 => 'StringHelperCest:testIsStartsWith',
-      8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testEncodingSet',
-      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      11 => 'StringHelperCest:testEncodingSavesAllTime',
-      12 => 'StringHelperCest:testConvertEncoding',
-      13 => 'StringHelperCest:testConvertEncodingReplace',
-      14 => 'StringHelperCest:testMatches',
-      15 => 'StringHelperCest:testCases',
-      16 => 'StringHelperCest:testRandomCase',
-      17 => 'StringHelperCest:testUcFirst',
-      18 => 'StringHelperCest:testNl',
-      19 => 'StringHelperCest:testSetBeginning',
-      20 => 'StringHelperCest:testSetEnding',
-      21 => 'StringHelperCest:testJSON',
-      22 => 'StringHelperCest:testSerialization',
-      23 => 'StringHelperCest:testEntities',
-      24 => 'StringHelperCest:testURLCoding',
-      25 => 'StringHelperCest:testUUE',
-      26 => 'StringHelperCest:testBase64Coding',
-      27 => 'StringHelperCest:testUTF8Coding',
-      28 => 'StringHelperCest:testSerialized',
-      29 => 'StringHelperCest:testPunycode',
-      30 => 'StringHelperCest:testLoadFromFile',
-      31 => 'StringHelperCest:testSaveToFile',
-      32 => 'StringHelperCest:testFill',
-      33 => 'StringHelperCest:testContains',
-      34 => 'StringHelperCest:testGetPosition',
-      35 => 'StringHelperCest:testLen',
-      36 => 'StringHelperCest:testSubstringCount',
-      37 => 'StringHelperCest:testSubstring',
-      38 => 'StringHelperCest:testSplit',
-      39 => 'StringHelperCest:testReplaceRemove',
-      40 => 'StringHelperCest:testConcatAppendPrepend',
-      41 => 'StringHelperCest:testReverse',
-      42 => 'StringHelperCest:testRepeat',
-      43 => 'StringHelperCest:testGetParts',
-      44 => 'StringHelperCest:testRemoveBeginningEnding',
-      45 => 'StringHelperCest:testTransliteration',
-      46 => 'StringHelperCest:testSlugify',
-      47 => 'StringHelperCest:testHyphenate',
-      48 => 'StringHelperCest:testUnderscore',
-      49 => 'StringHelperCest:testShuffleCharacters',
-      50 => 'StringHelperCest:testFooterYears',
-      51 => 'StringHelperCest:testRemoveTags',
-      52 => 'StringHelperCest:testSoundex',
-      53 => 'StringHelperCest:testMetaphone',
-      54 => 'StringHelperCest:testLevenshtein',
-      55 => 'StringHelperCest:testToCharactersArray',
-      56 => 'StringHelperCest:testToLinesArray',
-      57 => 'StringHelperCest:testTrim',
-      58 => 'StringHelperCest:testPreview',
-      59 => 'StringHelperCest:testPreviewEnd',
-      60 => 'StringHelperCest:testPreviewPunctuations',
-      61 => 'StringHelperCest:testSpanify',
+      0 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      1 => 'StringHelperCest:testSetEnding',
+      2 => 'StringHelperCest:testConcatAppendPrepend',
     ),
     56 => 
     array (
@@ -913,85 +1003,75 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
-    ),
-    57 => 
-    array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testIsMatchTest',
-      4 => 'StringHelperCest:testIses',
-      5 => 'StringHelperCest:testEmpty',
-      6 => 'StringHelperCest:testCompare',
-      7 => 'StringHelperCest:testIsStartsWith',
-      8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testEncodingSet',
-      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      11 => 'StringHelperCest:testEncodingSavesAllTime',
-      12 => 'StringHelperCest:testConvertEncoding',
-      13 => 'StringHelperCest:testConvertEncodingReplace',
-      14 => 'StringHelperCest:testMatches',
-      15 => 'StringHelperCest:testCases',
-      16 => 'StringHelperCest:testRandomCase',
-      17 => 'StringHelperCest:testUcFirst',
-      18 => 'StringHelperCest:testNl',
-      19 => 'StringHelperCest:testSetBeginning',
-      20 => 'StringHelperCest:testSetEnding',
-      21 => 'StringHelperCest:testJSON',
-      22 => 'StringHelperCest:testSerialization',
-      23 => 'StringHelperCest:testEntities',
-      24 => 'StringHelperCest:testURLCoding',
-      25 => 'StringHelperCest:testUUE',
-      26 => 'StringHelperCest:testBase64Coding',
-      27 => 'StringHelperCest:testUTF8Coding',
-      28 => 'StringHelperCest:testSerialized',
-      29 => 'StringHelperCest:testPunycode',
-      30 => 'StringHelperCest:testLoadFromFile',
-      31 => 'StringHelperCest:testSaveToFile',
-      32 => 'StringHelperCest:testFill',
-      33 => 'StringHelperCest:testContains',
-      34 => 'StringHelperCest:testGetPosition',
-      35 => 'StringHelperCest:testLen',
-      36 => 'StringHelperCest:testSubstringCount',
-      37 => 'StringHelperCest:testSubstring',
-      38 => 'StringHelperCest:testSplit',
-      39 => 'StringHelperCest:testReplaceRemove',
-      40 => 'StringHelperCest:testConcatAppendPrepend',
-      41 => 'StringHelperCest:testReverse',
-      42 => 'StringHelperCest:testRepeat',
-      43 => 'StringHelperCest:testGetParts',
-      44 => 'StringHelperCest:testRemoveBeginningEnding',
-      45 => 'StringHelperCest:testTransliteration',
-      46 => 'StringHelperCest:testSlugify',
-      47 => 'StringHelperCest:testHyphenate',
-      48 => 'StringHelperCest:testUnderscore',
-      49 => 'StringHelperCest:testShuffleCharacters',
-      50 => 'StringHelperCest:testFooterYears',
-      51 => 'StringHelperCest:testRemoveTags',
-      52 => 'StringHelperCest:testSoundex',
-      53 => 'StringHelperCest:testMetaphone',
-      54 => 'StringHelperCest:testLevenshtein',
-      55 => 'StringHelperCest:testToCharactersArray',
-      56 => 'StringHelperCest:testToLinesArray',
-      57 => 'StringHelperCest:testTrim',
-      58 => 'StringHelperCest:testPreview',
-      59 => 'StringHelperCest:testPreviewEnd',
-      60 => 'StringHelperCest:testPreviewPunctuations',
-      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     58 => 
     array (
-      0 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      1 => 'StringHelperCest:testSetEnding',
-      2 => 'StringHelperCest:testConcatAppendPrepend',
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testIsMatchTest',
+      4 => 'StringHelperCest:testIses',
+      5 => 'StringHelperCest:testEmpty',
+      6 => 'StringHelperCest:testCompare',
+      7 => 'StringHelperCest:testIsStartsWith',
+      8 => 'StringHelperCest:testIsEndsWith',
+      9 => 'StringHelperCest:testEncodingSet',
+      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      11 => 'StringHelperCest:testEncodingSavesAllTime',
+      12 => 'StringHelperCest:testConvertEncoding',
+      13 => 'StringHelperCest:testConvertEncodingReplace',
+      14 => 'StringHelperCest:testMatches',
+      15 => 'StringHelperCest:testCases',
+      16 => 'StringHelperCest:testRandomCase',
+      17 => 'StringHelperCest:testUcFirst',
+      18 => 'StringHelperCest:testNl',
+      19 => 'StringHelperCest:testSetBeginning',
+      20 => 'StringHelperCest:testSetEnding',
+      21 => 'StringHelperCest:testJSON',
+      22 => 'StringHelperCest:testSerialization',
+      23 => 'StringHelperCest:testEntities',
+      24 => 'StringHelperCest:testURLCoding',
+      25 => 'StringHelperCest:testUUE',
+      26 => 'StringHelperCest:testBase64Coding',
+      27 => 'StringHelperCest:testUTF8Coding',
+      28 => 'StringHelperCest:testSerialized',
+      29 => 'StringHelperCest:testPunycode',
+      30 => 'StringHelperCest:testLoadFromFile',
+      31 => 'StringHelperCest:testSaveToFile',
+      32 => 'StringHelperCest:testFill',
+      33 => 'StringHelperCest:testContains',
+      34 => 'StringHelperCest:testGetPosition',
+      35 => 'StringHelperCest:testLen',
+      36 => 'StringHelperCest:testSubstringCount',
+      37 => 'StringHelperCest:testSubstring',
+      38 => 'StringHelperCest:testSplit',
+      39 => 'StringHelperCest:testReplaceRemove',
+      40 => 'StringHelperCest:testConcatAppendPrepend',
+      41 => 'StringHelperCest:testReverse',
+      42 => 'StringHelperCest:testRepeat',
+      43 => 'StringHelperCest:testGetParts',
+      44 => 'StringHelperCest:testRemoveBeginningEnding',
+      45 => 'StringHelperCest:testTransliteration',
+      46 => 'StringHelperCest:testSlugify',
+      47 => 'StringHelperCest:testHyphenate',
+      48 => 'StringHelperCest:testUnderscore',
+      49 => 'StringHelperCest:testShuffleCharacters',
+      50 => 'StringHelperCest:testFooterYears',
+      51 => 'StringHelperCest:testRemoveTags',
+      52 => 'StringHelperCest:testSoundex',
+      53 => 'StringHelperCest:testMetaphone',
+      54 => 'StringHelperCest:testLevenshtein',
+      55 => 'StringHelperCest:testToCharactersArray',
+      56 => 'StringHelperCest:testToLinesArray',
+      57 => 'StringHelperCest:testTrim',
+      58 => 'StringHelperCest:testPreview',
+      59 => 'StringHelperCest:testPreviewEnd',
+      60 => 'StringHelperCest:testPreviewPunctuations',
+      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    59 => 
-    array (
-      0 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      1 => 'StringHelperCest:testSetEnding',
-      2 => 'StringHelperCest:testConcatAppendPrepend',
-    ),
-    62 => 
+    60 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1055,150 +1135,21 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    64 => 
-    array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testIsMatchTest',
-      4 => 'StringHelperCest:testIses',
-      5 => 'StringHelperCest:testEmpty',
-      6 => 'StringHelperCest:testCompare',
-      7 => 'StringHelperCest:testIsStartsWith',
-      8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testEncodingSet',
-      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      11 => 'StringHelperCest:testEncodingSavesAllTime',
-      12 => 'StringHelperCest:testConvertEncoding',
-      13 => 'StringHelperCest:testConvertEncodingReplace',
-      14 => 'StringHelperCest:testMatches',
-      15 => 'StringHelperCest:testCases',
-      16 => 'StringHelperCest:testRandomCase',
-      17 => 'StringHelperCest:testUcFirst',
-      18 => 'StringHelperCest:testNl',
-      19 => 'StringHelperCest:testSetBeginning',
-      20 => 'StringHelperCest:testSetEnding',
-      21 => 'StringHelperCest:testJSON',
-      22 => 'StringHelperCest:testSerialization',
-      23 => 'StringHelperCest:testEntities',
-      24 => 'StringHelperCest:testURLCoding',
-      25 => 'StringHelperCest:testUUE',
-      26 => 'StringHelperCest:testBase64Coding',
-      27 => 'StringHelperCest:testUTF8Coding',
-      28 => 'StringHelperCest:testSerialized',
-      29 => 'StringHelperCest:testPunycode',
-      30 => 'StringHelperCest:testLoadFromFile',
-      31 => 'StringHelperCest:testSaveToFile',
-      32 => 'StringHelperCest:testFill',
-      33 => 'StringHelperCest:testContains',
-      34 => 'StringHelperCest:testGetPosition',
-      35 => 'StringHelperCest:testLen',
-      36 => 'StringHelperCest:testSubstringCount',
-      37 => 'StringHelperCest:testSubstring',
-      38 => 'StringHelperCest:testSplit',
-      39 => 'StringHelperCest:testReplaceRemove',
-      40 => 'StringHelperCest:testConcatAppendPrepend',
-      41 => 'StringHelperCest:testReverse',
-      42 => 'StringHelperCest:testRepeat',
-      43 => 'StringHelperCest:testGetParts',
-      44 => 'StringHelperCest:testRemoveBeginningEnding',
-      45 => 'StringHelperCest:testTransliteration',
-      46 => 'StringHelperCest:testSlugify',
-      47 => 'StringHelperCest:testHyphenate',
-      48 => 'StringHelperCest:testUnderscore',
-      49 => 'StringHelperCest:testShuffleCharacters',
-      50 => 'StringHelperCest:testFooterYears',
-      51 => 'StringHelperCest:testRemoveTags',
-      52 => 'StringHelperCest:testSoundex',
-      53 => 'StringHelperCest:testMetaphone',
-      54 => 'StringHelperCest:testLevenshtein',
-      55 => 'StringHelperCest:testToCharactersArray',
-      56 => 'StringHelperCest:testToLinesArray',
-      57 => 'StringHelperCest:testTrim',
-      58 => 'StringHelperCest:testPreview',
-      59 => 'StringHelperCest:testPreviewEnd',
-      60 => 'StringHelperCest:testPreviewPunctuations',
-      61 => 'StringHelperCest:testSpanify',
-    ),
-    66 => 
-    array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testIsMatchTest',
-      4 => 'StringHelperCest:testIses',
-      5 => 'StringHelperCest:testEmpty',
-      6 => 'StringHelperCest:testCompare',
-      7 => 'StringHelperCest:testIsStartsWith',
-      8 => 'StringHelperCest:testIsEndsWith',
-      9 => 'StringHelperCest:testEncodingSet',
-      10 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
-      11 => 'StringHelperCest:testEncodingSavesAllTime',
-      12 => 'StringHelperCest:testConvertEncoding',
-      13 => 'StringHelperCest:testConvertEncodingReplace',
-      14 => 'StringHelperCest:testMatches',
-      15 => 'StringHelperCest:testCases',
-      16 => 'StringHelperCest:testRandomCase',
-      17 => 'StringHelperCest:testUcFirst',
-      18 => 'StringHelperCest:testNl',
-      19 => 'StringHelperCest:testSetBeginning',
-      20 => 'StringHelperCest:testSetEnding',
-      21 => 'StringHelperCest:testJSON',
-      22 => 'StringHelperCest:testSerialization',
-      23 => 'StringHelperCest:testEntities',
-      24 => 'StringHelperCest:testURLCoding',
-      25 => 'StringHelperCest:testUUE',
-      26 => 'StringHelperCest:testBase64Coding',
-      27 => 'StringHelperCest:testUTF8Coding',
-      28 => 'StringHelperCest:testSerialized',
-      29 => 'StringHelperCest:testPunycode',
-      30 => 'StringHelperCest:testLoadFromFile',
-      31 => 'StringHelperCest:testSaveToFile',
-      32 => 'StringHelperCest:testFill',
-      33 => 'StringHelperCest:testContains',
-      34 => 'StringHelperCest:testGetPosition',
-      35 => 'StringHelperCest:testLen',
-      36 => 'StringHelperCest:testSubstringCount',
-      37 => 'StringHelperCest:testSubstring',
-      38 => 'StringHelperCest:testSplit',
-      39 => 'StringHelperCest:testReplaceRemove',
-      40 => 'StringHelperCest:testConcatAppendPrepend',
-      41 => 'StringHelperCest:testReverse',
-      42 => 'StringHelperCest:testRepeat',
-      43 => 'StringHelperCest:testGetParts',
-      44 => 'StringHelperCest:testRemoveBeginningEnding',
-      45 => 'StringHelperCest:testTransliteration',
-      46 => 'StringHelperCest:testSlugify',
-      47 => 'StringHelperCest:testHyphenate',
-      48 => 'StringHelperCest:testUnderscore',
-      49 => 'StringHelperCest:testShuffleCharacters',
-      50 => 'StringHelperCest:testFooterYears',
-      51 => 'StringHelperCest:testRemoveTags',
-      52 => 'StringHelperCest:testSoundex',
-      53 => 'StringHelperCest:testMetaphone',
-      54 => 'StringHelperCest:testLevenshtein',
-      55 => 'StringHelperCest:testToCharactersArray',
-      56 => 'StringHelperCest:testToLinesArray',
-      57 => 'StringHelperCest:testTrim',
-      58 => 'StringHelperCest:testPreview',
-      59 => 'StringHelperCest:testPreviewEnd',
-      60 => 'StringHelperCest:testPreviewPunctuations',
-      61 => 'StringHelperCest:testSpanify',
-    ),
-    67 => NULL,
-    77 => 
+    61 => NULL,
+    71 => 
     array (
       0 => 'StringHelperCest:testIsEncodingSupported',
     ),
-    78 => NULL,
-    87 => 
+    72 => NULL,
+    81 => 
     array (
       0 => 'StringHelperCest:testIsEncodingSupported',
       1 => 'StringHelperCest:testGetSupportedEncodings',
     ),
-    88 => NULL,
-    100 => 
+    82 => NULL,
+    94 => 
     array (
       0 => 'StringHelperCest:testIses',
       1 => 'StringHelperCest:testConvertEncoding',
@@ -1206,7 +1157,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testLoadFromFile',
       4 => 'StringHelperCest:testRemoveTags',
     ),
-    101 => 
+    95 => 
     array (
       0 => 'StringHelperCest:testIses',
       1 => 'StringHelperCest:testConvertEncoding',
@@ -1214,8 +1165,8 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testLoadFromFile',
       4 => 'StringHelperCest:testRemoveTags',
     ),
-    102 => NULL,
-    113 => 
+    96 => NULL,
+    107 => 
     array (
       0 => 'StringHelperCest:testIses',
       1 => 'StringHelperCest:testConvertEncoding',
@@ -1224,8 +1175,8 @@ $coverage->setData(array (
       4 => 'StringHelperCest:testSaveToFile',
       5 => 'StringHelperCest:testRemoveTags',
     ),
-    114 => NULL,
-    126 => 
+    108 => NULL,
+    120 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1289,8 +1240,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    127 => 
+    121 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1354,8 +1306,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    128 => 
+    122 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1419,8 +1372,9 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    129 => 
+    123 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1481,8 +1435,9 @@ $coverage->setData(array (
       56 => 'StringHelperCest:testPreviewEnd',
       57 => 'StringHelperCest:testPreviewPunctuations',
       58 => 'StringHelperCest:testSpanify',
+      59 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    130 => 
+    124 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1546,9 +1501,10 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    131 => NULL,
-    142 => 
+    125 => NULL,
+    136 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1601,8 +1557,9 @@ $coverage->setData(array (
       48 => 'StringHelperCest:testPreviewEnd',
       49 => 'StringHelperCest:testPreviewPunctuations',
       50 => 'StringHelperCest:testSpanify',
+      51 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    144 => 
+    138 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1655,9 +1612,85 @@ $coverage->setData(array (
       48 => 'StringHelperCest:testPreviewEnd',
       49 => 'StringHelperCest:testPreviewPunctuations',
       50 => 'StringHelperCest:testSpanify',
+      51 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    145 => NULL,
-    163 => 
+    139 => NULL,
+    143 => 
+    array (
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testIsMatchTest',
+      4 => 'StringHelperCest:testIses',
+      5 => 'StringHelperCest:testEmpty',
+      6 => 'StringHelperCest:testCompare',
+      7 => 'StringHelperCest:testIsStartsWith',
+      8 => 'StringHelperCest:testIsEndsWith',
+      9 => 'StringHelperCest:testDefaultEncoding',
+      10 => 'StringHelperCest:testEncodingSet',
+      11 => 'StringHelperCest:testLoadConstructToStringGetStringifySet',
+      12 => 'StringHelperCest:testEncodingSavesAllTime',
+      13 => 'StringHelperCest:testConvertEncodingReplace',
+      14 => 'StringHelperCest:testMatches',
+      15 => 'StringHelperCest:testCases',
+      16 => 'StringHelperCest:testRandomCase',
+      17 => 'StringHelperCest:testUcFirst',
+      18 => 'StringHelperCest:testNl',
+      19 => 'StringHelperCest:testSetBeginning',
+      20 => 'StringHelperCest:testSetEnding',
+      21 => 'StringHelperCest:testJSON',
+      22 => 'StringHelperCest:testSerialization',
+      23 => 'StringHelperCest:testEntities',
+      24 => 'StringHelperCest:testURLCoding',
+      25 => 'StringHelperCest:testUUE',
+      26 => 'StringHelperCest:testBase64Coding',
+      27 => 'StringHelperCest:testUTF8Coding',
+      28 => 'StringHelperCest:testSerialized',
+      29 => 'StringHelperCest:testPunycode',
+      30 => 'StringHelperCest:testLoadFromFile',
+      31 => 'StringHelperCest:testSaveToFile',
+      32 => 'StringHelperCest:testFill',
+      33 => 'StringHelperCest:testContains',
+      34 => 'StringHelperCest:testGetPosition',
+      35 => 'StringHelperCest:testLen',
+      36 => 'StringHelperCest:testSubstringCount',
+      37 => 'StringHelperCest:testSubstring',
+      38 => 'StringHelperCest:testSplit',
+      39 => 'StringHelperCest:testReplaceRemove',
+      40 => 'StringHelperCest:testConcatAppendPrepend',
+      41 => 'StringHelperCest:testReverse',
+      42 => 'StringHelperCest:testRepeat',
+      43 => 'StringHelperCest:testGetParts',
+      44 => 'StringHelperCest:testRemoveBeginningEnding',
+      45 => 'StringHelperCest:testTransliteration',
+      46 => 'StringHelperCest:testSlugify',
+      47 => 'StringHelperCest:testHyphenate',
+      48 => 'StringHelperCest:testUnderscore',
+      49 => 'StringHelperCest:testShuffleCharacters',
+      50 => 'StringHelperCest:testFooterYears',
+      51 => 'StringHelperCest:testRemoveTags',
+      52 => 'StringHelperCest:testSoundex',
+      53 => 'StringHelperCest:testMetaphone',
+      54 => 'StringHelperCest:testLevenshtein',
+      55 => 'StringHelperCest:testToCharactersArray',
+      56 => 'StringHelperCest:testToLinesArray',
+      57 => 'StringHelperCest:testTrim',
+      58 => 'StringHelperCest:testPreview',
+      59 => 'StringHelperCest:testPreviewEnd',
+      60 => 'StringHelperCest:testPreviewPunctuations',
+      61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    144 => NULL,
+    162 => 
+    array (
+      0 => 'StringHelperCest:testPaginationInfo',
+      1 => 'StringHelperCest:testPaginationInfoComma',
+      2 => 'StringHelperCest:testPaginationInfoPeriod',
+      3 => 'StringHelperCest:testPaginationInfoFrom',
+      4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
+    ),
+    166 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1681,7 +1714,8 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    169 => 
+    169 => NULL,
+    170 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1689,7 +1723,6 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    170 => NULL,
     171 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
@@ -1706,7 +1739,8 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    173 => 
+    173 => NULL,
+    175 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1714,7 +1748,6 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    174 => NULL,
     176 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
@@ -1723,7 +1756,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    177 => 
+    178 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1755,7 +1788,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    182 => 
+    185 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1787,7 +1820,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    189 => 
+    190 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1795,7 +1828,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    191 => 
+    192 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1827,7 +1860,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    196 => 
+    198 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1835,7 +1868,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    199 => 
+    200 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1843,7 +1876,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    201 => 
+    204 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1851,7 +1884,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    205 => 
+    207 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1859,7 +1892,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    208 => 
+    209 => 
     array (
       0 => 'StringHelperCest:testPaginationInfo',
       1 => 'StringHelperCest:testPaginationInfoComma',
@@ -1867,16 +1900,8 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testPaginationInfoFrom',
       4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
     ),
-    210 => 
-    array (
-      0 => 'StringHelperCest:testPaginationInfo',
-      1 => 'StringHelperCest:testPaginationInfoComma',
-      2 => 'StringHelperCest:testPaginationInfoPeriod',
-      3 => 'StringHelperCest:testPaginationInfoFrom',
-      4 => 'StringHelperCest:testPaginationInfoCommaPeriodFrom',
-    ),
-    211 => NULL,
-    220 => 
+    210 => NULL,
+    219 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testIsEndsWith',
@@ -1895,8 +1920,8 @@ $coverage->setData(array (
       14 => 'StringHelperCest:testPreviewPunctuations',
       15 => 'StringHelperCest:testSpanify',
     ),
-    221 => NULL,
-    230 => 
+    220 => NULL,
+    229 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -1960,28 +1985,33 @@ $coverage->setData(array (
       59 => 'StringHelperCest:testPreviewEnd',
       60 => 'StringHelperCest:testPreviewPunctuations',
       61 => 'StringHelperCest:testSpanify',
+      62 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    231 => NULL,
-    244 => 
+    230 => NULL,
+    243 => 
     array (
       0 => 'StringHelperCest:testLoadFromFile',
       1 => 'StringHelperCest:testSaveToFile',
     ),
-    245 => NULL,
-    258 => 
+    244 => NULL,
+    257 => 
     array (
       0 => 'StringHelperCest:testSaveToFile',
     ),
-    259 => NULL,
-    271 => 
+    258 => NULL,
+    270 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    273 => 
+    272 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    275 => 
+    274 => 
+    array (
+      0 => 'StringHelperCest:testMatches',
+    ),
+    276 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
@@ -1989,7 +2019,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    278 => 
+    279 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
@@ -2005,7 +2035,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    283 => 
+    285 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
@@ -2017,11 +2047,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    288 => 
+    289 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    290 => 
+    291 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
@@ -2041,7 +2071,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    296 => 
+    297 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
@@ -2049,20 +2079,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    299 => 
+    300 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    301 => 
+    302 => 
     array (
       0 => 'StringHelperCest:testMatches',
     ),
-    303 => 
-    array (
-      0 => 'StringHelperCest:testMatches',
-    ),
-    304 => NULL,
-    313 => 
+    303 => NULL,
+    312 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2088,7 +2114,7 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    316 => 
+    315 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2114,7 +2140,7 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    318 => 
+    317 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2140,12 +2166,12 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    320 => 
+    319 => 
     array (
       0 => 'StringHelperCest:testIses',
       1 => 'StringHelperCest:testConvertEncodingReplace',
     ),
-    322 => 
+    321 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2171,7 +2197,7 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    324 => 
+    323 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2197,7 +2223,33 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    325 => NULL,
+    324 => NULL,
+    333 => 
+    array (
+      0 => 'StringHelperCest:testIsMatchTest',
+      1 => 'StringHelperCest:testIses',
+      2 => 'StringHelperCest:testEmpty',
+      3 => 'StringHelperCest:testConvertEncodingReplace',
+      4 => 'StringHelperCest:testMatches',
+      5 => 'StringHelperCest:testNl',
+      6 => 'StringHelperCest:testEntities',
+      7 => 'StringHelperCest:testUUE',
+      8 => 'StringHelperCest:testSplit',
+      9 => 'StringHelperCest:testReplaceRemove',
+      10 => 'StringHelperCest:testTransliteration',
+      11 => 'StringHelperCest:testSlugify',
+      12 => 'StringHelperCest:testHyphenate',
+      13 => 'StringHelperCest:testUnderscore',
+      14 => 'StringHelperCest:testRemoveTags',
+      15 => 'StringHelperCest:testSoundex',
+      16 => 'StringHelperCest:testMetaphone',
+      17 => 'StringHelperCest:testToLinesArray',
+      18 => 'StringHelperCest:testTrim',
+      19 => 'StringHelperCest:testPreview',
+      20 => 'StringHelperCest:testPreviewEnd',
+      21 => 'StringHelperCest:testPreviewPunctuations',
+      22 => 'StringHelperCest:testSpanify',
+    ),
     334 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
@@ -2250,7 +2302,7 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    336 => 
+    337 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
@@ -2276,34 +2328,8 @@ $coverage->setData(array (
       21 => 'StringHelperCest:testPreviewPunctuations',
       22 => 'StringHelperCest:testSpanify',
     ),
-    338 => 
-    array (
-      0 => 'StringHelperCest:testIsMatchTest',
-      1 => 'StringHelperCest:testIses',
-      2 => 'StringHelperCest:testEmpty',
-      3 => 'StringHelperCest:testConvertEncodingReplace',
-      4 => 'StringHelperCest:testMatches',
-      5 => 'StringHelperCest:testNl',
-      6 => 'StringHelperCest:testEntities',
-      7 => 'StringHelperCest:testUUE',
-      8 => 'StringHelperCest:testSplit',
-      9 => 'StringHelperCest:testReplaceRemove',
-      10 => 'StringHelperCest:testTransliteration',
-      11 => 'StringHelperCest:testSlugify',
-      12 => 'StringHelperCest:testHyphenate',
-      13 => 'StringHelperCest:testUnderscore',
-      14 => 'StringHelperCest:testRemoveTags',
-      15 => 'StringHelperCest:testSoundex',
-      16 => 'StringHelperCest:testMetaphone',
-      17 => 'StringHelperCest:testToLinesArray',
-      18 => 'StringHelperCest:testTrim',
-      19 => 'StringHelperCest:testPreview',
-      20 => 'StringHelperCest:testPreviewEnd',
-      21 => 'StringHelperCest:testPreviewPunctuations',
-      22 => 'StringHelperCest:testSpanify',
-    ),
-    339 => NULL,
-    348 => 
+    338 => NULL,
+    347 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -2358,21 +2384,27 @@ $coverage->setData(array (
       50 => 'StringHelperCest:testPreviewEnd',
       51 => 'StringHelperCest:testPreviewPunctuations',
       52 => 'StringHelperCest:testSpanify',
+      53 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    349 => NULL,
+    348 => NULL,
+    357 => 
+    array (
+      0 => 'StringHelperCest:testContains',
+    ),
     358 => 
     array (
       0 => 'StringHelperCest:testContains',
     ),
-    359 => 
+    360 => 
     array (
       0 => 'StringHelperCest:testContains',
     ),
-    361 => 
+    361 => NULL,
+    373 => 
     array (
       0 => 'StringHelperCest:testContains',
+      1 => 'StringHelperCest:testGetPosition',
     ),
-    362 => NULL,
     374 => 
     array (
       0 => 'StringHelperCest:testContains',
@@ -2388,25 +2420,25 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testContains',
       1 => 'StringHelperCest:testGetPosition',
     ),
-    377 => 
+    377 => NULL,
+    386 => 
     array (
       0 => 'StringHelperCest:testContains',
-      1 => 'StringHelperCest:testGetPosition',
     ),
-    378 => NULL,
     387 => 
     array (
       0 => 'StringHelperCest:testContains',
     ),
-    388 => 
+    389 => 
     array (
       0 => 'StringHelperCest:testContains',
     ),
-    390 => 
+    390 => NULL,
+    402 => 
     array (
       0 => 'StringHelperCest:testContains',
+      1 => 'StringHelperCest:testGetPosition',
     ),
-    391 => NULL,
     403 => 
     array (
       0 => 'StringHelperCest:testContains',
@@ -2422,12 +2454,11 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testContains',
       1 => 'StringHelperCest:testGetPosition',
     ),
-    406 => 
+    406 => NULL,
+    418 => 
     array (
-      0 => 'StringHelperCest:testContains',
-      1 => 'StringHelperCest:testGetPosition',
+      0 => 'StringHelperCest:testGetPosition',
     ),
-    407 => NULL,
     419 => 
     array (
       0 => 'StringHelperCest:testGetPosition',
@@ -2440,11 +2471,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testGetPosition',
     ),
-    422 => 
+    422 => NULL,
+    434 => 
     array (
       0 => 'StringHelperCest:testGetPosition',
     ),
-    423 => NULL,
     435 => 
     array (
       0 => 'StringHelperCest:testGetPosition',
@@ -2457,21 +2488,25 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testGetPosition',
     ),
-    438 => 
-    array (
-      0 => 'StringHelperCest:testGetPosition',
-    ),
-    439 => NULL,
-    450 => 
+    438 => NULL,
+    449 => 
     array (
       0 => 'StringHelperCest:testSubstringCount',
     ),
-    451 => NULL,
-    460 => 
+    450 => NULL,
+    459 => 
     array (
       0 => 'StringHelperCest:testReverse',
     ),
-    461 => NULL,
+    460 => NULL,
+    469 => 
+    array (
+      0 => 'StringHelperCest:testRandomCase',
+      1 => 'StringHelperCest:testReverse',
+      2 => 'StringHelperCest:testShuffleCharacters',
+      3 => 'StringHelperCest:testToCharactersArray',
+      4 => 'StringHelperCest:testSpanify',
+    ),
     470 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
@@ -2488,7 +2523,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToCharactersArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    472 => 
+    473 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
       1 => 'StringHelperCest:testReverse',
@@ -2520,7 +2555,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToCharactersArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    477 => 
+    478 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
       1 => 'StringHelperCest:testReverse',
@@ -2528,16 +2563,8 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToCharactersArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    479 => 
-    array (
-      0 => 'StringHelperCest:testRandomCase',
-      1 => 'StringHelperCest:testReverse',
-      2 => 'StringHelperCest:testShuffleCharacters',
-      3 => 'StringHelperCest:testToCharactersArray',
-      4 => 'StringHelperCest:testSpanify',
-    ),
-    480 => NULL,
-    489 => 
+    479 => NULL,
+    488 => 
     array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testIsStartsWith',
@@ -2559,8 +2586,8 @@ $coverage->setData(array (
       17 => 'StringHelperCest:testPreviewPunctuations',
       18 => 'StringHelperCest:testSpanify',
     ),
-    490 => NULL,
-    502 => 
+    489 => NULL,
+    501 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testIsEndsWith',
@@ -2580,8 +2607,8 @@ $coverage->setData(array (
       15 => 'StringHelperCest:testPreviewPunctuations',
       16 => 'StringHelperCest:testSpanify',
     ),
-    503 => NULL,
-    512 => 
+    502 => NULL,
+    511 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testIsLowerCase',
@@ -2603,7 +2630,11 @@ $coverage->setData(array (
       17 => 'StringHelperCest:testPreviewPunctuations',
       18 => 'StringHelperCest:testSpanify',
     ),
-    513 => NULL,
+    512 => NULL,
+    521 => 
+    array (
+      0 => 'StringHelperCest:testSerialized',
+    ),
     522 => 
     array (
       0 => 'StringHelperCest:testSerialized',
@@ -2612,12 +2643,12 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    524 => 
+    524 => NULL,
+    526 => 
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    525 => NULL,
-    527 => 
+    529 => 
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
@@ -2625,23 +2656,24 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    531 => 
+    532 => 
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    533 => 
+    534 => 
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    535 => 
+    537 => 
     array (
       0 => 'StringHelperCest:testSerialized',
     ),
-    538 => 
+    539 => NULL,
+    550 => 
     array (
-      0 => 'StringHelperCest:testSerialized',
+      0 => 'StringHelperCest:testIsMatchTest',
+      1 => 'StringHelperCest:testIses',
     ),
-    540 => NULL,
     551 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
@@ -2650,35 +2682,34 @@ $coverage->setData(array (
     552 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
-      1 => 'StringHelperCest:testIses',
     ),
-    553 => 
-    array (
-      0 => 'StringHelperCest:testIsMatchTest',
-    ),
-    554 => NULL,
-    556 => 
+    553 => NULL,
+    555 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
     ),
-    558 => 
+    557 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
     ),
-    560 => 
+    559 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
     ),
-    562 => 
+    561 => 
     array (
       0 => 'StringHelperCest:testIsMatchTest',
       1 => 'StringHelperCest:testIses',
     ),
-    563 => NULL,
-    575 => 
+    562 => NULL,
+    574 => 
+    array (
+      0 => 'StringHelperCest:testIsStartsWith',
+    ),
+    576 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
@@ -2690,16 +2721,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    579 => 
+    579 => NULL,
+    581 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    580 => NULL,
     582 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    583 => 
+    584 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
@@ -2707,20 +2738,26 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    586 => 
+    587 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    588 => 
+    588 => NULL,
+    590 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
     ),
-    589 => NULL,
-    591 => 
+    591 => NULL,
+    602 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
+      1 => 'StringHelperCest:testSetBeginning',
+      2 => 'StringHelperCest:testSubstring',
+      3 => 'StringHelperCest:testRemoveBeginningEnding',
+      4 => 'StringHelperCest:testPreview',
+      5 => 'StringHelperCest:testPreviewEnd',
+      6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    592 => NULL,
     603 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
@@ -2733,6 +2770,11 @@ $coverage->setData(array (
     ),
     604 => 
     array (
+      0 => 'StringHelperCest:testSubstring',
+    ),
+    605 => NULL,
+    606 => 
+    array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
       2 => 'StringHelperCest:testSubstring',
@@ -2741,11 +2783,6 @@ $coverage->setData(array (
       5 => 'StringHelperCest:testPreviewEnd',
       6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    605 => 
-    array (
-      0 => 'StringHelperCest:testSubstring',
-    ),
-    606 => NULL,
     607 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
@@ -2758,20 +2795,10 @@ $coverage->setData(array (
     ),
     608 => 
     array (
-      0 => 'StringHelperCest:testIsStartsWith',
-      1 => 'StringHelperCest:testSetBeginning',
-      2 => 'StringHelperCest:testSubstring',
-      3 => 'StringHelperCest:testRemoveBeginningEnding',
-      4 => 'StringHelperCest:testPreview',
-      5 => 'StringHelperCest:testPreviewEnd',
-      6 => 'StringHelperCest:testPreviewPunctuations',
-    ),
-    609 => 
-    array (
       0 => 'StringHelperCest:testSubstring',
     ),
-    610 => NULL,
-    612 => 
+    609 => NULL,
+    611 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
@@ -2781,13 +2808,22 @@ $coverage->setData(array (
       5 => 'StringHelperCest:testPreviewEnd',
       6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    613 => NULL,
+    612 => NULL,
+    621 => 
+    array (
+      0 => 'StringHelperCest:testCompare',
+      1 => 'StringHelperCest:testIsStartsWith',
+      2 => 'StringHelperCest:testIsEndsWith',
+      3 => 'StringHelperCest:testPunycode',
+      4 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
     622 => 
     array (
       0 => 'StringHelperCest:testCompare',
       1 => 'StringHelperCest:testIsStartsWith',
       2 => 'StringHelperCest:testIsEndsWith',
       3 => 'StringHelperCest:testPunycode',
+      4 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     623 => 
     array (
@@ -2795,6 +2831,7 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testIsStartsWith',
       2 => 'StringHelperCest:testIsEndsWith',
       3 => 'StringHelperCest:testPunycode',
+      4 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
     624 => 
     array (
@@ -2802,15 +2839,19 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testIsStartsWith',
       2 => 'StringHelperCest:testIsEndsWith',
       3 => 'StringHelperCest:testPunycode',
+      4 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    625 => 
+    625 => NULL,
+    638 => 
     array (
-      0 => 'StringHelperCest:testCompare',
-      1 => 'StringHelperCest:testIsStartsWith',
-      2 => 'StringHelperCest:testIsEndsWith',
-      3 => 'StringHelperCest:testPunycode',
+      0 => 'StringHelperCest:testIsEndsWith',
+      1 => 'StringHelperCest:testSetEnding',
+      2 => 'StringHelperCest:testSubstring',
+      3 => 'StringHelperCest:testRemoveBeginningEnding',
+      4 => 'StringHelperCest:testPreview',
+      5 => 'StringHelperCest:testPreviewEnd',
+      6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    626 => NULL,
     639 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
@@ -2823,6 +2864,11 @@ $coverage->setData(array (
     ),
     640 => 
     array (
+      0 => 'StringHelperCest:testSubstring',
+    ),
+    641 => NULL,
+    642 => 
+    array (
       0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
       2 => 'StringHelperCest:testSubstring',
@@ -2831,11 +2877,6 @@ $coverage->setData(array (
       5 => 'StringHelperCest:testPreviewEnd',
       6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    641 => 
-    array (
-      0 => 'StringHelperCest:testSubstring',
-    ),
-    642 => NULL,
     643 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
@@ -2848,20 +2889,10 @@ $coverage->setData(array (
     ),
     644 => 
     array (
-      0 => 'StringHelperCest:testIsEndsWith',
-      1 => 'StringHelperCest:testSetEnding',
-      2 => 'StringHelperCest:testSubstring',
-      3 => 'StringHelperCest:testRemoveBeginningEnding',
-      4 => 'StringHelperCest:testPreview',
-      5 => 'StringHelperCest:testPreviewEnd',
-      6 => 'StringHelperCest:testPreviewPunctuations',
-    ),
-    645 => 
-    array (
       0 => 'StringHelperCest:testSubstring',
     ),
-    646 => NULL,
-    648 => 
+    645 => NULL,
+    647 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
@@ -2871,8 +2902,8 @@ $coverage->setData(array (
       5 => 'StringHelperCest:testPreviewEnd',
       6 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    649 => NULL,
-    658 => 
+    648 => NULL,
+    657 => 
     array (
       0 => 'StringHelperCest:testIsLowerCase',
       1 => 'StringHelperCest:testCompare',
@@ -2883,9 +2914,14 @@ $coverage->setData(array (
       6 => 'StringHelperCest:testUcFirst',
       7 => 'StringHelperCest:testPunycode',
       8 => 'StringHelperCest:testSlugify',
+      9 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    659 => NULL,
-    671 => 
+    658 => NULL,
+    670 => 
+    array (
+      0 => 'StringHelperCest:testIsEndsWith',
+    ),
+    672 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
@@ -2897,11 +2933,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
-    675 => 
+    675 => NULL,
+    677 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
-    676 => NULL,
     678 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
@@ -2914,25 +2950,25 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
-    681 => 
+    682 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
-    683 => 
+    683 => NULL,
+    685 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
     ),
-    684 => NULL,
-    686 => 
-    array (
-      0 => 'StringHelperCest:testIsEndsWith',
-    ),
-    687 => NULL,
-    698 => 
+    686 => NULL,
+    697 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    699 => NULL,
+    698 => NULL,
+    712 => 
+    array (
+      0 => 'StringHelperCest:testGetParts',
+    ),
     713 => 
     array (
       0 => 'StringHelperCest:testGetParts',
@@ -2945,7 +2981,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    716 => 
+    717 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
@@ -2953,11 +2989,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    719 => 
+    720 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    721 => 
+    722 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
@@ -2977,24 +3013,24 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    727 => 
+    728 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    729 => 
+    729 => NULL,
+    740 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    730 => NULL,
-    741 => 
+    742 => 
     array (
       0 => 'StringHelperCest:testGetParts',
     ),
-    743 => 
+    743 => NULL,
+    752 => 
     array (
-      0 => 'StringHelperCest:testGetParts',
+      0 => 'StringHelperCest:testSetBeginning',
     ),
-    744 => NULL,
     753 => 
     array (
       0 => 'StringHelperCest:testSetBeginning',
@@ -3007,17 +3043,19 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSetBeginning',
     ),
-    756 => 
+    756 => NULL,
+    758 => 
     array (
       0 => 'StringHelperCest:testSetBeginning',
     ),
-    757 => NULL,
-    759 => 
+    759 => NULL,
+    771 => 
     array (
-      0 => 'StringHelperCest:testSetBeginning',
+      0 => 'StringHelperCest:testIsStartsWith',
+      1 => 'StringHelperCest:testSetBeginning',
+      2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    760 => NULL,
-    772 => 
+    773 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
@@ -3032,21 +3070,21 @@ $coverage->setData(array (
     775 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
+    ),
+    776 => NULL,
+    778 => 
+    array (
+      0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    776 => 
-    array (
-      0 => 'StringHelperCest:testIsStartsWith',
-    ),
-    777 => NULL,
     779 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    780 => 
+    781 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
@@ -3058,33 +3096,40 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testSetBeginning',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    783 => 
+    784 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    785 => 
-    array (
-      0 => 'StringHelperCest:testIsStartsWith',
-      1 => 'StringHelperCest:testSetBeginning',
-      2 => 'StringHelperCest:testRemoveBeginningEnding',
-    ),
-    786 => NULL,
-    788 => 
+    785 => NULL,
+    787 => 
     array (
       0 => 'StringHelperCest:testIsStartsWith',
       1 => 'StringHelperCest:testSetBeginning',
     ),
-    789 => NULL,
-    800 => 
+    788 => NULL,
+    799 => 
     array (
       0 => 'StringHelperCest:testSetBeginning',
       1 => 'StringHelperCest:testConcatAppendPrepend',
       2 => 'StringHelperCest:testPreviewEnd',
       3 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    801 => NULL,
+    800 => NULL,
+    809 => 
+    array (
+      0 => 'StringHelperCest:testIsUpperCase',
+      1 => 'StringHelperCest:testIsLowerCase',
+      2 => 'StringHelperCest:testIsTitleCase',
+      3 => 'StringHelperCest:testCompare',
+      4 => 'StringHelperCest:testIsStartsWith',
+      5 => 'StringHelperCest:testIsEndsWith',
+      6 => 'StringHelperCest:testSetBeginning',
+      7 => 'StringHelperCest:testSetEnding',
+      8 => 'StringHelperCest:testRemoveBeginningEnding',
+      9 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
     810 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
@@ -3096,20 +3141,13 @@ $coverage->setData(array (
       6 => 'StringHelperCest:testSetBeginning',
       7 => 'StringHelperCest:testSetEnding',
       8 => 'StringHelperCest:testRemoveBeginningEnding',
+      9 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
-    811 => 
+    811 => NULL,
+    820 => 
     array (
-      0 => 'StringHelperCest:testIsUpperCase',
-      1 => 'StringHelperCest:testIsLowerCase',
-      2 => 'StringHelperCest:testIsTitleCase',
-      3 => 'StringHelperCest:testCompare',
-      4 => 'StringHelperCest:testIsStartsWith',
-      5 => 'StringHelperCest:testIsEndsWith',
-      6 => 'StringHelperCest:testSetBeginning',
-      7 => 'StringHelperCest:testSetEnding',
-      8 => 'StringHelperCest:testRemoveBeginningEnding',
+      0 => 'StringHelperCest:testSetEnding',
     ),
-    812 => NULL,
     821 => 
     array (
       0 => 'StringHelperCest:testSetEnding',
@@ -3122,17 +3160,19 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSetEnding',
     ),
-    824 => 
+    824 => NULL,
+    826 => 
     array (
       0 => 'StringHelperCest:testSetEnding',
     ),
-    825 => NULL,
-    827 => 
+    827 => NULL,
+    839 => 
     array (
-      0 => 'StringHelperCest:testSetEnding',
+      0 => 'StringHelperCest:testIsEndsWith',
+      1 => 'StringHelperCest:testSetEnding',
+      2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    828 => NULL,
-    840 => 
+    841 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
@@ -3147,14 +3187,14 @@ $coverage->setData(array (
     843 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
+    ),
+    844 => NULL,
+    846 => 
+    array (
+      0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    844 => 
-    array (
-      0 => 'StringHelperCest:testIsEndsWith',
-    ),
-    845 => NULL,
     847 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
@@ -3173,32 +3213,26 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testSetEnding',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    850 => 
+    851 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
       2 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    852 => 
-    array (
-      0 => 'StringHelperCest:testIsEndsWith',
-      1 => 'StringHelperCest:testSetEnding',
-      2 => 'StringHelperCest:testRemoveBeginningEnding',
-    ),
-    853 => NULL,
-    855 => 
+    852 => NULL,
+    854 => 
     array (
       0 => 'StringHelperCest:testIsEndsWith',
       1 => 'StringHelperCest:testSetEnding',
     ),
-    856 => NULL,
-    867 => 
+    855 => NULL,
+    866 => 
     array (
       0 => 'StringHelperCest:testSetEnding',
       1 => 'StringHelperCest:testConcatAppendPrepend',
     ),
-    868 => NULL,
-    880 => 
+    867 => NULL,
+    879 => 
     array (
       0 => 'StringHelperCest:testUcFirst',
       1 => 'StringHelperCest:testSetEnding',
@@ -3208,7 +3242,11 @@ $coverage->setData(array (
       5 => 'StringHelperCest:testPreviewPunctuations',
       6 => 'StringHelperCest:testSpanify',
     ),
-    881 => NULL,
+    880 => NULL,
+    889 => 
+    array (
+      0 => 'StringHelperCest:testRemoveBeginningEnding',
+    ),
     890 => 
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
@@ -3221,16 +3259,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    893 => 
+    893 => NULL,
+    895 => 
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    894 => NULL,
-    896 => 
+    896 => NULL,
+    905 => 
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    897 => NULL,
     906 => 
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
@@ -3243,16 +3281,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    909 => 
+    909 => NULL,
+    911 => 
     array (
       0 => 'StringHelperCest:testRemoveBeginningEnding',
     ),
-    910 => NULL,
-    912 => 
+    912 => NULL,
+    921 => 
     array (
-      0 => 'StringHelperCest:testRemoveBeginningEnding',
+      0 => 'StringHelperCest:testRandomCase',
     ),
-    913 => NULL,
     922 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
@@ -3261,7 +3299,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
-    924 => 
+    925 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
@@ -3281,11 +3319,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
-    930 => 
+    932 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
-    933 => 
+    934 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
@@ -3293,23 +3331,23 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
-    936 => 
+    937 => 
     array (
       0 => 'StringHelperCest:testRandomCase',
     ),
-    938 => 
-    array (
-      0 => 'StringHelperCest:testRandomCase',
-    ),
-    939 => NULL,
-    948 => 
+    938 => NULL,
+    947 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
       1 => 'StringHelperCest:testCases',
       2 => 'StringHelperCest:testRandomCase',
       3 => 'StringHelperCest:testUcFirst',
     ),
-    949 => NULL,
+    948 => NULL,
+    957 => 
+    array (
+      0 => 'StringHelperCest:testUcFirst',
+    ),
     958 => 
     array (
       0 => 'StringHelperCest:testUcFirst',
@@ -3342,11 +3380,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testUcFirst',
     ),
-    966 => 
+    966 => NULL,
+    978 => 
     array (
-      0 => 'StringHelperCest:testUcFirst',
+      0 => 'StringHelperCest:testFill',
     ),
-    967 => NULL,
     979 => 
     array (
       0 => 'StringHelperCest:testFill',
@@ -3371,15 +3409,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testFill',
     ),
-    985 => 
+    986 => 
     array (
       0 => 'StringHelperCest:testFill',
     ),
-    987 => 
+    987 => NULL,
+    999 => 
     array (
       0 => 'StringHelperCest:testFill',
+      1 => 'StringHelperCest:testRepeat',
     ),
-    988 => NULL,
     1000 => 
     array (
       0 => 'StringHelperCest:testFill',
@@ -3395,17 +3434,16 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testFill',
       1 => 'StringHelperCest:testRepeat',
     ),
-    1003 => 
+    1004 => 
     array (
       0 => 'StringHelperCest:testFill',
       1 => 'StringHelperCest:testRepeat',
     ),
-    1005 => 
+    1005 => NULL,
+    1017 => 
     array (
       0 => 'StringHelperCest:testFill',
-      1 => 'StringHelperCest:testRepeat',
     ),
-    1006 => NULL,
     1018 => 
     array (
       0 => 'StringHelperCest:testFill',
@@ -3434,21 +3472,17 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testFill',
     ),
-    1025 => 
+    1026 => 
     array (
       0 => 'StringHelperCest:testFill',
     ),
-    1027 => 
-    array (
-      0 => 'StringHelperCest:testFill',
-    ),
-    1028 => NULL,
-    1037 => 
+    1027 => NULL,
+    1036 => 
     array (
       0 => 'StringHelperCest:testEntities',
     ),
-    1038 => NULL,
-    1049 => 
+    1037 => NULL,
+    1048 => 
     array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testEntities',
@@ -3465,7 +3499,28 @@ $coverage->setData(array (
       12 => 'StringHelperCest:testPreviewPunctuations',
       13 => 'StringHelperCest:testSpanify',
     ),
-    1050 => NULL,
+    1049 => NULL,
+    1078 => 
+    array (
+      0 => 'StringHelperCest:testEmpty',
+      1 => 'StringHelperCest:testConvertEncodingReplace',
+      2 => 'StringHelperCest:testNl',
+      3 => 'StringHelperCest:testEntities',
+      4 => 'StringHelperCest:testUUE',
+      5 => 'StringHelperCest:testReplaceRemove',
+      6 => 'StringHelperCest:testTransliteration',
+      7 => 'StringHelperCest:testSlugify',
+      8 => 'StringHelperCest:testHyphenate',
+      9 => 'StringHelperCest:testUnderscore',
+      10 => 'StringHelperCest:testRemoveTags',
+      11 => 'StringHelperCest:testSoundex',
+      12 => 'StringHelperCest:testMetaphone',
+      13 => 'StringHelperCest:testTrim',
+      14 => 'StringHelperCest:testPreview',
+      15 => 'StringHelperCest:testPreviewEnd',
+      16 => 'StringHelperCest:testPreviewPunctuations',
+      17 => 'StringHelperCest:testSpanify',
+    ),
     1079 => 
     array (
       0 => 'StringHelperCest:testEmpty',
@@ -3508,53 +3563,36 @@ $coverage->setData(array (
       16 => 'StringHelperCest:testPreviewPunctuations',
       17 => 'StringHelperCest:testSpanify',
     ),
-    1081 => 
-    array (
-      0 => 'StringHelperCest:testEmpty',
-      1 => 'StringHelperCest:testConvertEncodingReplace',
-      2 => 'StringHelperCest:testNl',
-      3 => 'StringHelperCest:testEntities',
-      4 => 'StringHelperCest:testUUE',
-      5 => 'StringHelperCest:testReplaceRemove',
-      6 => 'StringHelperCest:testTransliteration',
-      7 => 'StringHelperCest:testSlugify',
-      8 => 'StringHelperCest:testHyphenate',
-      9 => 'StringHelperCest:testUnderscore',
-      10 => 'StringHelperCest:testRemoveTags',
-      11 => 'StringHelperCest:testSoundex',
-      12 => 'StringHelperCest:testMetaphone',
-      13 => 'StringHelperCest:testTrim',
-      14 => 'StringHelperCest:testPreview',
-      15 => 'StringHelperCest:testPreviewEnd',
-      16 => 'StringHelperCest:testPreviewPunctuations',
-      17 => 'StringHelperCest:testSpanify',
-    ),
-    1082 => NULL,
-    1091 => 
+    1081 => NULL,
+    1090 => 
     array (
       0 => 'StringHelperCest:testNl',
     ),
-    1092 => NULL,
-    1101 => 
+    1091 => NULL,
+    1100 => 
     array (
       0 => 'StringHelperCest:testNl',
     ),
-    1102 => NULL,
-    1111 => 
+    1101 => NULL,
+    1110 => 
     array (
       0 => 'StringHelperCest:testNl',
     ),
-    1112 => NULL,
-    1121 => 
+    1111 => NULL,
+    1120 => 
     array (
       0 => 'StringHelperCest:testNl',
     ),
-    1122 => NULL,
-    1131 => 
+    1121 => NULL,
+    1130 => 
     array (
       0 => 'StringHelperCest:testUnderscore',
     ),
-    1132 => NULL,
+    1131 => NULL,
+    1140 => 
+    array (
+      0 => 'StringHelperCest:testSlugify',
+    ),
     1141 => 
     array (
       0 => 'StringHelperCest:testSlugify',
@@ -3571,17 +3609,26 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSlugify',
     ),
-    1145 => 
-    array (
-      0 => 'StringHelperCest:testSlugify',
-    ),
-    1146 => NULL,
-    1155 => 
+    1145 => NULL,
+    1154 => 
     array (
       0 => 'StringHelperCest:testSlugify',
       1 => 'StringHelperCest:testHyphenate',
     ),
-    1156 => NULL,
+    1155 => NULL,
+    1164 => 
+    array (
+      0 => 'StringHelperCest:testTransliteration',
+      1 => 'StringHelperCest:testSlugify',
+      2 => 'StringHelperCest:testRemoveTags',
+      3 => 'StringHelperCest:testSoundex',
+      4 => 'StringHelperCest:testMetaphone',
+      5 => 'StringHelperCest:testTrim',
+      6 => 'StringHelperCest:testPreview',
+      7 => 'StringHelperCest:testPreviewEnd',
+      8 => 'StringHelperCest:testPreviewPunctuations',
+      9 => 'StringHelperCest:testSpanify',
+    ),
     1165 => 
     array (
       0 => 'StringHelperCest:testTransliteration',
@@ -3608,21 +3655,15 @@ $coverage->setData(array (
       8 => 'StringHelperCest:testPreviewPunctuations',
       9 => 'StringHelperCest:testSpanify',
     ),
-    1167 => 
+    1167 => NULL,
+    1176 => 
     array (
       0 => 'StringHelperCest:testTransliteration',
       1 => 'StringHelperCest:testSlugify',
-      2 => 'StringHelperCest:testRemoveTags',
-      3 => 'StringHelperCest:testSoundex',
-      4 => 'StringHelperCest:testMetaphone',
-      5 => 'StringHelperCest:testTrim',
-      6 => 'StringHelperCest:testPreview',
-      7 => 'StringHelperCest:testPreviewEnd',
-      8 => 'StringHelperCest:testPreviewPunctuations',
-      9 => 'StringHelperCest:testSpanify',
+      2 => 'StringHelperCest:testSoundex',
+      3 => 'StringHelperCest:testMetaphone',
     ),
-    1168 => NULL,
-    1177 => 
+    1178 => 
     array (
       0 => 'StringHelperCest:testTransliteration',
       1 => 'StringHelperCest:testSlugify',
@@ -3664,15 +3705,8 @@ $coverage->setData(array (
       2 => 'StringHelperCest:testSoundex',
       3 => 'StringHelperCest:testMetaphone',
     ),
-    1184 => 
-    array (
-      0 => 'StringHelperCest:testTransliteration',
-      1 => 'StringHelperCest:testSlugify',
-      2 => 'StringHelperCest:testSoundex',
-      3 => 'StringHelperCest:testMetaphone',
-    ),
-    1186 => NULL,
-    1195 => 
+    1185 => NULL,
+    1194 => 
     array (
       0 => 'StringHelperCest:testTransliteration',
       1 => 'StringHelperCest:testSlugify',
@@ -3685,8 +3719,8 @@ $coverage->setData(array (
       8 => 'StringHelperCest:testPreviewPunctuations',
       9 => 'StringHelperCest:testSpanify',
     ),
-    1196 => NULL,
-    1205 => 
+    1195 => NULL,
+    1204 => 
     array (
       0 => 'StringHelperCest:testTransliteration',
       1 => 'StringHelperCest:testSlugify',
@@ -3699,7 +3733,18 @@ $coverage->setData(array (
       8 => 'StringHelperCest:testPreviewPunctuations',
       9 => 'StringHelperCest:testSpanify',
     ),
-    1206 => NULL,
+    1205 => NULL,
+    1217 => 
+    array (
+      0 => 'StringHelperCest:testEncodingSet',
+      1 => 'StringHelperCest:testConvertEncoding',
+      2 => 'StringHelperCest:testConvertEncodingReplace',
+      3 => 'StringHelperCest:testPunycode',
+      4 => 'StringHelperCest:testTransliteration',
+      5 => 'StringHelperCest:testSlugify',
+      6 => 'StringHelperCest:testSoundex',
+      7 => 'StringHelperCest:testMetaphone',
+    ),
     1218 => 
     array (
       0 => 'StringHelperCest:testEncodingSet',
@@ -3711,7 +3756,7 @@ $coverage->setData(array (
       6 => 'StringHelperCest:testSoundex',
       7 => 'StringHelperCest:testMetaphone',
     ),
-    1219 => 
+    1220 => 
     array (
       0 => 'StringHelperCest:testEncodingSet',
       1 => 'StringHelperCest:testConvertEncoding',
@@ -3722,19 +3767,12 @@ $coverage->setData(array (
       6 => 'StringHelperCest:testSoundex',
       7 => 'StringHelperCest:testMetaphone',
     ),
-    1221 => 
+    1221 => NULL,
+    1234 => 
     array (
-      0 => 'StringHelperCest:testEncodingSet',
-      1 => 'StringHelperCest:testConvertEncoding',
-      2 => 'StringHelperCest:testConvertEncodingReplace',
-      3 => 'StringHelperCest:testPunycode',
-      4 => 'StringHelperCest:testTransliteration',
-      5 => 'StringHelperCest:testSlugify',
-      6 => 'StringHelperCest:testSoundex',
-      7 => 'StringHelperCest:testMetaphone',
+      0 => 'StringHelperCest:testFooterYears',
     ),
-    1222 => NULL,
-    1235 => 
+    1236 => 
     array (
       0 => 'StringHelperCest:testFooterYears',
     ),
@@ -3746,16 +3784,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testFooterYears',
     ),
-    1239 => 
+    1239 => NULL,
+    1241 => 
     array (
       0 => 'StringHelperCest:testFooterYears',
     ),
-    1240 => NULL,
-    1242 => 
+    1243 => NULL,
+    1252 => 
     array (
-      0 => 'StringHelperCest:testFooterYears',
+      0 => 'StringHelperCest:testShuffleCharacters',
     ),
-    1244 => NULL,
     1253 => 
     array (
       0 => 'StringHelperCest:testShuffleCharacters',
@@ -3764,21 +3802,17 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testShuffleCharacters',
     ),
-    1255 => 
+    1256 => 
     array (
       0 => 'StringHelperCest:testShuffleCharacters',
     ),
-    1257 => 
-    array (
-      0 => 'StringHelperCest:testShuffleCharacters',
-    ),
-    1258 => NULL,
-    1267 => 
+    1257 => NULL,
+    1266 => 
     array (
       0 => 'StringHelperCest:testToLinesArray',
     ),
-    1268 => NULL,
-    1281 => 
+    1267 => NULL,
+    1280 => 
     array (
       0 => 'StringHelperCest:testSplit',
       1 => 'StringHelperCest:testSoundex',
@@ -3786,7 +3820,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToLinesArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    1283 => 
+    1282 => 
     array (
       0 => 'StringHelperCest:testSplit',
       1 => 'StringHelperCest:testSoundex',
@@ -3794,7 +3828,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToLinesArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    1285 => 
+    1284 => 
     array (
       0 => 'StringHelperCest:testSplit',
       1 => 'StringHelperCest:testSoundex',
@@ -3802,7 +3836,7 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToLinesArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    1287 => 
+    1286 => 
     array (
       0 => 'StringHelperCest:testSplit',
       1 => 'StringHelperCest:testSoundex',
@@ -3810,7 +3844,11 @@ $coverage->setData(array (
       3 => 'StringHelperCest:testToLinesArray',
       4 => 'StringHelperCest:testSpanify',
     ),
-    1288 => NULL,
+    1287 => NULL,
+    1297 => 
+    array (
+      0 => 'StringHelperCest:testSoundex',
+    ),
     1298 => 
     array (
       0 => 'StringHelperCest:testSoundex',
@@ -3827,7 +3865,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSoundex',
     ),
-    1302 => 
+    1303 => 
     array (
       0 => 'StringHelperCest:testSoundex',
     ),
@@ -3835,15 +3873,15 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSoundex',
     ),
-    1305 => 
+    1306 => 
     array (
       0 => 'StringHelperCest:testSoundex',
     ),
-    1307 => 
+    1307 => NULL,
+    1317 => 
     array (
-      0 => 'StringHelperCest:testSoundex',
+      0 => 'StringHelperCest:testMetaphone',
     ),
-    1308 => NULL,
     1318 => 
     array (
       0 => 'StringHelperCest:testMetaphone',
@@ -3860,7 +3898,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMetaphone',
     ),
-    1322 => 
+    1323 => 
     array (
       0 => 'StringHelperCest:testMetaphone',
     ),
@@ -3868,20 +3906,20 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testMetaphone',
     ),
-    1325 => 
+    1326 => 
     array (
       0 => 'StringHelperCest:testMetaphone',
     ),
-    1327 => 
+    1327 => NULL,
+    1339 => 
     array (
-      0 => 'StringHelperCest:testMetaphone',
+      0 => 'StringHelperCest:testLevenshtein',
     ),
-    1328 => NULL,
     1340 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1341 => 
+    1342 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3889,7 +3927,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1344 => 
+    1346 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3901,11 +3939,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1349 => 
+    1349 => NULL,
+    1350 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1350 => NULL,
     1351 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
@@ -3914,11 +3952,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1353 => 
+    1353 => NULL,
+    1354 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1354 => NULL,
     1355 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
@@ -3927,20 +3965,20 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1357 => 
+    1357 => NULL,
+    1359 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1358 => NULL,
     1360 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1361 => 
+    1362 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1363 => 
+    1364 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3948,11 +3986,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1366 => 
+    1367 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1368 => 
+    1369 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3960,15 +3998,15 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1371 => 
+    1372 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1373 => 
+    1374 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1375 => 
+    1376 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3984,7 +4022,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1380 => 
+    1382 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -3996,7 +4034,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1385 => 
+    1386 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
@@ -4004,65 +4042,65 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1388 => 
+    1389 => 
     array (
       0 => 'StringHelperCest:testLevenshtein',
     ),
-    1390 => 
-    array (
-      0 => 'StringHelperCest:testLevenshtein',
-    ),
-    1391 => NULL,
-    1400 => 
+    1390 => NULL,
+    1399 => 
     array (
       0 => 'StringHelperCest:testURLCoding',
     ),
-    1401 => NULL,
-    1410 => 
+    1400 => NULL,
+    1409 => 
     array (
       0 => 'StringHelperCest:testURLCoding',
     ),
-    1411 => NULL,
-    1420 => 
+    1410 => NULL,
+    1419 => 
     array (
       0 => 'StringHelperCest:testBase64Coding',
     ),
-    1421 => NULL,
-    1430 => 
+    1420 => NULL,
+    1429 => 
     array (
       0 => 'StringHelperCest:testBase64Coding',
     ),
-    1431 => NULL,
-    1440 => 
+    1430 => NULL,
+    1439 => 
     array (
       0 => 'StringHelperCest:testUUE',
     ),
-    1441 => NULL,
-    1450 => 
+    1440 => NULL,
+    1449 => 
     array (
       0 => 'StringHelperCest:testUUE',
     ),
-    1451 => NULL,
-    1460 => 
+    1450 => NULL,
+    1459 => 
     array (
       0 => 'StringHelperCest:testUTF8Coding',
     ),
-    1461 => NULL,
-    1470 => 
+    1460 => NULL,
+    1469 => 
     array (
       0 => 'StringHelperCest:testUTF8Coding',
     ),
-    1471 => NULL,
-    1484 => 
+    1470 => NULL,
+    1483 => 
     array (
       0 => 'StringHelperCest:testEntities',
     ),
-    1485 => NULL,
-    1497 => 
+    1484 => NULL,
+    1496 => 
     array (
       0 => 'StringHelperCest:testEntities',
     ),
-    1498 => NULL,
+    1497 => NULL,
+    1506 => 
+    array (
+      0 => 'StringHelperCest:testJSON',
+    ),
     1507 => 
     array (
       0 => 'StringHelperCest:testJSON',
@@ -4071,16 +4109,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1509 => 
+    1509 => NULL,
+    1512 => 
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1510 => NULL,
-    1513 => 
+    1514 => NULL,
+    1523 => 
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1515 => NULL,
     1524 => 
     array (
       0 => 'StringHelperCest:testJSON',
@@ -4089,34 +4127,34 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1526 => 
+    1526 => NULL,
+    1528 => 
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1527 => NULL,
-    1529 => 
+    1530 => 
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1531 => 
+    1531 => NULL,
+    1540 => 
     array (
       0 => 'StringHelperCest:testJSON',
     ),
-    1532 => NULL,
-    1541 => 
+    1541 => NULL,
+    1550 => 
     array (
-      0 => 'StringHelperCest:testJSON',
+      0 => 'StringHelperCest:testPunycode',
     ),
-    1542 => NULL,
     1551 => 
     array (
       0 => 'StringHelperCest:testPunycode',
     ),
-    1552 => 
+    1552 => NULL,
+    1561 => 
     array (
       0 => 'StringHelperCest:testPunycode',
     ),
-    1553 => NULL,
     1562 => 
     array (
       0 => 'StringHelperCest:testPunycode',
@@ -4125,11 +4163,13 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testPunycode',
     ),
-    1564 => 
+    1564 => NULL,
+    1597 => 
     array (
-      0 => 'StringHelperCest:testPunycode',
+      0 => 'StringHelperCest:testPreview',
+      1 => 'StringHelperCest:testPreviewEnd',
+      2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1565 => NULL,
     1598 => 
     array (
       0 => 'StringHelperCest:testPreview',
@@ -4148,7 +4188,7 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1601 => 
+    1602 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
@@ -4166,13 +4206,13 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1605 => 
+    1606 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1607 => 
+    1608 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
@@ -4190,13 +4230,13 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1611 => 
+    1611 => NULL,
+    1613 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1612 => NULL,
     1614 => 
     array (
       0 => 'StringHelperCest:testPreview',
@@ -4209,24 +4249,23 @@ $coverage->setData(array (
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1616 => 
+    1616 => NULL,
+    1618 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1617 => NULL,
-    1619 => 
+    1621 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1622 => 
+    1623 => 
     array (
       0 => 'StringHelperCest:testPreview',
-      1 => 'StringHelperCest:testPreviewEnd',
-      2 => 'StringHelperCest:testPreviewPunctuations',
+      1 => 'StringHelperCest:testPreviewPunctuations',
     ),
     1624 => 
     array (
@@ -4278,7 +4317,7 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1634 => 
+    1636 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewPunctuations',
@@ -4308,7 +4347,7 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1642 => 
+    1643 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewPunctuations',
@@ -4323,9 +4362,9 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1646 => 
+    1648 => 
     array (
-      0 => 'StringHelperCest:testPreview',
+      0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
     1649 => 
@@ -4378,7 +4417,7 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1659 => 
+    1661 => 
     array (
       0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
@@ -4408,7 +4447,7 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1667 => 
+    1668 => 
     array (
       0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
@@ -4418,19 +4457,14 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testPreviewEnd',
       1 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1670 => 
-    array (
-      0 => 'StringHelperCest:testPreviewEnd',
-      1 => 'StringHelperCest:testPreviewPunctuations',
-    ),
-    1673 => 
+    1672 => 
     array (
       0 => 'StringHelperCest:testPreview',
       1 => 'StringHelperCest:testPreviewEnd',
       2 => 'StringHelperCest:testPreviewPunctuations',
     ),
-    1675 => NULL,
-    1686 => 
+    1674 => NULL,
+    1685 => 
     array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testRemoveTags',
@@ -4439,7 +4473,11 @@ $coverage->setData(array (
       4 => 'StringHelperCest:testPreviewPunctuations',
       5 => 'StringHelperCest:testSpanify',
     ),
-    1687 => NULL,
+    1686 => NULL,
+    1700 => 
+    array (
+      0 => 'StringHelperCest:testSpanify',
+    ),
     1701 => 
     array (
       0 => 'StringHelperCest:testSpanify',
@@ -4448,12 +4486,12 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1703 => 
+    1703 => NULL,
+    1705 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1704 => NULL,
-    1706 => 
+    1707 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
@@ -4465,7 +4503,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1710 => 
+    1711 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
@@ -4473,7 +4511,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1713 => 
+    1714 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
@@ -4489,7 +4527,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1718 => 
+    1719 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
@@ -4509,7 +4547,7 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1724 => 
+    1725 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
@@ -4537,15 +4575,16 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1732 => 
+    1733 => 
     array (
       0 => 'StringHelperCest:testSpanify',
     ),
-    1734 => 
+    1734 => NULL,
+    1744 => 
     array (
-      0 => 'StringHelperCest:testSpanify',
+      0 => 'StringHelperCest:testEmpty',
+      1 => 'StringHelperCest:testSpanify',
     ),
-    1735 => NULL,
     1745 => 
     array (
       0 => 'StringHelperCest:testEmpty',
@@ -4556,12 +4595,12 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testSpanify',
     ),
-    1747 => 
+    1747 => NULL,
+    1757 => 
     array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testSpanify',
     ),
-    1748 => NULL,
     1758 => 
     array (
       0 => 'StringHelperCest:testEmpty',
@@ -4572,12 +4611,11 @@ $coverage->setData(array (
       0 => 'StringHelperCest:testEmpty',
       1 => 'StringHelperCest:testSpanify',
     ),
-    1760 => 
+    1760 => NULL,
+    1769 => 
     array (
-      0 => 'StringHelperCest:testEmpty',
-      1 => 'StringHelperCest:testSpanify',
+      0 => 'StringHelperCest:testIsUpperCase',
     ),
-    1761 => NULL,
     1770 => 
     array (
       0 => 'StringHelperCest:testIsUpperCase',
@@ -4586,11 +4624,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsUpperCase',
     ),
-    1772 => 
+    1772 => NULL,
+    1781 => 
     array (
-      0 => 'StringHelperCest:testIsUpperCase',
+      0 => 'StringHelperCest:testIsLowerCase',
     ),
-    1773 => NULL,
     1782 => 
     array (
       0 => 'StringHelperCest:testIsLowerCase',
@@ -4599,11 +4637,11 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsLowerCase',
     ),
-    1784 => 
+    1784 => NULL,
+    1793 => 
     array (
-      0 => 'StringHelperCest:testIsLowerCase',
+      0 => 'StringHelperCest:testIsTitleCase',
     ),
-    1785 => NULL,
     1794 => 
     array (
       0 => 'StringHelperCest:testIsTitleCase',
@@ -4612,21 +4650,65 @@ $coverage->setData(array (
     array (
       0 => 'StringHelperCest:testIsTitleCase',
     ),
-    1796 => 
-    array (
-      0 => 'StringHelperCest:testIsTitleCase',
-    ),
-    1797 => NULL,
-    1806 => 
+    1796 => NULL,
+    1805 => 
     array (
       0 => 'StringHelperCest:testIsTitleCase',
       1 => 'StringHelperCest:testCases',
     ),
-    1807 => NULL,
-    60 => 
+    1806 => NULL,
+    1817 => 
     array (
-      0 => 'StringHelperCest:testIses',
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
     ),
+    1819 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1820 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1821 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1822 => NULL,
+    1823 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1825 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1826 => NULL,
+    1837 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1839 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1840 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1841 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1842 => NULL,
+    1843 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1845 => 
+    array (
+      0 => 'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase',
+    ),
+    1846 => NULL,
   ),
 ));
 $coverage->setTests(array (
@@ -4980,11 +5062,16 @@ $coverage->setTests(array (
     'size' => 'unknown',
     'status' => NULL,
   ),
+  'StringHelperCest:testEqualsSomeAndEqualsIgnoreCase' => 
+  array (
+    'size' => 'unknown',
+    'status' => NULL,
+  ),
 ));
 
 $filter = $coverage->filter();
 $filter->setWhitelistedFiles(array (
-  'C:\\OpenServer\\domains\\StringHelper\\src\\Zver\\StringHelper.php' => true,
+  'C:\\OpenServer\\domains\\string-helper\\src\\Zver\\StringHelper.php' => true,
 ));
 
 return $coverage;

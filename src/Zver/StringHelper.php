@@ -1804,6 +1804,46 @@ namespace Zver
         {
             return $this->set(mb_convert_case($this->get(), MB_CASE_TITLE, $this->getEncoding()));
         }
+        
+        /**
+         * Return true if loaded string equals some of value in values array, false otherwise
+         *
+         * @param array $values
+         *
+         * @return bool
+         */
+        public function isEqualsSome(array $values)
+        {
+            foreach ($values as $value)
+            {
+                if ($this->isEquals($value))
+                {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+        
+        /**
+         * Return true if loaded string equals ignore case some of value in values array, false otherwise
+         *
+         * @param array $values
+         *
+         * @return bool
+         */
+        public function isEqualsSomeIgnoreCase(array $values)
+        {
+            foreach ($values as $value)
+            {
+                if ($this->isEqualsIgnoreCase($value))
+                {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
     }
     
 }
