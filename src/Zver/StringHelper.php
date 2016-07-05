@@ -6,14 +6,8 @@ namespace Zver
     class StringHelper
     {
         
-        public static function getDefaultEncoding()
-        {
-            return Encoding::get();
-        }
-        
         protected $string = '';
         protected $encoding = '';
-        
         protected $mbInternalEncoding = null;
         protected $mbRegexpEncoding = null;
         protected $mbSubstituteCharacter = null;
@@ -142,6 +136,11 @@ namespace Zver
             $this->string = $this->stringify($string);
             
             return $this;
+        }
+        
+        public static function getDefaultEncoding()
+        {
+            return Encoding::get();
         }
         
         /**
