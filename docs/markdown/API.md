@@ -2319,4 +2319,4 @@ StringHelper::isEqualsSomeIgnoreCase( array $values ): boolean
 
 
 --------
-> This document was automatically generated from source code comments on 2016-07-05 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2016-07-07 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

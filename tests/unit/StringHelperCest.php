@@ -60,18 +60,18 @@ class StringHelperCest
         
         foreach ($trues as $true)
         {
-            $I->assertTrue(
-                StringHelper::load($true)
-                            ->isLowerCase()
-            );
+            $temp = StringHelper::load($true);
+            $I->assertTrue($temp->isLowerCase());
+
+            $I->assertSame($temp->get(), $true);
         }
         
         foreach ($falses as $false)
         {
-            $I->assertFalse(
-                StringHelper::load($false)
-                            ->isLowerCase()
-            );
+            $temp = StringHelper::load($false);
+            $I->assertFalse($temp->isLowerCase());
+
+            $I->assertSame($temp->get(), $false);
         }
     }
     
@@ -97,18 +97,18 @@ class StringHelperCest
         
         foreach ($trues as $true)
         {
-            $I->assertTrue(
-                StringHelper::load($true)
-                            ->isTitleCase()
-            );
+            $temp = StringHelper::load($true);
+            $I->assertTrue($temp->isTitleCase());
+
+            $I->assertSame($temp->get(), $true);
         }
         
         foreach ($falses as $false)
         {
-            $I->assertFalse(
-                StringHelper::load($false)
-                            ->isTitleCase()
-            );
+            $temp = StringHelper::load($false);
+            $I->assertFalse($temp->isTitleCase());
+
+            $I->assertSame($temp->get(), $false);
         }
     }
     
@@ -412,40 +412,50 @@ class StringHelperCest
     
     public function testIsEndsWith(UnitTester $I)
     {
-        
+
         $I->assertTrue(
             StringHelper::load('стартс')
                         ->isEndsWith('')
         );
-        
-        $I->assertFalse(
+
+        $I->assertTrue(
             StringHelper::load('стартс')
-                        ->isEndsWith('С')
+                        ->isEndsWithIgnoreCase('стАртС')
         );
-        
+
+        $I->assertTrue(
+            StringHelper::load('zzzsdfsdf')
+                        ->isEndsWith('')
+        );
+
+        $I->assertTrue(
+            StringHelper::load('zzzsdfsdf')
+                        ->isEndsWithIgnoreCase('')
+        );
+
+        $I->assertTrue(
+            StringHelper::load('стартс')
+                        ->isEndsWith('стартс')
+        );
+
         $I->assertTrue(
             StringHelper::load('стартс')
                         ->isEndsWithIgnoreCase('С')
         );
-        
+
+        $I->assertFalse(
+            StringHelper::load('стартс')
+                        ->isEndsWith('С')
+        );
+
         $I->assertFalse(
             StringHelper::load('стартс')
                         ->isEndsWith('s')
         );
         
-        $I->assertTrue(
-            StringHelper::load('стартс')
-                        ->isEndsWith('стартс')
-        );
-        
         $I->assertFalse(
             StringHelper::load('стартс')
                         ->isEndsWith('сстартс')
-        );
-        
-        $I->assertTrue(
-            StringHelper::load('стартс')
-                        ->isEndsWithIgnoreCase('стАртС')
         );
         
         $I->assertFalse(
@@ -463,15 +473,6 @@ class StringHelperCest
                         ->isEndsWithIgnoreCase('zzzsdfsdf')
         );
         
-        $I->assertTrue(
-            StringHelper::load('zzzsdfsdf')
-                        ->isEndsWith('')
-        );
-        
-        $I->assertTrue(
-            StringHelper::load('zzzsdfsdf')
-                        ->isEndsWithIgnoreCase('')
-        );
     }
     
     public function testIsEncodingSupported(UnitTester $I)

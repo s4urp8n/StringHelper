@@ -618,7 +618,8 @@ namespace Zver
          */
         public function isEqualsIgnoreCase()
         {
-            return ($this->toLowerCase()
+            return ($this->getClone()
+                         ->toLowerCase()
                          ->get() == static::load(func_get_args(), $this->getEncoding())
                                           ->toLowerCase()
                                           ->get());
