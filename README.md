@@ -27,3 +27,4 @@ composer install
 phpunit ./tests
 ```
 
+Based on [Package template](https://github.com/s4urp8n/package-template)
