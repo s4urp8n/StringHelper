@@ -7,6 +7,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     {
         $originals = [
             ['', ''],
+            [' ', ' '],
             ['str', 'str'],
             ['stR', 'stR'],
             ['sTR', 'sTR'],
@@ -20,11 +21,25 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         foreach ($originals as $original)
         {
             $this->assertInstanceOf(\Zver\StringHelper::class, Str($original));
+            
             $this->assertSame(Str($original[0])->get(), $original[1]);
+            
             $this->assertSame(
-                \Zver\StringHelper::make($original[0])
-                                  ->get(), $original[1]
+                Str()
+                    ->set($original[0])
+                    ->get(), $original[1]
             );
+            
+            $this->assertSame(
+                Str()
+                    ->setFromEncoding($original[0], 'UTF-8')
+                    ->get(), $original[1]
+            );
+            
+            $this->assertSame(
+                Str()->setFromEncoding($original[0], 'UTF-8') . '', $original[1]
+            );
+            
         }
     }
     

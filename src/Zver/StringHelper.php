@@ -69,20 +69,46 @@ namespace Zver
         }
         
         /**
-         * Alias for load for laravel fans
+         * Get instance of class loaded with string converted from another encoding
          *
-         * @param string $string
+         * @param $string       String
+         * @param $fromEncoding Encoding
          *
          * @return static
          */
-        public static function make($string = '')
+        public static function loadFromEncoding($string, $fromEncoding)
+        {
+            return new static(static::convertFromEncoding(static::stringify($string), $fromEncoding));
+        }
+        
+        /**
+         * Get result string
+         *
+         * @return string
+         */
+        public function get()
+        {
+            return $this->string;
+        }
+        
+        /**
+         * Return result string when using class as string
+         *
+         * @return string Return result string when using class as string
+         */
+        public function __toString()
+        {
+            return $this->get();
+        }
+        
+        public function set($string)
         {
             return static::load($string);
         }
         
-        public function get()
+        public function setFromEncoding($string, $fromEncoding)
         {
-            return $this->string;
+            return static::loadFromEncoding($string, $fromEncoding);
         }
     }
 }
