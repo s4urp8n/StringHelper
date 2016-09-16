@@ -10,10 +10,17 @@
     "symbols",
     "manipulate"
   ],
+  "minimum-stability": "stable",
+  "config": {
+    "optimize-autoloader": true
+  },
   "autoload": {
     "psr-4": {
       "": "src/"
-    }
+    },
+    "files": [
+      "src/Functions.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
@@ -21,12 +28,8 @@
     }
   },
   "require": {
-    "zver/encoding": "1.*"
+    "zver/traits": "^1.0"
   },
   "require-dev": {
-    "codeception/codeception": "2.*",
-    "codeception/c3": "2.*",
-    "phpdocumentor/phpdocumentor": "2.*",
-    "cvuorinen/phpdoc-markdown-public": "*"
   }
 }

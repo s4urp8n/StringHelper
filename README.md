@@ -1,28 +1,29 @@
-# Zver\StringHelper
+    
+# Package-template
 
-Help you manipulate strings
+Use this template package structure to build your own packages and tests
 
-### Example usage
+## Structure
 
-```php
-$upper=StringHelper::load('some string')
-                ->toUpperCase()
-                ->get();
+* files - package files
+* src - package src files
+* tests - package PHPUnit tests
+* tests/classes - classes needed for testing
+* tests/files - files needed for testing
+* tests/bootstrap.php - PHPUnit autoloading and helpers
+
+## Helpers
+
+* packageFile($name) - get full name of file with name=$name in **files** folder
+* packageTestFile($name) - get full name of file with name=$name in **tests/files** folder
+
+## Run tests
+
+For testing PHPUnit installed required
+
+```
+cd package-template
+composer install
+phpunit ./tests
 ```
 
-[Documentation](docs/markdown/API.md)
-
-#### Prepare package
-```
-php prepare.php
-```
-
-#### Test package
-```
-php test.php
-```
-
-#### Generate package documentation in HTML and Markdown
-```
-php doc.php
-```

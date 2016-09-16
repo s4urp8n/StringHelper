@@ -1,0 +1,46 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "1e946cd21d5084be62491f189d6a51e9",
+    "content-hash": "09931ef63df0047d6f29784f4bd131a0",
+    "packages": [
+        {
+            "name": "zver/traits",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/s4urp8n/traits.git",
+                "reference": "174a0039b2e407ece8518c206fefc92b7fa76165"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/s4urp8n/traits/zipball/174a0039b2e407ece8518c206fefc92b7fa76165",
+                "reference": "174a0039b2e407ece8518c206fefc92b7fa76165",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                },
+                "files": [
+                    "src/Functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Helpfull traits collection",
+            "time": "2016-09-16 21:41:25"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
