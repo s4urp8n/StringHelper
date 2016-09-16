@@ -11,4 +11,4 @@ before_script:
   - chmod 777 ./phpunit.phar
 
 script:
-  - ./phpunit.phar ./
+  - ./phpunit.phar ./tests
