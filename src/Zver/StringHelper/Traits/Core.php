@@ -163,16 +163,6 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Get length of loaded string
-         *
-         * @return integer Length of loaded string
-         */
-        public function length()
-        {
-            return mb_strlen($this->get(), $this->getEncoding());
-        }
-        
-        /**
          * Alias for length()
          *
          * @see length()
@@ -181,6 +171,16 @@ namespace Zver\StringHelper\Traits
         public function len()
         {
             return $this->length();
+        }
+        
+        /**
+         * Get length of loaded string
+         *
+         * @return integer Length of loaded string
+         */
+        public function length()
+        {
+            return mb_strlen($this->get(), $this->getEncoding());
         }
         
         /**
