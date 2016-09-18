@@ -1409,39 +1409,7 @@ class StringHelperCest
         
     }
     
-    public function testConcatAppendPrepend(UnitTester $I)
-    {
-        
-        $I->assertEquals(
-            StringHelper::load('l')
-                        ->concat(
-                            'e', 't', StringHelper::load('ter'), [
-                                   ' ',
-                                   'for',
-                                   [
-                                       ' ',
-                                       'm',
-                                       'e',
-                                   ],
-                               ]
-                        )
-                        ->get(), 'letter for me'
-        );
-        
-        $I->assertEquals(
-            StringHelper::load('l')
-                        ->concat()
-                        ->get(), 'l'
-        );
-        
-        $I->assertEquals(
-            StringHelper::load('1')
-                        ->concat('1')
-                        ->append('2')
-                        ->prepend('3')
-                        ->get(), '3112'
-        );
-    }
+  
     
     public function testReverse(UnitTester $I)
     {
@@ -1756,12 +1724,12 @@ class StringHelperCest
         $original = 'sdfghtyui opl';
         
         $originalArray = StringHelper::load($original)
-                                     ->toCharactersArray();
+                                     ->getCharactersArray();
         
         $shuffled = StringHelper::load($original)
                                 ->shuffleCharacters();
         
-        $shuffledArray = $shuffled->toCharactersArray();
+        $shuffledArray = $shuffled->getCharactersArray();
         
         $I->assertEquals($shuffled->length(), mb_strlen($original, 'UTF-8'));
         
@@ -1975,13 +1943,13 @@ class StringHelperCest
         $I->assertEquals(
             is_array(
                 StringHelper::load('0123456789 привет1')
-                            ->toCharactersArray()
+                            ->getCharactersArray()
             ), true
         );
         
         $I->assertEquals(
             StringHelper::load('0123456789  привет1')
-                        ->toCharactersArray(), [
+                        ->getCharactersArray(), [
                 0,
                 1,
                 2,
@@ -2006,7 +1974,7 @@ class StringHelperCest
         
         $I->assertEquals(
             StringHelper::load('')
-                        ->toCharactersArray(), []
+                        ->getCharactersArray(), []
         );
         
     }
@@ -3216,59 +3184,6 @@ class StringHelperCest
         $I->assertEquals(StringHelper::getScrollPaginationInfo(50, 10, 40, ',,', '--', ' from '), '41--50 from 50');
     }
     
-    public function testEqualsSomeAndEqualsIgnoreCase(UnitTester $I)
-    {
-        $values = ['str', 'count', 'me'];
-        $valuesIgnoreCase = ['StR', 'coUNt', 'mE'];
-        $valuesStrict = ['str', null];
-        $valuesEmpty = [];
-        
-        $testDataEqualsSome = [
-            ['str' => 'str', 'values' => $values, 'result' => true],
-            ['str' => 'me', 'values' => $values, 'result' => true],
-            ['str' => 'count', 'values' => $values, 'result' => true],
-            ['str' => 'count2', 'values' => $values, 'result' => false],
-            ['str' => 'Me', 'values' => $values, 'result' => false],
-            ['str' => 'ME', 'values' => $values, 'result' => false],
-            ['str' => 'sTr', 'values' => $values, 'result' => false],
-            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => false],
-            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => false],
-            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => false],
-            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
-            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
-        ];
-        
-        $testDataEqualsSomeIgnoreCase = [
-            ['str' => 'str', 'values' => $values, 'result' => true],
-            ['str' => 'me', 'values' => $values, 'result' => true],
-            ['str' => 'count', 'values' => $values, 'result' => true],
-            ['str' => 'count2', 'values' => $values, 'result' => false],
-            ['str' => 'Me', 'values' => $values, 'result' => true],
-            ['str' => 'ME', 'values' => $values, 'result' => true],
-            ['str' => 'sTr', 'values' => $values, 'result' => true],
-            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => true],
-            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => true],
-            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => true],
-            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
-            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
-        ];
-        
-        foreach ($testDataEqualsSome as $testData)
-        {
-            $I->assertEquals(
-                $testData['result'], StringHelper::load($testData['str'])
-                                                 ->isEqualsSome($testData['values'])
-            );
-        }
-        
-        foreach ($testDataEqualsSomeIgnoreCase as $testData)
-        {
-            $I->assertEquals(
-                $testData['result'], StringHelper::load($testData['str'])
-                                                 ->isEqualsSomeIgnoreCase($testData['values'])
-            );
-        }
-        
-    }
+    
     
 }

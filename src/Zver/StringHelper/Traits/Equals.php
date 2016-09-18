@@ -8,7 +8,32 @@ namespace Zver\StringHelper\Traits
         protected $string = '';
         
         /**
-         * Return true if loaded string equals some of value in values array, false otherwise
+         * Return TRUE if loaded string and $string is equals match case
+         *
+         * @return bool Compare result
+         */
+        public function isEquals($string)
+        {
+            return ($this->get() === static::load($string)
+                                           ->get());
+        }
+        
+        /**
+         * Return TRUE if loaded string and $string is equals ignore case
+         *
+         * @return bool Compare result
+         */
+        public function isEqualsIgnoreCase($string)
+        {
+            return ($this->getClone()
+                         ->toLowerCase()
+                         ->get() === static::load($string)
+                                           ->toLowerCase()
+                                           ->get());
+        }
+        
+        /**
+         * Return true if loaded string equals some of value in values array match case, false otherwise
          *
          * @param array $values
          *
@@ -28,18 +53,7 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Return TRUE if loaded string and $string is equals match case
-         *
-         * @return bool Compare result
-         */
-        public function isEquals($string)
-        {
-            return ($this->get() === static::load($string)
-                                           ->get());
-        }
-        
-        /**
-         * Return true if loaded string equals ignore case some of value in values array, false otherwise
+         * Return true if loaded string equals some of value in values array ignore case, false otherwise
          *
          * @param array $values
          *
@@ -58,18 +72,5 @@ namespace Zver\StringHelper\Traits
             return false;
         }
         
-        /**
-         * Return TRUE if loaded string and $string is equals ignore case
-         *
-         * @return bool Compare result
-         */
-        public function isEqualsIgnoreCase()
-        {
-            return ($this->getClone()
-                         ->toLowerCase()
-                         ->get() === static::load(func_get_args(), $this->getEncoding())
-                                           ->toLowerCase()
-                                           ->get());
-        }
     }
 }

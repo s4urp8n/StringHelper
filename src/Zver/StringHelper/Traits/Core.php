@@ -91,7 +91,7 @@ namespace Zver\StringHelper\Traits
         /**
          * Get new instance of self equals current instance
          *
-         * @return self Return new instance with loaded string equals current instance
+         * @return static Return new instance with loaded string equals current instance
          */
         public function getClone()
         {
@@ -101,8 +101,8 @@ namespace Zver\StringHelper\Traits
         /**
          * Get class instance
          *
-         * @param string|array|self $string
-         * @param string            $encoding
+         * @param string|array|static $string
+         * @param string              $encoding
          *
          * @return static Current instance of class
          */
@@ -114,28 +114,37 @@ namespace Zver\StringHelper\Traits
         /**
          * Alias for concat()
          *
-         * @param string|self|array,... Parameter of parameters to append to loaded string
+         * @see   concat()
+         *
+         * @param string|static|array Parameter of parameters to append to loaded string
          *
          * @return self Current instance
          */
-        public function append()
+        public function append($string)
         {
-            return $this->concat(func_get_args());
+            return $this->concat($string);
         }
         
         /**
          * Concatenate arguments with loaded string
          * Arguments placed to end of string
          *
-         * @param string|self|array,... Parameter of parameters to concat to loaded string
+         * @param string|static|array Parameter of parameters to concat to loaded string
          *
          * @return self Current instance
          */
-        public function concat()
+        public function concat($string)
         {
-            return $this->set($this->get() . static::load(func_get_args(), $this->getEncoding()));
+            return $this->set($this->get() . static::load($string));
         }
         
+        /**
+         * Set new value for loaded string
+         *
+         * @param $string New value
+         *
+         * @return static
+         */
         public function set($string)
         {
             return static::load($string);
@@ -144,13 +153,13 @@ namespace Zver\StringHelper\Traits
         /**
          * Place merged arguments before loaded string
          *
-         * @param string|self|array,... Parameter of parameters to prepend to loaded string
+         * @param string|static|array Parameter of parameters to prepend to loaded string
          *
          * @return self Current instance
          */
-        public function prepend()
+        public function prepend($string)
         {
-            return $this->set(static::load(func_get_args(), $this->getEncoding()) . $this->get());
+            return $this->set(static::load($string) . $this->get());
         }
         
         /**
@@ -164,13 +173,24 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
+         * Alias for length()
+         *
+         * @see length()
+         *
+         */
+        public function len()
+        {
+            return $this->length();
+        }
+        
+        /**
          * Return first $length characters from loaded string
          *
          * @param integer $length Length of characters returned from beginning of loaded string
          *
          * @return self Current instance
          */
-        public function getFirst($length)
+        public function getFirstChars($length)
         {
             if ($length == 0)
             {
@@ -178,7 +198,7 @@ namespace Zver\StringHelper\Traits
             }
             if ($length < 0)
             {
-                return $this->getLast(-$length);
+                return $this->getLastChars(-$length);
             }
             
             return $this->substring(0, $length);
@@ -193,7 +213,7 @@ namespace Zver\StringHelper\Traits
          *
          * @return self Current instance
          */
-        public function getLast($length)
+        public function getLastChars($length)
         {
             if ($length == 0)
             {
@@ -201,7 +221,7 @@ namespace Zver\StringHelper\Traits
             }
             if ($length < 0)
             {
-                return $this->getFirst(-$length);
+                return $this->getFirstChars(-$length);
             }
             
             return $this->substring(-$length);

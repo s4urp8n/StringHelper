@@ -223,6 +223,22 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $this->assertEquals(
             Str('')->length(), 0
         );
+        
+        $this->assertEquals(
+            Str('helloпривет')->len(), 11
+        );
+        
+        $this->assertEquals(
+            Str('а')->length(), 1
+        );
+        
+        $this->assertEquals(
+            Str('привет日本語')->len(), 9
+        );
+        
+        $this->assertEquals(
+            Str('')->len(), 0
+        );
     }
     
     public function testSubstring()
@@ -278,62 +294,154 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         
         $this->assertEquals(
             Str('superstring')
-                ->getFirst(0)
+                ->getFirstChars(0)
                 ->get(), ''
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getFirst(-5)
+                ->getFirstChars(-5)
                 ->get(), 'tring'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getFirst(5)
+                ->getFirstChars(5)
                 ->get(), 'super'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getFirst(500)
+                ->getFirstChars(500)
                 ->get(), 'superstring'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getFirst(-500)
+                ->getFirstChars(-500)
                 ->get(), 'superstring'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getLast(6)
+                ->getLastChars(6)
                 ->get(), 'string'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getLast(-5)
+                ->getLastChars(-5)
                 ->get(), 'super'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getLast(0)
+                ->getLastChars(0)
                 ->get(), ''
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getLast(600)
+                ->getLastChars(600)
                 ->get(), 'superstring'
         );
         
         $this->assertEquals(
             Str('superstring')
-                ->getLast(-600)
+                ->getLastChars(-600)
                 ->get(), 'superstring'
         );
+    }
+    
+    public function testConcatAppendPrepend()
+    {
+        
+        $this->assertEquals(
+            Str('l')
+                ->concat(
+                    [
+                        'e',
+                        't',
+                        Str('ter'),
+                        [
+                            ' ',
+                            'for',
+                            [
+                                ' ',
+                                'm',
+                                'e',
+                            ],
+                        ],
+                    ]
+                )
+                ->get(), 'letter for me'
+        );
+        
+        $this->assertEquals(
+            Str('l')
+                ->concat('')
+                ->get(), 'l'
+        );
+        
+        $this->assertEquals(
+            Str('1')
+                ->concat('1')
+                ->append('2')
+                ->prepend('3')
+                ->get(), '3112'
+        );
+    }
+    
+    public function testEqualsSomeAndEqualsIgnoreCase()
+    {
+        $values = ['str', 'count', 'me'];
+        $valuesIgnoreCase = ['StR', 'coUNt', 'mE'];
+        $valuesStrict = ['str', null];
+        $valuesEmpty = [];
+        
+        $testDataEqualsSome = [
+            ['str' => 'str', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $values, 'result' => true],
+            ['str' => 'count', 'values' => $values, 'result' => true],
+            ['str' => 'count2', 'values' => $values, 'result' => false],
+            ['str' => 'Me', 'values' => $values, 'result' => false],
+            ['str' => 'ME', 'values' => $values, 'result' => false],
+            ['str' => 'sTr', 'values' => $values, 'result' => false],
+            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => false],
+            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
+            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+        ];
+        
+        $testDataEqualsSomeIgnoreCase = [
+            ['str' => 'str', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $values, 'result' => true],
+            ['str' => 'count', 'values' => $values, 'result' => true],
+            ['str' => 'count2', 'values' => $values, 'result' => false],
+            ['str' => 'Me', 'values' => $values, 'result' => true],
+            ['str' => 'ME', 'values' => $values, 'result' => true],
+            ['str' => 'sTr', 'values' => $values, 'result' => true],
+            ['str' => 'me', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'count', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => true],
+            ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
+            ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+        ];
+        
+        foreach ($testDataEqualsSome as $testData)
+        {
+            $this->assertEquals(
+                $testData['result'], Str($testData['str'])->isEqualsSome($testData['values'])
+            );
+        }
+        
+        foreach ($testDataEqualsSomeIgnoreCase as $testData)
+        {
+            $this->assertEquals(
+                $testData['result'], Str($testData['str'])->isEqualsSomeIgnoreCase($testData['values'])
+            );
+        }
+        
     }
 }

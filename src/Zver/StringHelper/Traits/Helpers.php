@@ -12,7 +12,7 @@ namespace Zver\StringHelper\Traits
          *
          * @return array
          */
-        public function toCharactersArray()
+        public function getCharactersArray()
         {
             $characters = [];
             $length = $this->length();

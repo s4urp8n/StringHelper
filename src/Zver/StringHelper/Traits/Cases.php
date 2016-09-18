@@ -60,7 +60,7 @@ namespace Zver\StringHelper\Traits
          */
         public function toRandomCase()
         {
-            $characters = $this->toCharactersArray();
+            $characters = $this->getCharactersArray();
             $temp = static::load();
             foreach ($characters as $index => $character)
             {
