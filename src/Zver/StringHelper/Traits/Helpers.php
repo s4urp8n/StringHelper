@@ -55,23 +55,26 @@ namespace Zver\StringHelper\Traits
          */
         public function isSerialized()
         {
-            if ($this->length() == 0)
-            {
-                return false;
-            }
+            $isSerialized = false;
             
-            $result = false;
             try
             {
-                unserialize($this->get());
-                $result = true;
+                $isSerialized = unserialize($this->get());
+                
+                //Cannot deserialize
+                if ($isSerialized === false)
+                {
+                    return false;
+                }
+                
+                return true;
             }
             catch (\Exception $e)
             {
-                $result = false;
+                $isSerialized = false;
             }
             
-            return $result;
+            return $isSerialized;
             
         }
         

@@ -796,16 +796,16 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
         );
         
-        //$this->assertEquals(
-        //    Str('invertcaseofmybeautifulstringinvertcaseofmybeautifulstring')
-        //        ->toRandomCase()
-        //        ->toRandomCase()
-        //        ->toRandomCase()
-        //        ->toRandomCase()
-        //        ->toRandomCase()
-        //        ->toLowerCase()
-        //        ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
-        //);
+        $this->assertEquals(
+            Str('invertcaseofmybeautifulstringinvertcaseofmybeautifulstring')
+                ->toRandomCase()
+                ->toRandomCase()
+                ->toRandomCase()
+                ->toRandomCase()
+                ->toRandomCase()
+                ->toLowerCase()
+                ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
+        );
         
     }
     
@@ -955,10 +955,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     
     public function testSerialization()
     {
-        //$str = Str('string');
-        //$serialized = serialize($str);
-        //$unserialized = unserialize($serialized);
-        //$this->assertEquals($unserialized->get(), $str->get());
+        $str = Str('string');
+        $serialized = serialize($str);
+        $unserialized = unserialize($serialized);
+        $this->assertEquals($unserialized->get(), $str->get());
     }
     
     public function testEntities()
@@ -1061,28 +1061,25 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     
     public function testSerialized()
     {
-        //$this->assertFalse(
-        //    Str('123')->isSerialized()
-        //);
-        //
-        //$this->assertFalse(
-        //    Str('прийцавйыв')->isSerialized()
-        //);
-        //
-        //$this->assertFalse(
-        //    Str('')->isSerialized()
-        //);
-        //
-        //$this->assertTrue(
-        //    Str(
-        //        serialize(
-        //            [
-        //                'd2fdqw',
-        //                '23asdasd',
-        //            ]
-        //        )
-        //    )->isSerialized()
-        //);
+        $this->assertFalse(Str('прийцавйыв')->isSerialized());
+        
+        $this->assertFalse(Str('')->isSerialized());
+        $this->assertFalse(
+            Str('')
+                ->set([])
+                ->isSerialized()
+        );
+        
+        $this->assertTrue(
+            Str(
+                serialize(
+                    [
+                        'd2fdqw',
+                        '23asdasd',
+                    ]
+                )
+            )->isSerialized()
+        );
     }
     
     public function testPunycode()
@@ -1749,172 +1746,39 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $this->assertEquals($html, 'PHP: mb_ereg - Manual');
     }
     
-    public function testSoundex()
-    {
-        
-        $this->assertEquals(
-            Str('Lukasiewicz')
-                ->soundex()
-                ->get(), 'L222'
-        );
-        
-        $this->assertEquals(
-            Str('hello')
-                ->soundex()
-                ->get(), 'H400'
-        );
-        
-        $this->assertEquals(
-            Str('hell')
-                ->soundex()
-                ->get(), 'H400'
-        );
-        
-        $this->assertEquals(
-            Str('he')
-                ->soundex()
-                ->get(), 'H000'
-        );
-        
-        $this->assertEquals(
-            Str('she')
-                ->soundex()
-                ->get(), 'S000'
-        );
-        
-        $this->assertEquals(
-            Str('привет')
-                ->soundex()
-                ->get(), 'P613'
-        );
-        
-        $this->assertEquals(
-            Str('пока')
-                ->soundex()
-                ->get(), 'P200'
-        );
-        
-        $this->assertEquals(
-            Str('letter')
-                ->soundex()
-                ->get(), 'L360'
-        );
-        
-        $this->assertEquals(
-            Str('Съешь еще этих мягких французских булочек да выпей чаю')
-                ->soundex()
-                ->get(), 'S200E200E300M200F652B422D000V120C000'
-        );
-    }
-    
-    public function testMetaphone()
-    {
-        
-        $this->assertEquals(
-            Str('Lukasiewicz')
-                ->metaphone()
-                ->get(), 'LKSWKS'
-        );
-        
-        $this->assertEquals(
-            Str('hello')
-                ->metaphone()
-                ->get(), 'HL'
-        );
-        
-        $this->assertEquals(
-            Str('hell')
-                ->metaphone()
-                ->get(), 'HL'
-        );
-        
-        $this->assertEquals(
-            Str('he')
-                ->metaphone()
-                ->get(), 'H'
-        );
-        
-        $this->assertEquals(
-            Str('she')
-                ->metaphone()
-                ->get(), 'X'
-        );
-        
-        $this->assertEquals(
-            Str('привет')
-                ->metaphone()
-                ->get(), 'PRFT'
-        );
-        
-        $this->assertEquals(
-            Str('пока')
-                ->metaphone()
-                ->get(), 'PK'
-        );
-        
-        $this->assertEquals(
-            Str('letter')
-                ->metaphone()
-                ->get(), 'LTR'
-        );
-        
-        $this->assertEquals(
-            Str('съешь еще этих мягких французских булочек да выпей чаю')
-                ->metaphone()
-                ->get(), 'SSESETMKKFRNKSSKBLSKTFPJK'
-        );
-        
-    }
-    
     public function testLevenshtein()
     {
         
         $this->assertEquals(
-            Str('123sdadwdwedwdwdwdwwdw')
-                ->levenshtein('12345')
-                ->get(), 19
+            Str('123sdadwdwedwdwdwdwwdw')->getLevenshteinDistance('12345'), 19
         );
         
         $this->assertEquals(
-            Str('12345')
-                ->levenshtein('12345')
-                ->get(), 0
+            Str('12345')->getLevenshteinDistance('12345'), 0
         );
         
         $this->assertEquals(
-            Str('12')
-                ->levenshtein('1')
-                ->get(), 1
+            Str('12')->getLevenshteinDistance('1'), 1
         );
         
         $this->assertEquals(
-            Str('12')
-                ->levenshtein('')
-                ->get(), 2
+            Str('12')->getLevenshteinDistance(''), 2
         );
         
         $this->assertEquals(
-            Str('12')
-                ->levenshtein('12')
-                ->get(), 0
+            Str('12')->getLevenshteinDistance('12'), 0
         );
         
         $this->assertEquals(
-            Str('')
-                ->levenshtein('12')
-                ->get(), 2
+            Str('')->getLevenshteinDistance('12'), 2
         );
         
         $this->assertEquals(
-            Str('')
-                ->levenshtein('')
-                ->get(), 0
+            Str('')->getLevenshteinDistance(''), 0
         );
         
         $this->assertEquals(
-            Str('12привет')
-                ->levenshtein('1')
-                ->get(), 7
+            Str('12привет')->getLevenshteinDistance('1'), 7
         );
     }
     

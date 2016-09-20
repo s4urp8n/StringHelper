@@ -76,7 +76,7 @@ namespace Zver\StringHelper\Traits
                 $characters[$index] = $temp->get();
             }
             
-            return $this->set(implode('', $characters));
+            return $this->set($characters);
         }
         
         /**

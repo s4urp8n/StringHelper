@@ -8,73 +8,34 @@ namespace Zver\StringHelper\Traits
         protected $string = '';
         
         /**
-         * Generate soundex code.
-         * If loaded string contains not-latin characters it will be transliterated
-         *
-         * @return string
-         */
-        public function soundex()
-        {
-            $soundex = '';
-            $words = $this->trimSpaces()
-                          ->transliterate()
-                          ->split(' ');
-            foreach ($words as $word)
-            {
-                $soundex .= soundex($word);
-            }
-            
-            return $this->set($soundex);
-        }
-        
-        /**
-         * Generate metaphone code.
-         * If loaded string contains not-latin characters it will be transliterated
-         *
-         * @return self Current instance
-         */
-        public function metaphone()
-        {
-            $metaphone = '';
-            $words = $this->trimSpaces()
-                          ->transliterate()
-                          ->split(' ');
-            foreach ($words as $word)
-            {
-                $metaphone .= metaphone($word);
-            }
-            
-            return $this->set($metaphone);
-        }
-        
-        /**
          * Get Levenshtein distance between arguments and loaded string
          *
-         * @param string|self|array,... Arguments to calc difference
+         * @param string|self|array Other stringable
          *
-         * @return self Current instance
+         * @return integer Levenshtein distance
          */
-        public function levenshtein()
+        public function getLevenshteinDistance($stringable)
         {
             
-            $string = static::load(func_get_args())
+            $string = static::load($stringable)
                             ->get();
             
-            $currentLenght = mb_strlen($this->get(), $this->getEncoding());
-            $stringLength = mb_strlen($string, $this->getEncoding());
+            $currentLenght = $this->length();
+            $stringLength = static::load($stringable)
+                                  ->length();
             
             //special cases
             if ($currentLenght == 0)
             {
-                return $this->set($stringLength);
+                return $stringLength;
             }
             if ($stringLength == 0)
             {
-                return $this->set($currentLenght);
+                return $currentLenght;
             }
             if ($this->get() === $string)
             {
-                return $this->set(0);
+                return 0;
             }
             
             $iPos = $jPos = 0;
@@ -107,7 +68,7 @@ namespace Zver\StringHelper\Traits
                 }
             }
             
-            return $this->set($result[$currentLenght][$stringLength]);
+            return $result[$currentLenght][$stringLength] * 1;
         }
     }
 }

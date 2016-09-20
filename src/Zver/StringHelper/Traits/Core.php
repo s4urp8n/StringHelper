@@ -147,7 +147,9 @@ namespace Zver\StringHelper\Traits
          */
         public function set($string)
         {
-            return static::load($string);
+            $this->string = static::stringify($string);
+            
+            return $this;
         }
         
         /**
