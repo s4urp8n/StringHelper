@@ -11,8 +11,8 @@ namespace Zver\StringHelper\Traits
          * Get information string about current items displayed at current page, like: 1-10 from 200.
          * Useful for pagination modules/plugins.
          *
-         * @param        $total_items
-         * @param        $items_per_page
+         * @param        $totalItems
+         * @param        $itemsPerPage
          * @param        $offset
          * @param string $commaSign
          * @param string $periodSign
@@ -21,7 +21,7 @@ namespace Zver\StringHelper\Traits
          * @return string
          */
         public static function getScrollPaginationInfo(
-            $total_items, $items_per_page, $offset, $commaSign = ', ', $periodSign = ' - ', $from = ' / '
+            $totalItems, $itemsPerPage, $offset, $commaSign = ', ', $periodSign = ' - ', $from = ' / '
         ) {
             $info = '';
             
@@ -39,7 +39,7 @@ namespace Zver\StringHelper\Traits
                 return min($a, $b) . $periodSign . max($a, $b);
             };
             
-            if ($items_per_page == 1)
+            if ($itemsPerPage == 1)
             {
                 $info .= $offset + 1;
             }
@@ -48,27 +48,27 @@ namespace Zver\StringHelper\Traits
                 //first page
                 if ($offset == 0)
                 {
-                    $info .= $commaCheck(1, $items_per_page);
+                    $info .= $commaCheck(1, $itemsPerPage);
                 }
                 //last page
-                elseif ($offset + $items_per_page >= $total_items)
+                elseif ($offset + $itemsPerPage >= $totalItems)
                 {
-                    if ($offset + $items_per_page == $total_items)
+                    if ($offset + $itemsPerPage == $totalItems)
                     {
-                        $info = $commaCheck($total_items - $items_per_page + 1, $total_items);
+                        $info = $commaCheck($totalItems - $itemsPerPage + 1, $totalItems);
                     }
                     else
                     {
-                        $info = $commaCheck($total_items - ($total_items - $offset) + 1, $total_items);
+                        $info = $commaCheck($totalItems - ($totalItems - $offset) + 1, $totalItems);
                     }
                 }
                 //other
                 else
                 {
-                    $info = $commaCheck($offset + 1, $offset + $items_per_page);
+                    $info = $commaCheck($offset + 1, $offset + $itemsPerPage);
                 }
             }
-            $info .= $from . $total_items;
+            $info .= $from . $totalItems;
             
             return $info;
         }
