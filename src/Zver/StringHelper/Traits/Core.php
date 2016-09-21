@@ -112,33 +112,6 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Alias for concat()
-         *
-         * @see   concat()
-         *
-         * @param string|static|array Parameter of parameters to append to loaded string
-         *
-         * @return self Current instance
-         */
-        public function append($string)
-        {
-            return $this->concat($string);
-        }
-        
-        /**
-         * Concatenate arguments with loaded string
-         * Arguments placed to end of string
-         *
-         * @param string|static|array Parameter of parameters to concat to loaded string
-         *
-         * @return self Current instance
-         */
-        public function concat($string)
-        {
-            return $this->set($this->get() . static::load($string));
-        }
-        
-        /**
          * Set new value for loaded string
          *
          * @param $string New value
@@ -153,29 +126,6 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Place merged arguments before loaded string
-         *
-         * @param string|static|array Parameter of parameters to prepend to loaded string
-         *
-         * @return self Current instance
-         */
-        public function prepend($string)
-        {
-            return $this->set(static::load($string) . $this->get());
-        }
-        
-        /**
-         * Alias for length()
-         *
-         * @see length()
-         *
-         */
-        public function len()
-        {
-            return $this->length();
-        }
-        
-        /**
          * Get length of loaded string
          *
          * @return integer Length of loaded string
@@ -185,61 +135,5 @@ namespace Zver\StringHelper\Traits
             return mb_strlen($this->get(), $this->getEncoding());
         }
         
-        /**
-         * Return first $length characters from loaded string
-         *
-         * @param integer $length Length of characters returned from beginning of loaded string
-         *
-         * @return self Current instance
-         */
-        public function getFirstChars($length)
-        {
-            if ($length == 0)
-            {
-                return $this->set('');
-            }
-            if ($length < 0)
-            {
-                return $this->getLastChars(-$length);
-            }
-            
-            return $this->substring(0, $length);
-        }
-        
-        /**
-         * Return last $length characters from loaded string.
-         * If $length equals 0 empty string returned.
-         * Elsewhere $length is below 0 returns $length characters from beginnings
-         *
-         * @param integer $length Length of characters returned from end of loaded string
-         *
-         * @return self Current instance
-         */
-        public function getLastChars($length)
-        {
-            if ($length == 0)
-            {
-                return $this->set('');
-            }
-            if ($length < 0)
-            {
-                return $this->getFirstChars(-$length);
-            }
-            
-            return $this->substring(-$length);
-        }
-        
-        /**
-         * Get part of string
-         *
-         * @param integer $start  Start position of substring
-         * @param integer $length Length of substring from start position
-         *
-         * @return self Current instance
-         */
-        public function substring($start = 0, $length = null)
-        {
-            return $this->set(mb_substr($this->get(), $start, $length, $this->getEncoding()));
-        }
     }
 }

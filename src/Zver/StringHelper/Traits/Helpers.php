@@ -8,6 +8,72 @@ namespace Zver\StringHelper\Traits
         protected $string = '';
         
         /**
+         * Get information string about current items displayed at current page, like: 1-10 from 200.
+         * Useful for pagination modules/plugins.
+         *
+         * @param        $total_items
+         * @param        $items_per_page
+         * @param        $offset
+         * @param string $commaSign
+         * @param string $periodSign
+         * @param string $from
+         *
+         * @return string
+         */
+        public static function getScrollPaginationInfo(
+            $total_items, $items_per_page, $offset, $commaSign = ', ', $periodSign = ' - ', $from = ' / '
+        ) {
+            $info = '';
+            
+            $commaCheck = function ($a, $b) use ($commaSign, $periodSign)
+            {
+                if ($a == $b)
+                {
+                    return $a;
+                }
+                if (abs($a - $b) == 1)
+                {
+                    return min($a, $b) . $commaSign . max($a, $b);
+                }
+                
+                return min($a, $b) . $periodSign . max($a, $b);
+            };
+            
+            if ($items_per_page == 1)
+            {
+                $info .= $offset + 1;
+            }
+            else
+            {
+                //first page
+                if ($offset == 0)
+                {
+                    $info .= $commaCheck(1, $items_per_page);
+                }
+                //last page
+                elseif ($offset + $items_per_page >= $total_items)
+                {
+                    if ($offset + $items_per_page == $total_items)
+                    {
+                        $info = $commaCheck($total_items - $items_per_page + 1, $total_items);
+                    }
+                    else
+                    {
+                        $info = $commaCheck($total_items - ($total_items - $offset) + 1, $total_items);
+                    }
+                }
+                //other
+                else
+                {
+                    $info = $commaCheck($offset + 1, $offset + $items_per_page);
+                }
+            }
+            $info .= $from . $total_items;
+            
+            return $info;
+        }
+        
+        /**
          * Get count of substring in loaded string
          *
          * @param string|array|static $string Substring to count count
@@ -26,7 +92,7 @@ namespace Zver\StringHelper\Traits
          */
         public function reverse()
         {
-            return $this->set(implode('', array_reverse($this->getCharactersArray())));
+            return $this->set(array_reverse($this->getCharactersArray()));
         }
         
         /**
@@ -368,25 +434,6 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Return TRUE if loaded string matches regular expression
-         *
-         * @param string $regexp
-         *
-         * @return bool
-         */
-        public function isMatch($regexp)
-        {
-            if (empty($regexp))
-            {
-                return true;
-            }
-            
-            $result = (mb_ereg($regexp, $this->get()) !== false);
-            
-            return $result;
-        }
-        
-        /**
          * Return first part of string exploded by delimiter
          *
          * @param string $delimiter
@@ -599,72 +646,6 @@ namespace Zver\StringHelper\Traits
             
             return $preview->get();
             
-        }
-        
-        /**
-         * Get information string about current items displayed at current page, like: 1-10 from 200.
-         * Useful for pagination modules/plugins.
-         *
-         * @param        $total_items
-         * @param        $items_per_page
-         * @param        $offset
-         * @param string $commaSign
-         * @param string $periodSign
-         * @param string $from
-         *
-         * @return string
-         */
-        public static function getScrollPaginationInfo(
-            $total_items, $items_per_page, $offset, $commaSign = ', ', $periodSign = ' - ', $from = ' / '
-        ) {
-            $info = '';
-            
-            $commaCheck = function ($a, $b) use ($commaSign, $periodSign)
-            {
-                if ($a == $b)
-                {
-                    return $a;
-                }
-                if (abs($a - $b) == 1)
-                {
-                    return min($a, $b) . $commaSign . max($a, $b);
-                }
-                
-                return min($a, $b) . $periodSign . max($a, $b);
-            };
-            
-            if ($items_per_page == 1)
-            {
-                $info .= $offset + 1;
-            }
-            else
-            {
-                //first page
-                if ($offset == 0)
-                {
-                    $info .= $commaCheck(1, $items_per_page);
-                }
-                //last page
-                elseif ($offset + $items_per_page >= $total_items)
-                {
-                    if ($offset + $items_per_page == $total_items)
-                    {
-                        $info = $commaCheck($total_items - $items_per_page + 1, $total_items);
-                    }
-                    else
-                    {
-                        $info = $commaCheck($total_items - ($total_items - $offset) + 1, $total_items);
-                    }
-                }
-                //other
-                else
-                {
-                    $info = $commaCheck($offset + 1, $offset + $items_per_page);
-                }
-            }
-            $info .= $from . $total_items;
-            
-            return $info;
         }
     }
 }

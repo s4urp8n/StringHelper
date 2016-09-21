@@ -64,8 +64,8 @@ namespace Zver\StringHelper\Traits
          */
         public function slugify()
         {
-            return $this->toLowerCase()
-                        ->transliterate()
+            return $this->set(transliterator_transliterate('Any-Latin; Latin-ASCII', $this->get()))
+                        ->toLowerCase()
                         ->replace('[^a-z0-9 \-]', ' ')
                         ->trimSpaces()
                         ->hyphenate();
@@ -91,18 +91,6 @@ namespace Zver\StringHelper\Traits
             return $this->trimSpacesLeft()
                         ->trimSpacesRight()
                         ->replace('\s+', ' ');
-        }
-        
-        /**
-         * Get transliterated string.
-         *
-         * @return self
-         */
-        public function transliterate()
-        {
-            return $this->set(transliterator_transliterate('Any-Latin; Latin-ASCII', $this->get()))
-                        ->trimSpaces();
-            
         }
         
         /**

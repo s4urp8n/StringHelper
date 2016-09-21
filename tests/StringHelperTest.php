@@ -227,7 +227,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         );
         
         $this->assertEquals(
-            Str('helloпривет')->len(), 11
+            Str('helloпривет')->length(), 11
         );
         
         $this->assertEquals(
@@ -235,11 +235,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         );
         
         $this->assertEquals(
-            Str('привет日本語')->len(), 9
+            Str('привет日本語')->length(), 9
         );
         
         $this->assertEquals(
-            Str('')->len(), 0
+            Str('')->length(), 0
         );
     }
     
@@ -1061,6 +1061,8 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     
     public function testSerialized()
     {
+        error_reporting(E_ALL);
+        
         $this->assertFalse(Str('прийцавйыв')->isSerialized());
         
         $this->assertFalse(Str('')->isSerialized());
@@ -1603,31 +1605,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         
     }
     
-    public function testTransliteration()
-    {
-        
-        //$this->assertEquals(
-        //    Str('ああああああああ"Привет-лунатикам.!? :78 Хорошо, плохо()[]{}うう')
-        //        ->transliterate()
-        //        ->get(), 'aaaaaaaa"Privet-lunatikam.!? :78 Horoso, ploho()[]{}uu'
-        //);
-        //
-        //$this->assertEquals(
-        //    Str('Привет-лунатикам 日本語! 蓋 私、，…‥。「　」『　』')
-        //        ->transliterate()
-        //        ->get(), 'Privet-lunatikam ri ben yu! gai si,,......'
-        //);
-        //
-        //$this->assertEquals(
-        //    Str(
-        //        'Возвращает строку string, в которой первый символ переведен в верхний регистр, если этот символ буквенный.'
-        //    )
-        //        ->transliterate()
-        //        ->get(),
-        //    'Vozvrasaet stroku string, v kotoroj pervyj simvol pereveden v verhnij registr, esli etot simvol bukvennyj.'
-        //);
-    }
-    
     public function testSlugify()
     {
         
@@ -2110,4 +2087,800 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $this->assertEquals(StringHelper::getScrollPaginationInfo(50, 10, 30, ',,', '--', ' from '), '31--40 from 50');
         $this->assertEquals(StringHelper::getScrollPaginationInfo(50, 10, 40, ',,', '--', ' from '), '41--50 from 50');
     }
+    
+    public function testPreview()
+    {
+        $text = '<a><p style="display:none">some preview   text </p>   </a>';
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-10000000), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1000), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15), 'some preview...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16), 'some preview...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2000), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20000000), 'some preview text'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-10000000, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1000, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5, '--'), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13, '--'), 'some--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14, '--'), 'some preview--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15, '--'), 'some preview--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16, '--'), 'some preview--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17, '--'), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18, '--'), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19, '--'), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20, '--'), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2000, '--'), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20000000, '--'), 'some preview text'
+        );
+        
+    }
+    
+    public function testPreviewEnd()
+    {
+        $text = '<a><p style="display:none">some preview   text </p>   </a>';
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-10000000, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1000, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14, '...', false), '...text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15, '...', false), '...preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16, '...', false), '...preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17, '...', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18, '...', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19, '...', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20, '...', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2000, '...', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20000000, '...', false), 'some preview text'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-10000000, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1000, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(-1, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5, '--', false), '--'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13, '--', false), '--text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14, '--', false), '--preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15, '--', false), '--preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16, '--', false), '--preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17, '--', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18, '--', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19, '--', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20, '--', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2000, '--', false), 'some preview text'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20000000, '--', false), 'some preview text'
+        );
+        
+    }
+    
+    public function testPreviewPunctuations()
+    {
+        $text = 'some, pre...   text! ';
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-1), '...'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(0), '...'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(1), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(21), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22000), 'some, pre... text!'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15, '...', false), '...pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16, '...', false), '...pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17, '...', false), '...pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18, '...', false), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19, '...', false), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20, '...', false), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(21, '...', false), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22, '...', false), 'some, pre... text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22000, '...', false), 'some, pre... text!'
+        );
+        
+        $text = 'some, pre___   text! ';
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-1), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14), 'some...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17), 'some, pre...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(21), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22000), 'some, pre___ text!'
+        );
+        
+        $this->assertEquals(
+            Str($text)->getPreview(-1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(0, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(1, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(2, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(3, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(4, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(5, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(6, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(7, '...', false), '...'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(8, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(9, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(10, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(11, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(12, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(13, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(14, '...', false), '...text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(15, '...', false), '...pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(16, '...', false), '...pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(17, '...', false), '...pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(18, '...', false), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(19, '...', false), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(20, '...', false), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(21, '...', false), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22, '...', false), 'some, pre___ text!'
+        );
+        $this->assertEquals(
+            Str($text)->getPreview(22000, '...', false), 'some, pre___ text!'
+        );
+    }
+    
+    public function testSpanify()
+    {
+        $this->assertEquals(
+            StringHelper::load('')
+                        ->spanify()
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load(' ')
+                        ->spanify()
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('    ')
+                        ->spanify()
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('             ')
+                        ->spanify()
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('one')
+                        ->spanify()
+                        ->get(),
+            '<span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span>'
+        );
+        $this->assertEquals(
+            StringHelper::load('one    one                 ')
+                        ->spanify()
+                        ->get(),
+            '<span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span><span class="space"> </span><span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span>'
+        );
+        
+        $this->assertEquals(
+            StringHelper::load('')
+                        ->spanify('prefix-')
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load(' ')
+                        ->spanify('prefix-')
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('    ')
+                        ->spanify('prefix-')
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('             ')
+                        ->spanify('prefix-')
+                        ->get(), ''
+        );
+        $this->assertEquals(
+            StringHelper::load('one')
+                        ->spanify('prefix-')
+                        ->get(),
+            '<span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span>'
+        );
+        $this->assertEquals(
+            StringHelper::load('one    one                 ')
+                        ->spanify('prefix-')
+                        ->get(),
+            '<span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span><span class="prefix-space"> </span><span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span>'
+        );
+        
+    }
+    
+    public function testMatches()
+    {
+        
+        $this->assertEquals(
+            StringHelper::load('')
+                        ->matches('\d{2}'), []
+        );
+        
+        $this->assertEquals(
+            StringHelper::load('dsd')
+                        ->matches(''), []
+        );
+        
+        $this->assertEquals(
+            StringHelper::load('')
+                        ->matches(''), []
+        );
+        
+        $text = '23sd re23w 23dfrgt23 xsdf 23 23 97 7 86 sds
+                 sdfsd 678 9899 9899';
+        
+        $this->assertEquals(
+            StringHelper::load($text)
+                        ->matches('\d{4}'), [
+                9899,
+                9899,
+            ]
+        );
+        
+        $this->assertEquals(
+            StringHelper::load($text)
+                        ->matches('\d+'), [
+                '23',
+                '23',
+                '23',
+                '23',
+                '23',
+                '23',
+                '97',
+                '7',
+                '86',
+                '678',
+                '9899',
+                '9899',
+            ]
+        );
+        
+        $this->assertEquals(
+            StringHelper::load($text)
+                        ->matches('\w+'), [
+                '23sd',
+                're23w',
+                '23dfrgt23',
+                'xsdf',
+                '23',
+                '23',
+                '97',
+                '7',
+                '86',
+                'sds',
+                'sdfsd',
+                '678',
+                '9899',
+                '9899',
+            ]
+        );
+        
+        $this->assertEquals(
+            StringHelper::load($text)
+                        ->matches('zzz'), []
+        );
+        
+        $this->assertEquals(
+            StringHelper::load($text)
+                        ->matches('[^\s]*sd[^\s]*'), [
+                '23sd',
+                'xsdf',
+                'sds',
+                'sdfsd',
+            ]
+        );
+        
+    }
+    
 }

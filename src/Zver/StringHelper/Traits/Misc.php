@@ -2,7 +2,7 @@
 namespace Zver\StringHelper\Traits
 {
     
-    trait Calculations
+    trait Misc
     {
         
         protected $string = '';

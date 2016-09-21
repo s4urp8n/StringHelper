@@ -9,7 +9,9 @@ namespace Zver
     {
         
         use Encoding;
-        use StringHelper\Traits\Calculations;
+        use StringHelper\Traits\Misc;
+        use StringHelper\Traits\Substring;
+        use StringHelper\Traits\Merge;
         use StringHelper\Traits\Cases;
         use StringHelper\Traits\Core;
         use StringHelper\Traits\Encode;

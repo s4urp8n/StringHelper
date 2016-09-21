@@ -100,5 +100,24 @@ namespace Zver\StringHelper\Traits
             return $result;
         }
         
+        /**
+         * Return TRUE if loaded string matches regular expression
+         *
+         * @param string $regexp
+         *
+         * @return bool
+         */
+        public function isMatch($regexp)
+        {
+            if (empty($regexp))
+            {
+                return true;
+            }
+            
+            $result = (mb_ereg($regexp, $this->get()) !== false);
+            
+            return $result;
+        }
+        
     }
 }
