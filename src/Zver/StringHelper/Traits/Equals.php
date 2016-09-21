@@ -2,6 +2,11 @@
 namespace Zver\StringHelper\Traits
 {
     
+    /**
+     * Equals-methods
+     *
+     * @package Zver\StringHelper\Traits
+     */
     trait Equals
     {
         

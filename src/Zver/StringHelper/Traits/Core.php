@@ -2,6 +2,11 @@
 namespace Zver\StringHelper\Traits
 {
     
+    /**
+     * Trait Core - core methods of StringHelper class
+     *
+     * @package Zver\StringHelper\Traits
+     */
     trait Core
     {
         
@@ -22,20 +27,20 @@ namespace Zver\StringHelper\Traits
          * If value is array method convert it to string recursive concatenate it's values and load,
          * if it string it just loaded.
          *
-         * @param array $mixed Array or string to load
+         * @param array $stringable Array or string to load
          *
          * @return string Result string
          */
-        protected static function stringify($mixed)
+        protected static function stringify($stringable)
         {
             $result = '';
             
-            if (!is_array($mixed))
+            if (!is_array($stringable))
             {
-                $mixed = [$mixed];
+                $stringable = [$stringable];
             }
             
-            foreach ($mixed as $mix)
+            foreach ($stringable as $mix)
             {
                 if (is_array($mix))
                 {
@@ -72,7 +77,10 @@ namespace Zver\StringHelper\Traits
         
         public function setFromEncoding($string, $fromEncoding)
         {
-            return static::loadFromEncoding($string, $fromEncoding);
+            $this->string = static::loadFromEncoding($string, $fromEncoding)
+                                  ->get();
+            
+            return $this;
         }
         
         /**
@@ -123,16 +131,6 @@ namespace Zver\StringHelper\Traits
             $this->string = static::stringify($string);
             
             return $this;
-        }
-        
-        /**
-         * Get length of loaded string
-         *
-         * @return integer Length of loaded string
-         */
-        public function length()
-        {
-            return mb_strlen($this->get(), $this->getEncoding());
         }
         
     }

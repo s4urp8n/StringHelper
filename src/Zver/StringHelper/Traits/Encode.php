@@ -2,6 +2,11 @@
 namespace Zver\StringHelper\Traits
 {
     
+    /**
+     * Encode-decode methods
+     *
+     * @package Zver\StringHelper\Traits
+     */
     trait Encode
     {
         
@@ -129,23 +134,6 @@ namespace Zver\StringHelper\Traits
             {
                 return $this->set("");
             }
-        }
-        
-        /**
-         * Return TRUE if loaded string is valid JSON
-         *
-         * @return bool
-         */
-        public function isJSON()
-        {
-            if ($this->length() == 0)
-            {
-                return false;
-            }
-            
-            json_decode($this->get());
-            
-            return (json_last_error() === JSON_ERROR_NONE);
         }
         
         /**

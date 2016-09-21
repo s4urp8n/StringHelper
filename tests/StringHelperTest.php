@@ -5,8 +5,52 @@ use Zver\StringHelper;
 class StringHelperCest extends PHPUnit\Framework\TestCase
 {
     
+    use Package\Test;
+    
     public function testStringLoadAndGet()
     {
+        
+        $toLoad = [
+            'string',
+            [
+                'Arr',
+                'ay',
+            ],
+            Str('Superstring'),
+        ];
+        
+        $result = 'stringArraySuperstring';
+        
+        $this->assertEquals(
+            Str($toLoad)->get(), $result
+        );
+        
+        $this->assertEquals(
+            Str('string')->get(), 'string'
+        );
+        
+        $this->assertEquals(
+            Str()->get(), ''
+        );
+        
+        $this->assertEquals(
+            Str()
+                ->set('')
+                ->get(), ''
+        );
+        
+        $this->assertEquals(
+            Str()
+                ->set($toLoad)
+                ->get(), $result
+        );
+        
+        $this->assertEquals(
+            Str()
+                ->set($toLoad)
+                ->getEncoding(), StringHelper::getDefaultEncoding()
+        );
+        
         $originals = [
             ['', ''],
             [' ', ' '],
@@ -47,114 +91,93 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     
     public function testIsUpperCase()
     {
-        $trues = [
-            'HIGH',
-            'L',
-            '',
-            ' ',
-            '098765432',
-        ];
+        $this->foreachTrue(
+            [
+                Str('HIGH')->isUpperCase(),
+                Str('L')->isUpperCase(),
+                Str('')->isUpperCase(),
+                Str(' ')->isUpperCase(),
+                Str('098765432')->isUpperCase(),
+            ]
+        );
         
-        $falses = [
-            'lH',
-            'lH000',
-            'lHg000',
-            'lHgj00',
-            'lowercase',
-        ];
+        $this->foreachFalse(
+            [
+                Str('lH')->isUpperCase(),
+                Str('lH000')->isUpperCase(),
+                Str('lHg000')->isUpperCase(),
+                Str('lHgj00')->isUpperCase(),
+                Str('lowercase')->isUpperCase(),
+            ]
+        );
         
-        foreach ($trues as $true)
-        {
-            $this->assertTrue(
-                Str($true)->isUpperCase()
-            );
-        }
-        
-        foreach ($falses as $false)
-        {
-            $this->assertFalse(
-                Str($false)->isUpperCase()
-            );
-        }
     }
     
     public function testIsLowerCase()
     {
-        $trues = [
-            '',
-            ' ',
-            '098lower',
-            'lower',
-            '098765432',
-            'l',
-        ];
+        $this->foreachTrue(
+            [
+                Str('')->isLowerCase(),
+                Str(' ')->isLowerCase(),
+                Str('098lower')->isLowerCase(),
+                Str('lower')->isLowerCase(),
+                Str('098765432')->isLowerCase(),
+                Str('l')->isLowerCase(),
+            ]
+        );
         
-        $falses = [
-            'HIGH',
-            'High',
-            'hiGh',
-            'L',
-        ];
+        $this->foreachFalse(
+            [
+                Str('HIGH')->isLowerCase(),
+                Str('High')->isLowerCase(),
+                Str('hiGh')->isLowerCase(),
+                Str('L')->isLowerCase(),
+            ]
+        );
         
-        foreach ($trues as $true)
-        {
-            $temp = Str($true);
-            $this->assertTrue($temp->isLowerCase());
-            
-            $this->assertSame($temp->get(), $true);
-        }
-        
-        foreach ($falses as $false)
-        {
-            $temp = Str($false);
-            $this->assertFalse($temp->isLowerCase());
-            
-            $this->assertSame($temp->get(), $false);
-        }
     }
     
     public function testIsTitleCase()
     {
-        $trues = [
-            '',
-            ' ',
-            '098 Lower',
-            'Lower',
-            '098765432',
-            'L',
-            'Ll',
-            'Lower Case None',
-        ];
+        $this->foreachTrue(
+            [
+                Str('')->isTitleCase(),
+                Str(' ')->isTitleCase(),
+                Str('098 Lower')->isTitleCase(),
+                Str('Lower')->isTitleCase(),
+                Str('098765432')->isTitleCase(),
+                Str('L')->isTitleCase(),
+                Str('Ll')->isTitleCase(),
+                Str('Lower Case None')->isTitleCase(),
+            ]
+        );
         
-        $falses = [
-            'lower',
-            'Lower case second',
-            'l',
-            'HIGH',
-        ];
+        $this->foreachFalse(
+            [
+                Str('lower')->isTitleCase(),
+                Str('Lower case second')->isTitleCase(),
+                Str('l')->isTitleCase(),
+                Str('HIGH')->isTitleCase(),
+            ]
+        );
         
-        foreach ($trues as $true)
-        {
-            $temp = Str($true);
-            $this->assertTrue($temp->isTitleCase());
-            
-            $this->assertSame($temp->get(), $true);
-        }
-        
-        foreach ($falses as $false)
-        {
-            $temp = Str($false);
-            $this->assertFalse($temp->isTitleCase());
-            
-            $this->assertSame($temp->get(), $false);
-        }
     }
     
-    public function testToRandomCase()
+    public function testOriginSaves()
     {
-        $original = "oRiginalStrinGWithMuchCharactErs";
+        $originText = 'OrIGin';
+        $origin = Str($originText);
         
-        $this->assertNotEquals(Str($original)->toRandomCase(), $original);
+        $origin->isTitleCase();
+        $origin->isLowerCase();
+        $origin->isUpperCase();
+        $origin->isEmpty();
+        $origin->getLevenshteinDistance('dsdsd');
+        $origin->isEmptyWithoutTags();
+        $origin->isEquals('dsdsdsd');
+        $origin->isSerialized();
+        
+        $this->assertSame($origin->get(), $originText);
     }
     
     public function testUcFirst()
@@ -182,28 +205,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             Str()
                 ->toUpperCaseFirst()
                 ->get(), ''
-        );
-    }
-    
-    public function testCases()
-    {
-        
-        $this->assertEquals(
-            Str('ПРИвЕТ WoRlD')
-                ->toLowerCase()
-                ->get(), 'привет world'
-        );
-        
-        $this->assertEquals(
-            Str('ПРИвЕТ WoRlD')
-                ->toUpperCase()
-                ->get(), 'ПРИВЕТ WORLD'
-        );
-        
-        $this->assertEquals(
-            Str('ПРИвЕТ WoRlD')
-                ->toTitleCase()
-                ->get(), 'Привет World'
         );
     }
     
@@ -256,6 +257,18 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             Str('hh')
                 ->substring(1)
                 ->get(), 'h'
+        );
+        
+        $this->assertEquals(
+            Str('привет')
+                ->substring(1)
+                ->get(), 'ривет'
+        );
+        
+        $this->assertEquals(
+            Str('привет')
+                ->substring(2, 2)
+                ->get(), 'ив'
         );
         
         $this->assertEquals(
@@ -392,12 +405,20 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->prepend('3')
                 ->get(), '3112'
         );
+        
+        $this->assertEquals(
+            Str('и')
+                ->concat('в')
+                ->append('ет')
+                ->prepend('пр')
+                ->get(), 'привет'
+        );
     }
     
     public function testEqualsSomeAndEqualsIgnoreCase()
     {
-        $values = ['str', 'count', 'me'];
-        $valuesIgnoreCase = ['StR', 'coUNt', 'mE'];
+        $values = ['str', 'count', 'me', 'привет'];
+        $valuesIgnoreCase = ['StR', 'coUNt', 'mE', 'приВет'];
         $valuesStrict = ['str', null];
         $valuesEmpty = [];
         
@@ -414,6 +435,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => false],
             ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
             ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+            ['str' => 'приВет', 'values' => $values, 'result' => false],//null=''
         ];
         
         $testDataEqualsSomeIgnoreCase = [
@@ -429,6 +451,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ['str' => 'str', 'values' => $valuesIgnoreCase, 'result' => true],
             ['str' => 'str', 'values' => $valuesStrict, 'result' => true],
             ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
+            ['str' => 'ПриВет', 'values' => $values, 'result' => true],//null=''
         ];
         
         foreach ($testDataEqualsSome as $testData)
@@ -450,153 +473,66 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     public function testIsMatchTest()
     {
         
-        $this->assertTrue(
-            Str('')->isMatch('')
+        $this->foreachTrue(
+            [
+                Str('')->isMatch(''),
+                Str(' 3521')->isMatch(''),
+                Str(' 3521')->isMatch('\d+'),
+                Str('3521')->isMatch('^\d+$'),
+                Str('3521')->isMatch('\d\d\d\d'),
+                Str('3521')->isMatch('\d'),
+                Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('\w+\s'),
+                Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('[A-Z]+'),
+                Str('стринг')->isMatch('^\w+$'),
+            ]
         );
         
-        $this->assertFalse(
-            Str('')->isMatch('/d+')
-        );
-        
-        $this->assertTrue(
-            Str(' 3521')->isMatch('')
-        );
-        
-        $this->assertTrue(
-            Str(' 3521')->isMatch('\d+')
-        );
-        
-        $this->assertFalse(
-            Str(' 3521')->isMatch('^\d+$')
-        );
-        
-        $this->assertTrue(
-            Str('3521')->isMatch('\d\d\d\d')
-        );
-        
-        $this->assertTrue(
-            Str('3521')->isMatch('\d')
-        );
-        
-        $this->assertFalse(
-            Str('')->isMatch('\d')
-        );
-        
-        $this->assertTrue(
-            Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('\w+\s')
-        );
-        
-        $this->assertTrue(
-            Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('[A-Z]+')
-        );
-        
-        $this->assertFalse(
-            Str('2' . PHP_EOL . 'CN22')->isMatch('[a-z]+')
+        $this->foreachFalse(
+            [
+                Str('')->isMatch('/d+'),
+                Str(' 3521')->isMatch('^\d+$'),
+                Str('')->isMatch('\d'),
+                Str('2' . PHP_EOL . 'CN22')->isMatch('[a-z]+'),
+            ]
         );
         
     }
     
     public function testEmpty()
     {
-        
-        $this->assertTrue(
-            Str('  ... ')->isEmpty()
+        $this->foreachTrue(
+            [
+                Str('  ... ')->isEmpty(),
+                Str('')->isEmpty(),
+                Str('      +_)(*&^%$#@!   _')->isEmpty(),
+                Str('__')->isEmpty(),
+                Str('       _   ')->isEmpty(),
+                Str('  ... ')->isEmptyWithoutTags(),
+                Str('')->isEmptyWithoutTags(),
+                Str('      +_)(*&^%$#@!   _')->isEmptyWithoutTags(),
+                Str('      +_)(*&^%$#@! <p wdwdwdwdwd></p>  _')->isEmptyWithoutTags(),
+                Str('__')->isEmptyWithoutTags(),
+                Str('       _   ')->isEmptyWithoutTags(),
+                Str('<p></p>')->isEmptyWithoutTags(),
+                Str('<p></p> <p> ... </p>')->isEmptyWithoutTags(),
+            ]
         );
         
-        $this->assertTrue(
-            Str('')->isEmpty()
-        );
-        
-        $this->assertTrue(
-            Str('      +_)(*&^%$#@!   _')->isEmpty()
-        );
-        
-        $this->assertTrue(
-            Str('__')->isEmpty()
-        );
-        
-        $this->assertTrue(
-            Str('       _   ')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('0')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('  f     _   ')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('  fdfвава3     _   ')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('  4     _   ')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('  привет     _   ')->isEmpty()
-        );
-        
-        $this->assertFalse(
-            Str('привет')->isEmpty()
-        );
-        
-        $this->assertTrue(
-            Str('  ... ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('      +_)(*&^%$#@!   _')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('__')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('       _   ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('0')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('  f     _   ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('  fdfвава3     _   ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('  4     _   ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('  привет     _   ')->isEmptyWithoutTags()
-        );
-        
-        $this->assertFalse(
-            Str('привет')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('<p></p> <p> ... </p>')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('<p></p>')->isEmptyWithoutTags()
-        );
-        
-        $this->assertTrue(
-            Str('      +_)(*&^%$#@! <p wdwdwdwdwd></p>  _')->isEmptyWithoutTags()
+        $this->foreachFalse(
+            [
+                Str('0')->isEmpty(),
+                Str('  f     _   ')->isEmpty(),
+                Str('  fdfвава3     _   ')->isEmpty(),
+                Str('  4     _   ')->isEmpty(),
+                Str('  привет     _   ')->isEmpty(),
+                Str('привет')->isEmpty(),
+                Str('0')->isEmptyWithoutTags(),
+                Str('  f     _   ')->isEmptyWithoutTags(),
+                Str('  fdfвава3     _   ')->isEmptyWithoutTags(),
+                Str('  4     _   ')->isEmptyWithoutTags(),
+                Str('  привет     _   ')->isEmptyWithoutTags(),
+                Str('привет')->isEmptyWithoutTags(),
+            ]
         );
         
     }
@@ -604,16 +540,13 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     public function testCompare()
     {
         
-        $this->assertTrue(
-            Str('qwerty')->isEqualsIgnoreCase('QweRty')
-        );
+        $this->foreachTrue([Str('qwerty')->isEqualsIgnoreCase('QweRty')]);
         
-        $this->assertFalse(
-            Str('qwerty')->isEquals('QweRty')
-        );
-        
-        $this->assertFalse(
-            Str('qwerty')->isEquals('dw3ff3f')
+        $this->foreachFalse(
+            [
+                Str('qwerty')->isEquals('QweRty'),
+                Str('qwerty')->isEquals('dw3ff3f'),
+            ]
         );
         
     }
@@ -621,159 +554,57 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     public function testIsStartsWith()
     {
         
-        $this->assertTrue(
-            Str('стартс')->isStartsWith('')
+        $this->foreachTrue(
+            [
+                Str('стартс')->isStartsWith(''),
+                Str('стартс')->isStartsWith('с'),
+                Str('стартс')->isStartsWithIgnoreCase('С'),
+                Str('Стартс')->isStartsWith('Стар'),
+                Str('стартс')->isStartsWith('стартс'),
+                Str('стартс')->isStartsWithIgnoreCase('старТс'),
+                Str('стартс')->isStartsWith(''),
+                Str('стартс')->isStartsWithIgnoreCase(''),
+            ]
         );
         
-        $this->assertTrue(
-            Str('стартс')->isStartsWith('с')
+        $this->foreachFalse(
+            [
+                Str('стартс')->isStartsWith('стартсс'),
+                Str('стартс')->isStartsWith('кпуцйайайцуайца'),
+                Str('стартс')->isStartsWith('кп'),
+                Str('стартс')->isStartsWith('у'),
+                Str('')->isStartsWith('кп'),
+                Str('')->isStartsWithIgnoreCase('кп'),
+            ]
         );
         
-        $this->assertTrue(
-            Str('стартс')->isStartsWithIgnoreCase('С')
-        );
-        
-        $this->assertTrue(
-            Str('Стартс')->isStartsWith('Стар')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isStartsWith('стартс')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isStartsWith('стартсс')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isStartsWith('кпуцйайайцуайца')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isStartsWith('кп')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isStartsWith('у')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isStartsWithIgnoreCase('старТс')
-        );
-        
-        $this->assertFalse(
-            Str('')->isStartsWith('кп')
-        );
-        
-        $this->assertFalse(
-            Str('')->isStartsWithIgnoreCase('кп')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isStartsWith('')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isStartsWithIgnoreCase('')
-        );
     }
     
     public function testIsEndsWith()
     {
         
-        $this->assertTrue(
-            Str('стартс')->isEndsWith('')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isEndsWithIgnoreCase('стАртС')
-        );
-        
-        $this->assertTrue(
-            Str('zzzsdfsdf')->isEndsWith('')
-        );
-        
-        $this->assertTrue(
-            Str('zzzsdfsdf')->isEndsWithIgnoreCase('')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isEndsWith('стартс')
-        );
-        
-        $this->assertTrue(
-            Str('стартс')->isEndsWithIgnoreCase('С')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isEndsWith('С')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isEndsWith('s')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isEndsWith('сстартс')
-        );
-        
-        $this->assertFalse(
-            Str('стартс')->isEndsWithIgnoreCase('zzzsdfsdf')
-        );
-        
-        $this->assertFalse(
-            Str('')->isEndsWith('zzzsdfsdf')
-        );
-        
-        $this->assertFalse(
-            Str('')->isEndsWithIgnoreCase('zzzsdfsdf')
-        );
-        
-    }
-    
-    public function testLoadConstructToStringGetStringifySet()
-    {
-        
-        $toLoad = [
-            'string',
+        $this->foreachTrue(
             [
-                'Arr',
-                'ay',
-            ],
-            Str('Superstring'),
-        ];
-        
-        $result = 'stringArraySuperstring';
-        
-        $this->assertEquals(
-            Str($toLoad)->get(), $result
+                Str('стартс')->isEndsWith(''),
+                Str('стартс')->isEndsWithIgnoreCase('стАртС'),
+                Str('zzzsdfsdf')->isEndsWith(''),
+                Str('zzzsdfsdf')->isEndsWithIgnoreCase(''),
+                Str('стартс')->isEndsWith('стартс'),
+                Str('стартс')->isEndsWithIgnoreCase('С'),
+            ]
         );
         
-        $this->assertEquals(
-            Str('string')->get(), 'string'
+        $this->foreachFalse(
+            [
+                Str('стартс')->isEndsWith('С'),
+                Str('стартс')->isEndsWith('s'),
+                Str('стартс')->isEndsWith('сстартс'),
+                Str('стартс')->isEndsWithIgnoreCase('zzzsdfsdf'),
+                Str('')->isEndsWith('zzzsdfsdf'),
+                Str('')->isEndsWithIgnoreCase('zzzsdfsdf'),
+            ]
         );
         
-        $this->assertEquals(
-            Str()->get(), ''
-        );
-        
-        $this->assertEquals(
-            Str()
-                ->set('')
-                ->get(), ''
-        );
-        
-        $this->assertEquals(
-            Str()
-                ->set($toLoad)
-                ->get(), $result
-        );
-        
-        $this->assertEquals(
-            Str()
-                ->set($toLoad)
-                ->getEncoding(), StringHelper::getDefaultEncoding()
-        );
     }
     
     public function testRandomCase()
@@ -807,70 +638,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
         );
         
-    }
-    
-    public function testNl()
-    {
-        
-        $this->assertEquals(
-            Str("\n\nHello!\nMy name is Jay.\n\n")
-                ->newlineToBreak()
-                ->get(), "<br />\n<br />\nHello!<br />\nMy name is Jay.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("\n\nÜbérmensch på høyeste!.\n\n")
-                ->newlineToBreak()
-                ->get(), "<br />\n<br />\nÜbérmensch på høyeste!.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("\n\nПривет!\nМеня зовут Джей.\n\n")
-                ->newlineToBreak()
-                ->get(), "<br />\n<br />\nПривет!<br />\nМеня зовут Джей.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("Übérmensch på høyeste!.<br/><br/>")
-                ->breakToNewline()
-                ->get(), "Übérmensch på høyeste!." . PHP_EOL . PHP_EOL
-        );
-        
-        $this->assertEquals(
-            Str("Привет.<br/><br/>")
-                ->breakToNewline()
-                ->get(), "Привет." . PHP_EOL . PHP_EOL
-        );
-        
-        $this->assertEquals(
-            Str("\n\nHello!\nMy name is Jay.\n\n")
-                ->nl2br()
-                ->get(), "<br />\n<br />\nHello!<br />\nMy name is Jay.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("\n\nÜbérmensch på høyeste!.\n\n")
-                ->nl2br()
-                ->get(), "<br />\n<br />\nÜbérmensch på høyeste!.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("\n\nПривет!\nМеня зовут Джей.\n\n")
-                ->nl2br()
-                ->get(), "<br />\n<br />\nПривет!<br />\nМеня зовут Джей.<br />\n<br />\n"
-        );
-        
-        $this->assertEquals(
-            Str("Übérmensch på høyeste!.<br/><br/>")
-                ->br2nl()
-                ->get(), "Übérmensch på høyeste!." . PHP_EOL . PHP_EOL
-        );
-        
-        $this->assertEquals(
-            Str("Привет.<br/><br/>")
-                ->br2nl()
-                ->get(), "Привет." . PHP_EOL . PHP_EOL
-        );
     }
     
     public function testSetBeginning()
@@ -1112,30 +879,23 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         foreach ($tests as $original => $punycode)
         {
             
-            $this->assertTrue(
-                Str($original)
-                    ->toPunyCode()
-                    ->isEqualsIgnoreCase($punycode)
-            );
-            
-            $this->assertTrue(
-                Str($punycode)
-                    ->fromPunyCode()
-                    ->isEqualsIgnoreCase($original)
-            );
-            
-            $this->assertTrue(
-                Str($punycode)
-                    ->fromPunyCode()
-                    ->toPunyCode()
-                    ->isEqualsIgnoreCase($punycode)
-            );
-            
-            $this->assertTrue(
-                Str($original)
-                    ->toPunyCode()
-                    ->fromPunyCode()
-                    ->isEqualsIgnoreCase($original)
+            $this->foreachTrue(
+                [
+                    Str($original)
+                        ->toPunyCode()
+                        ->isEqualsIgnoreCase($punycode),
+                    Str($punycode)
+                        ->fromPunyCode()
+                        ->isEqualsIgnoreCase($original),
+                    Str($punycode)
+                        ->fromPunyCode()
+                        ->toPunyCode()
+                        ->isEqualsIgnoreCase($punycode),
+                    Str($original)
+                        ->toPunyCode()
+                        ->fromPunyCode()
+                        ->isEqualsIgnoreCase($original),
+                ]
             );
         }
     }
@@ -1147,6 +907,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             Str('x')
                 ->fillLeft('s', 5)
                 ->get(), 'ssssx'
+        );
+        
+        $this->assertEquals(
+            Str('ф')
+                ->fillLeft('ы', 5)
+                ->get(), 'ыыыыф'
         );
         
         $this->assertEquals(
@@ -1219,60 +985,45 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     public function testContains()
     {
         
-        $this->assertTrue(
-            Str('hello')->contains('l')
+        $this->foreachTrue(
+            [
+                Str('hello')->contains('l'),
+                Str('hello')->contains('hello'),
+                Str('привет')->contains('привет'),
+                Str('привет')->contains('приве'),
+                Str('привет')->contains('прив'),
+                Str('привет')->contains('при'),
+                Str('привет')->contains('пр'),
+                Str('привет')->contains('п'),
+                Str('привет')->contains('и'),
+                Str('привет')->contains('е'),
+                Str('hello')->containsIgnoreCase('HELLO'),
+                Str('hello')->contains('o'),
+                Str('hello')->contains('h'),
+                Str('hello')->containsIgnoreCase('L'),
+            ]
         );
         
-        $this->assertTrue(
-            Str('hello')->contains('hello')
-        );
-        
-        $this->assertTrue(
-            Str('hello')->containsIgnoreCase('HELLO')
-        );
-        
-        $this->assertTrue(
-            Str('hello')->contains('o')
-        );
-        
-        $this->assertTrue(
-            Str('hello')->contains('h')
-        );
-        
-        $this->assertFalse(
-            Str('hello')->contains('L')
-        );
-        
-        $this->assertFalse(
-            Str('hello')->contains('Ll')
-        );
-        
-        $this->assertTrue(
-            Str('hello')->containsIgnoreCase('L')
-        );
-        
-        $this->assertFalse(
-            Str('hello')->containsIgnoreCase('z')
+        $this->foreachFalse(
+            [
+                Str('привет')->contains('ф'),
+                Str('привет')->contains('ра'),
+                Str('hello')->contains('L'),
+                Str('hello')->contains('Ll'),
+                Str('hello')->containsIgnoreCase('z'),
+            ]
         );
     }
     
     public function testGetPosition()
     {
-        
-        $this->assertFalse(
-            Str('')->getPosition('l')
-        );
-        
-        $this->assertFalse(
-            Str('')->getPositionFromEnd('l')
-        );
-        
-        $this->assertFalse(
-            Str('')->getPositionIgnoreCase('l')
-        );
-        
-        $this->assertFalse(
-            Str('')->getPositionFromEndIgnoreCase('l')
+        $this->foreachFalse(
+            [
+                Str('')->getPosition('l'),
+                Str('')->getPositionFromEnd('l'),
+                Str('')->getPositionIgnoreCase('l'),
+                Str('')->getPositionFromEndIgnoreCase('l'),
+            ]
         );
         
         $this->assertEquals(
@@ -1644,34 +1395,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         );
         $this->assertEquals(
             '', Str('')->slugify()
-        );
-    }
-    
-    public function testHyphenate()
-    {
-        $this->assertEquals(
-            Str('- __ under score  me ')
-                ->hyphenate()
-                ->get(), '-under-score-me-'
-        );
-        $this->assertEquals(
-            Str('')
-                ->hyphenate()
-                ->get(), ''
-        );
-    }
-    
-    public function testUnderscore()
-    {
-        $this->assertEquals(
-            Str('_ - under score  me ')
-                ->underscore()
-                ->get(), '_under_score_me_'
-        );
-        $this->assertEquals(
-            Str('')
-                ->underscore()
-                ->get(), ''
         );
     }
     

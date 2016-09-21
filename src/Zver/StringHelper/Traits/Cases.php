@@ -2,13 +2,18 @@
 namespace Zver\StringHelper\Traits
 {
     
+    /**
+     * Trait Cases for case-methods
+     *
+     * @package Zver\StringHelper\Traits
+     */
     trait Cases
     {
         
         protected $string = '';
         
         /**
-         * Return true if loaded string in upper case, false otherwise
+         * Return true if loaded string in upper case, false otherwise. If string is empty - return true.
          *
          * @return bool
          */
@@ -20,7 +25,7 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Return true if loaded string in lower case, false otherwise
+         * Return true if loaded string in lower case, false otherwise. If string is empty - return true.
          *
          * @return bool
          */
@@ -32,7 +37,7 @@ namespace Zver\StringHelper\Traits
         }
         
         /**
-         * Return true if loaded string in title case, false otherwise
+         * Return true if loaded string in title case, false otherwise. If string is empty - return true.
          *
          * @return bool
          */
