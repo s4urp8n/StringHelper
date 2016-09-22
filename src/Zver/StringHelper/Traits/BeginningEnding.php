@@ -12,7 +12,7 @@ namespace Zver\StringHelper\Traits
          *
          * @return self Current instance
          */
-        public function setBeginning()
+        public function ensureBeginningIs()
         {
             $beginning = static::load(func_get_args());
             if ($this->isStartsWith($beginning))
@@ -28,7 +28,7 @@ namespace Zver\StringHelper\Traits
          *
          * @return self Current instance
          */
-        public function setEnding()
+        public function ensureEndingIs()
         {
             $ending = static::load(func_get_args());
             if ($this->isEndsWith($ending))

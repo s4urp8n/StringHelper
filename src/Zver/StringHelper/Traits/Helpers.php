@@ -153,7 +153,7 @@ namespace Zver\StringHelper\Traits
          *
          * @param string $classPrefix Prefix to class names
          *
-         * @return \Str\Str
+         * @return static
          */
         public function spanify($classPrefix = '')
         {
@@ -193,5 +193,14 @@ namespace Zver\StringHelper\Traits
             return $spanify;
         }
         
+        /**
+         * Replace spaces in string to none-breakable space
+         *
+         * @return static
+         */
+        public function noneBreakableSpaces()
+        {
+            return $this->replace(' ', '&nbsp;');
+        }
     }
 }

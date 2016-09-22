@@ -92,9 +92,13 @@ namespace Zver\StringHelper\Traits
             $fillLen = $length - $this->length();
             if ($fillLen > 0 && !empty($filler))
             {
-                $this->string .= static::load($filler)
-                                       ->repeat($fillLen)
-                                       ->substring(0, $fillLen);
+                return $this->set(
+                    static::load($filler)
+                          ->repeat($fillLen)
+                          ->substring(0, $fillLen)
+                          ->prepend($this->get())
+                          ->get()
+                );
             }
             
             return $this;
@@ -113,10 +117,13 @@ namespace Zver\StringHelper\Traits
             $fillLen = $length - $this->length();
             if ($fillLen > 0 && !empty($filler))
             {
-                $this->string = static::load($filler)
-                                      ->repeat($fillLen)
-                                      ->substring(0, $fillLen)
-                                      ->concat($this->string);
+                return $this->set(
+                    static::load($filler)
+                          ->repeat($fillLen)
+                          ->substring(0, $fillLen)
+                          ->concat($this->get())
+                          ->get()
+                );
             }
             
             return $this;
