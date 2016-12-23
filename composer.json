@@ -1,15 +1,6 @@
 {
-  "name": "zver/string-helper",
-  "description": "Class to manipulate with strings",
-  "keywords": [
-    "helper",
-    "string",
-    "strings",
-    "chars",
-    "chararters",
-    "symbols",
-    "manipulate"
-  ],
+  "name": "zver/package-template",
+  "description": "this is universal package template for development and testing",
   "minimum-stability": "stable",
   "config": {
     "optimize-autoloader": true
@@ -28,7 +19,7 @@
     }
   },
   "require": {
-    "zver/traits": "^1.0"
+    "zver/common": "^1.0"
   },
   "require-dev": {
   }

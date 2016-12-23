@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1e946cd21d5084be62491f189d6a51e9",
-    "content-hash": "09931ef63df0047d6f29784f4bd131a0",
+    "hash": "30b2260896c6c38c44254fb1603bb28c",
+    "content-hash": "144c47bb34bcee0d6ca350c761c797d7",
     "packages": [
         {
-            "name": "zver/traits",
-            "version": "1.0.1",
+            "name": "zver/common",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/s4urp8n/traits.git",
-                "reference": "174a0039b2e407ece8518c206fefc92b7fa76165"
+                "url": "https://github.com/s4urp8n/common.git",
+                "reference": "bf98e4d282a3962e6f0b21f1d4ddfb1da5b73c01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/s4urp8n/traits/zipball/174a0039b2e407ece8518c206fefc92b7fa76165",
-                "reference": "174a0039b2e407ece8518c206fefc92b7fa76165",
+                "url": "https://api.github.com/repos/s4urp8n/common/zipball/bf98e4d282a3962e6f0b21f1d4ddfb1da5b73c01",
+                "reference": "bf98e4d282a3962e6f0b21f1d4ddfb1da5b73c01",
                 "shasum": ""
             },
             "type": "library",
@@ -31,8 +31,8 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "description": "Helpfull traits collection",
-            "time": "2016-09-16 21:41:25"
+            "description": "common class of ZVER",
+            "time": "2016-12-22 15:16:16"
         }
     ],
     "packages-dev": [],

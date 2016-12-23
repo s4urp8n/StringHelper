@@ -4,12 +4,12 @@ use Zver\StringHelper;
 
 class StringHelperCest extends PHPUnit\Framework\TestCase
 {
-    
+
     use Package\Test;
-    
+
     public function testStringLoadAndGet()
     {
-        
+
         $toLoad = [
             'string',
             [
@@ -18,9 +18,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ],
             Str('Superstring'),
         ];
-        
+
         $result = 'stringArraySuperstring';
-        
+
         $this->foreachSame(
             [
                 [Str($toLoad)->get(), $result],
@@ -38,15 +38,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         ->get(),
                     $result,
                 ],
-                [
-                    Str()
-                        ->set($toLoad)
-                        ->getEncoding(),
-                    StringHelper::getDefaultEncoding(),
-                ],
             ]
         );
-        
+
         $originals = [
             ['', ''],
             [' ', ' '],
@@ -59,13 +53,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             [['S', 'T', 'R'], 'STR'],
             [['S', ['T', ['R']]], 'STR'],
         ];
-        
-        foreach ($originals as $original)
-        {
+
+        foreach ($originals as $original) {
             $this->assertInstanceOf(StringHelper::class, Str($original));
-            
+
             $this->assertSame(Str($original[0])->get(), $original[1]);
-            
+
             $this->foreachSame(
                 [
                     [
@@ -74,19 +67,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                             ->get(),
                         $original[1],
                     ],
-                    [
-                        Str()
-                            ->setFromEncoding($original[0], 'UTF-8')
-                            ->get(),
-                        $original[1],
-                    ],
-                    [Str()->setFromEncoding($original[0], 'UTF-8') . '', $original[1]],
                 ]
             );
-            
+
         }
     }
-    
+
     public function testIsUpperCase()
     {
         $this->foreachTrue(
@@ -98,7 +84,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('098765432')->isUpperCase(),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('lH')->isUpperCase(),
@@ -108,9 +94,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('lowercase')->isUpperCase(),
             ]
         );
-        
+
     }
-    
+
     public function testIsLowerCase()
     {
         $this->foreachTrue(
@@ -123,7 +109,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('l')->isLowerCase(),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('HIGH')->isLowerCase(),
@@ -132,9 +118,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('L')->isLowerCase(),
             ]
         );
-        
+
     }
-    
+
     public function testIsTitleCase()
     {
         $this->foreachTrue(
@@ -149,7 +135,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('Lower Case None')->isTitleCase(),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('lower')->isTitleCase(),
@@ -158,14 +144,14 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('HIGH')->isTitleCase(),
             ]
         );
-        
+
     }
-    
+
     public function testOriginSaves()
     {
         $originText = 'OrIGin';
         $origin = Str($originText);
-        
+
         $origin->isTitleCase();
         $origin->isLowerCase();
         $origin->isUpperCase();
@@ -179,13 +165,13 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $origin->isEndsWithIgnoreCase('');
         $origin->isStartsWith('');
         $origin->isStartsWithIgnoreCase('');
-        
+
         $this->assertSame($origin->get(), $originText);
     }
-    
+
     public function testUcFirst()
     {
-        
+
         $this->foreachSame(
             [
                 [
@@ -215,7 +201,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testLen()
     {
         $this->foreachSame(
@@ -231,10 +217,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testSubstring()
     {
-        
+
         $this->foreachSame(
             [
                 [
@@ -360,11 +346,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testConcatAppendPrepend()
     {
         $this->foreachSame(
-            
+
             [
                 [
                     Str('l')
@@ -412,14 +398,14 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testEqualsSomeAndEqualsIgnoreCase()
     {
         $values = ['str', 'count', 'me', 'привет'];
         $valuesIgnoreCase = ['StR', 'coUNt', 'mE', 'приВет'];
         $valuesStrict = ['str', null];
         $valuesEmpty = [];
-        
+
         $testDataEqualsSome = [
             ['str' => 'str', 'values' => $values, 'result' => true],
             ['str' => 'me', 'values' => $values, 'result' => true],
@@ -435,7 +421,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
             ['str' => 'приВет', 'values' => $values, 'result' => false],//null=''
         ];
-        
+
         $testDataEqualsSomeIgnoreCase = [
             ['str' => 'str', 'values' => $values, 'result' => true],
             ['str' => 'me', 'values' => $values, 'result' => true],
@@ -451,26 +437,24 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ['str' => '', 'values' => $valuesStrict, 'result' => true],//null=''
             ['str' => 'ПриВет', 'values' => $values, 'result' => true],//null=''
         ];
-        
-        foreach ($testDataEqualsSome as $testData)
-        {
+
+        foreach ($testDataEqualsSome as $testData) {
             $this->assertEquals(
                 $testData['result'], Str($testData['str'])->isEqualsSome($testData['values'])
             );
         }
-        
-        foreach ($testDataEqualsSomeIgnoreCase as $testData)
-        {
+
+        foreach ($testDataEqualsSomeIgnoreCase as $testData) {
             $this->assertEquals(
                 $testData['result'], Str($testData['str'])->isEqualsSomeIgnoreCase($testData['values'])
             );
         }
-        
+
     }
-    
+
     public function testIsMatchTest()
     {
-        
+
         $this->foreachTrue(
             [
                 Str('')->isMatch(''),
@@ -484,7 +468,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('стринг')->isMatch('^\w+$'),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('')->isMatch('/d+'),
@@ -493,9 +477,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('2' . PHP_EOL . 'CN22')->isMatch('[a-z]+'),
             ]
         );
-        
+
     }
-    
+
     public function testEmpty()
     {
         $this->foreachTrue(
@@ -515,7 +499,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('<p></p> <p> ... </p>')->isEmptyWithoutTags(),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('0')->isEmpty(),
@@ -532,26 +516,26 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('привет')->isEmptyWithoutTags(),
             ]
         );
-        
+
     }
-    
+
     public function testCompare()
     {
-        
+
         $this->foreachTrue([Str('qwerty')->isEqualsIgnoreCase('QweRty')]);
-        
+
         $this->foreachFalse(
             [
                 Str('qwerty')->isEquals('QweRty'),
                 Str('qwerty')->isEquals('dw3ff3f'),
             ]
         );
-        
+
     }
-    
+
     public function testIsStartsWith()
     {
-        
+
         $this->foreachTrue(
             [
                 Str('стартс')->isStartsWith(''),
@@ -564,7 +548,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('стартс')->isStartsWithIgnoreCase(''),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('стартс')->isStartsWith('стартсс'),
@@ -575,12 +559,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('')->isStartsWithIgnoreCase('кп'),
             ]
         );
-        
+
     }
-    
+
     public function testIsEndsWith()
     {
-        
+
         $this->foreachTrue(
             [
                 Str('стартс')->isEndsWith(''),
@@ -591,7 +575,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('стартс')->isEndsWithIgnoreCase('С'),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('стартс')->isEndsWith('С'),
@@ -602,12 +586,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('')->isEndsWithIgnoreCase('zzzsdfsdf'),
             ]
         );
-        
+
     }
-    
+
     public function testRandomCase()
     {
-        
+
         $this->assertNotEquals(
             Str('invertcaseofmybeautifulstringinvertcaseofmybeautifulstring')
                 ->toRandomCase()
@@ -624,7 +608,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->toRandomCase()
                 ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
         );
-        
+
         $this->assertEquals(
             Str('invertcaseofmybeautifulstringinvertcaseofmybeautifulstring')
                 ->toRandomCase()
@@ -635,9 +619,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->toLowerCase()
                 ->get(), 'invertcaseofmybeautifulstringinvertcaseofmybeautifulstring'
         );
-        
+
     }
-    
+
     public function testSetBeginning()
     {
         $this->foreachSame(
@@ -662,9 +646,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testSetEnding()
     {
         $this->foreachSame(
@@ -689,12 +673,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testJSON()
     {
-        
+
         $this->foreachSame(
             [
                 [
@@ -729,9 +713,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testSerialization()
     {
         $str = Str('string');
@@ -739,7 +723,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $unserialized = unserialize($serialized);
         $this->assertEquals($unserialized->get(), $str->get());
     }
-    
+
     public function testEntities()
     {
         $this->foreachSame(
@@ -766,10 +750,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testURLCoding()
     {
-        
+
         $url = 'www.example.com/admin?i=1&ref=http://ex.ru/er';
         $this->foreachSame(
             [
@@ -789,7 +773,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testUUE()
     {
         $this->foreachSame(
@@ -811,10 +795,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testBase64Coding()
     {
-        
+
         $url = 'www.example.com/admin?i=1&ref=http://ex.ru/er';
         $this->foreachSame(
             [
@@ -834,10 +818,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testUTF8Coding()
     {
-        
+
         $url = 'www.example.com/admin?i=1&ref=http://ex.ru/привет';
         $this->foreachSame(
             [
@@ -857,11 +841,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testSerialized()
     {
         error_reporting(E_ALL);
-        
+
         $this->foreachFalse(
             [
                 Str('прийцавйыв')->isSerialized(),
@@ -869,10 +853,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('')
                     ->set([])
                     ->isSerialized(),
-            
+
             ]
         );
-        
+
         $this->foreachTrue(
             [
                 Str(
@@ -886,10 +870,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPunycode()
     {
-        
+
         $tests = [
             'домен.рф'                => 'xn--d1acufc.xn--p1ai',
             'домены.рф'               => 'xn--d1acufc5f.xn--p1ai',
@@ -911,10 +895,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             'солнцеюга.рф'            => 'xn--80affxkeu7b8d.xn--p1ai',
             'хадыженский-пивзавод.рф' => 'xn----7sbbhbiediniblm8bzal5a4eug.xn--p1ai',
         ];
-        
-        foreach ($tests as $original => $punycode)
-        {
-            
+
+        foreach ($tests as $original => $punycode) {
+
             $this->foreachTrue(
                 [
                     Str($original)
@@ -935,7 +918,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             );
         }
     }
-    
+
     public function testFill()
     {
         $this->foreachSame(
@@ -1021,10 +1004,10 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testContains()
     {
-        
+
         $this->foreachTrue(
             [
                 Str('hello')->contains('l'),
@@ -1043,7 +1026,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('hello')->containsIgnoreCase('L'),
             ]
         );
-        
+
         $this->foreachFalse(
             [
                 Str('привет')->contains('ф'),
@@ -1054,7 +1037,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testGetPosition()
     {
         $this->foreachFalse(
@@ -1065,7 +1048,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('')->getPositionFromEndIgnoreCase('l'),
             ]
         );
-        
+
         $this->foreachSame(
             [
                 [Str('Hello')->getPositionFromEnd('l'), 3],
@@ -1080,7 +1063,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testSubstringCount()
     {
         $this->foreachSame(
@@ -1093,7 +1076,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testSplit()
     {
         $this->foreachSame(
@@ -1117,7 +1100,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testReplaceRemove()
     {
         $this->foreachSame(
@@ -1160,9 +1143,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testReverse()
     {
         $this->foreachSame(
@@ -1188,7 +1171,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testRepeat()
     {
         $this->foreachSame(
@@ -1232,7 +1215,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testGetParts()
     {
         $this->foreachSame(
@@ -1338,7 +1321,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testRemoveBeginningEnding()
     {
         $this->foreachSame(
@@ -1381,9 +1364,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testSlugify()
     {
         $this->foreachSame(
@@ -1448,33 +1431,32 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testShuffleCharacters()
     {
-        
+
         $original = 'sdfghtyui opl';
-        
+
         $originalArray = Str($original)->getCharactersArray();
-        
+
         $shuffled = Str($original)->shuffleCharacters();
-        
+
         $shuffledArray = $shuffled->getCharactersArray();
-        
+
         $this->assertEquals($shuffled->length(), mb_strlen($original, 'UTF-8'));
-        
+
         $this->assertNotEquals($original, $shuffled->get());
-        
-        foreach ($originalArray as $value)
-        {
+
+        foreach ($originalArray as $value) {
             $this->assertTrue(in_array($value, $shuffledArray));
         }
     }
-    
+
     public function testFooterYears()
     {
         $currentYear = new \DateTime();
         $currentYear = $currentYear->format('Y');
-        
+
         $this->foreachSame(
             [
                 [
@@ -1492,16 +1474,16 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testRemoveTags()
     {
         $html = Str(file_get_contents(packageTestFile('html.html')))
             ->removeTags()
             ->trimSpaces();
-        
+
         $this->assertEquals($html, 'PHP: mb_ereg - Manual');
     }
-    
+
     public function testLevenshtein()
     {
         $this->foreachSame(
@@ -1517,16 +1499,16 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testToCharactersArray()
     {
-        
+
         $this->assertTrue(
             is_array(
                 Str('0123456789 привет1')->getCharactersArray()
             )
         );
-        
+
         $this->foreachSame(
             [
                 [
@@ -1556,16 +1538,16 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 [Str('')->getCharactersArray(), []],
             ]
         );
-        
+
     }
-    
+
     public function testToLinesArray()
     {
-        
+
         $text =
             "Ghbпри ваыв выввцвцвц" . PHP_EOL . "" . PHP_EOL . "" . PHP_EOL . "цвйцвцйвцй" . PHP_EOL . "" . PHP_EOL . ""
             . PHP_EOL . "йцвцйвйцв";
-        
+
         $this->assertEquals(
             Str($text)->getLinesArray(), [
                                            'Ghbпри ваыв выввцвцвц',
@@ -1577,16 +1559,16 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                                            'йцвцйвйцв',
                                        ]
         );
-        
+
         $text = "Ghbпри";
-        
+
         $this->assertEquals(
             Str($text)->getLinesArray(), [
                                            'Ghbпри',
                                        ]
         );
     }
-    
+
     public function testTrim()
     {
         $this->foreachSame(
@@ -1612,7 +1594,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPaginationInfo()
     {
         $this->foreachSame(
@@ -1657,7 +1639,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPaginationInfoComma()
     {
         $this->foreachSame(
@@ -1702,7 +1684,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPaginationInfoPeriod()
     {
         $this->foreachSame(
@@ -1747,7 +1729,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPaginationInfoFrom()
     {
         $this->foreachSame(
@@ -1792,7 +1774,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPaginationInfoCommaPeriodFrom()
     {
         $this->foreachSame(
@@ -1837,11 +1819,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testPreview()
     {
         $text = '<a><p style="display:none">some preview   text </p>   </a>';
-        
+
         $this->foreachSame(
             [
                 [Str($text)->getPreview(-10000000), '...'],
@@ -1898,13 +1880,13 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 [Str($text)->getPreview(20000000, '--'), 'some preview text'],
             ]
         );
-        
+
     }
-    
+
     public function testPreviewEnd()
     {
         $text = '<a><p style="display:none">some preview   text </p>   </a>';
-        
+
         $this->foreachSame(
             [
                 [Str($text)->getPreview(-10000000, '...', false), '...'],
@@ -1961,13 +1943,13 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 [Str($text)->getPreview(20000000, '--', false), 'some preview text'],
             ]
         );
-        
+
     }
-    
+
     public function testPreviewPunctuations()
     {
         $text = 'some, pre...   text! ';
-        
+
         $this->foreachSame(
             [
                 [Str($text)->getPreview(-1), '...'],
@@ -2022,9 +2004,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 [Str($text)->getPreview(22000, '...', false), 'some, pre... text!'],
             ]
         );
-        
+
         $text = 'some, pre___   text! ';
-        
+
         $this->foreachSame(
             [
                 [Str($text)->getPreview(-1), '...'],
@@ -2080,7 +2062,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
     public function testSpanify()
     {
         $this->assertEquals(
@@ -2115,7 +2097,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->get(),
             '<span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span><span class="space"> </span><span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span>'
         );
-        
+
         $this->assertEquals(
             Str('')
                 ->spanify('prefix-')
@@ -2148,14 +2130,14 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ->get(),
             '<span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span><span class="prefix-space"> </span><span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span>'
         );
-        
+
     }
-    
+
     public function testMatches()
     {
         $text = '23sd re23w 23dfrgt23 xsdf 23 23 97 7 86 sds
                  sdfsd 678 9899 9899';
-        
+
         $this->foreachSame(
             [
                 [Str('')->matches('\d{2}'), []],
@@ -2216,9 +2198,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
-        
+
     }
-    
+
     public function testNowrap()
     {
         $this->foreachSame(
@@ -2244,5 +2226,5 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
     }
-    
+
 }
