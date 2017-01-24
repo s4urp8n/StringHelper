@@ -163,6 +163,8 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $origin->isSerialized();
         $origin->isJSON();
         $origin->isEndsWith('');
+        $origin->getFirstChars(10);
+        $origin->getLastChars(10);
         $origin->isEndsWithIgnoreCase('');
         $origin->isStartsWith('');
         $origin->isStartsWithIgnoreCase('');
@@ -1569,6 +1571,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                     ],
                 ],
                 [Str('')->getCharactersArray(), []],
+                [
+                    Str("1\n2\n3\n4\n6")
+                        ->getCharactersArray(),
+                    ['1', "\n", '2', "\n", '3', "\n", '4', "\n", '6'],
+                ],
             ]
         );
 
