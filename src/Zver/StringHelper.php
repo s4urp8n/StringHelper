@@ -12,9 +12,11 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function ensureBeginningIs()
+        public function ensureBeginningIs($stringable)
         {
-            $beginning = static::load(func_get_args());
+            $beginning = static::load($stringable)
+                               ->get();
+
             if ($this->isStartsWith($beginning)) {
                 return $this;
             }
@@ -27,9 +29,11 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function ensureEndingIs()
+        public function ensureEndingIs($stringable)
         {
-            $ending = static::load(func_get_args());
+            $ending = static::load($stringable)
+                            ->get();
+
             if ($this->isEndsWith($ending)) {
                 return $this;
             }
@@ -42,10 +46,11 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function removeBeginning()
+        public function removeBeginning($stringable)
         {
-            $beginning = static::load(func_get_args());
-            if ($this->isStartsWith($beginning)) {
+            $beginning = static::load($stringable);
+
+            if ($this->isStartsWith($beginning->get())) {
                 return $this->substring($beginning->length());
             }
 
@@ -57,9 +62,10 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function removeEnding()
+        public function removeEnding($stringable)
         {
-            $ending = static::load(func_get_args());
+            $ending = static::load($stringable);
+
             if ($this->isEndsWith($ending)) {
                 return $this->substring(0, $this->length() - $ending->length());
             }
@@ -198,15 +204,15 @@ namespace Zver {
          */
         public function getLinesArray()
         {
-            return $this->split("\r\n|\n");
+            return $this->split("\r\n|\n|\r");
         }
 
         /**
          * StringHelper private constructor, to implement Facade creation
          */
-        protected function __construct($string = '')
+        protected function __construct($stringable = '')
         {
-            $this->string = static::stringify($string);
+            $this->string = static::stringify($stringable);
         }
 
         /**
@@ -269,14 +275,14 @@ namespace Zver {
         /**
          * Get class instance
          *
-         * @param string|array|static $string
+         * @param string|array|static $stringable
          * @param string              $encoding
          *
          * @return static Current instance of class
          */
-        public static function load($string = '')
+        public static function load($stringable = '')
         {
-            return new static($string);
+            return new static($stringable);
         }
 
         /**
@@ -778,6 +784,28 @@ namespace Zver {
         }
 
         /**
+         * Alias for length
+         *
+         * @see length()
+         * @return int
+         */
+        public function len()
+        {
+            return $this->length();
+        }
+
+        /**
+         * Alias for length
+         *
+         * @see length()
+         * @return int
+         */
+        public function count()
+        {
+            return $this->length();
+        }
+
+        /**
          * Get Levenshtein distance between arguments and loaded string
          *
          * @param string|self|array Other stringable
@@ -959,9 +987,9 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function append($string)
+        public function append($stringable)
         {
-            return $this->concat($string);
+            return $this->concat($stringable);
         }
 
         /**
@@ -972,9 +1000,9 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function concat($string)
+        public function concat($stringable)
         {
-            return $this->set($this->get() . static::load($string));
+            return $this->set($this->get() . static::load($stringable));
         }
 
         /**
@@ -984,9 +1012,9 @@ namespace Zver {
          *
          * @return self Current instance
          */
-        public function prepend($string)
+        public function prepend($stringable)
         {
-            return $this->set(static::load($string) . $this->get());
+            return $this->set(static::load($stringable) . $this->get());
         }
 
         /**
@@ -1048,7 +1076,7 @@ namespace Zver {
          *
          * @return array Array of matches
          */
-        public function matches($regexp)
+        public function getMatches($regexp)
         {
 
             $result = [];
@@ -1086,13 +1114,7 @@ namespace Zver {
          */
         public function isMatch($regexp)
         {
-            if (empty($regexp)) {
-                return true;
-            }
-
-            $result = (mb_ereg($regexp, $this->get()) !== false);
-
-            return $result;
+            return (mb_ereg($regexp, $this->get()) !== false);
         }
 
         /**
@@ -1132,12 +1154,9 @@ namespace Zver {
          *
          * @return bool
          */
-        public function contains()
+        public function contains($string)
         {
-            $contain = static::load(func_get_args())
-                             ->get();
-
-            return ($this->getPosition($contain) !== false);
+            return ($this->getPosition($string) !== false);
         }
 
         /**
@@ -1151,8 +1170,7 @@ namespace Zver {
         public function getPosition($string, $offset = 0)
         {
             return mb_strpos(
-                $this->get(), static::load($string)
-                                    ->get(), $offset, Common::getDefaultEncoding()
+                $this->get(), $string, $offset, Common::getDefaultEncoding()
             );
         }
 
@@ -1161,12 +1179,9 @@ namespace Zver {
          *
          * @return bool
          */
-        public function containsIgnoreCase()
+        public function containsIgnoreCase($string)
         {
-            $contain = static::load(func_get_args())
-                             ->get();
-
-            return ($this->getPositionIgnoreCase($contain) !== false);
+            return ($this->getPositionIgnoreCase($string) !== false);
         }
 
         /**
@@ -1487,6 +1502,17 @@ namespace Zver {
         public function substring($start = 0, $length = null)
         {
             return $this->set(mb_substr($this->get(), $start, $length, Common::getDefaultEncoding()));
+        }
+
+        /**
+         * Get length characters from end of loaded string
+         *
+         * @param $length
+         * @return StringHelper
+         */
+        public function substringFromEnd($length)
+        {
+            return $this->getLastChars($length);
         }
 
     }

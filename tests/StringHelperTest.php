@@ -38,6 +38,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         ->get(),
                     $result,
                 ],
+                [Str('str') . '', 'str'],
             ]
         );
 
@@ -216,6 +217,32 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 [Str('')->length(), 0],
             ]
         );
+
+        $this->foreachSame(
+            [
+                [Str('helloпривет')->len(), 11],
+                [Str('а')->len(), 1],
+                [Str('привет日本語')->len(), 9],
+                [Str('')->len(), 0],
+                [Str('helloпривет')->len(), 11],
+                [Str('а')->len(), 1],
+                [Str('привет日本語')->len(), 9],
+                [Str('')->len(), 0],
+            ]
+        );
+
+        $this->foreachSame(
+            [
+                [Str('helloпривет')->count(), 11],
+                [Str('а')->count(), 1],
+                [Str('привет日本語')->count(), 9],
+                [Str('')->count(), 0],
+                [Str('helloпривет')->count(), 11],
+                [Str('а')->count(), 1],
+                [Str('привет日本語')->count(), 9],
+                [Str('')->count(), 0],
+            ]
+        );
     }
 
     public function testSubstring()
@@ -228,6 +255,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         ->substring()
                         ->get(),
                     'h',
+                ],
+                [
+                    Str('helloстрока')
+                        ->substring()
+                        ->get(),
+                    'helloстрока',
                 ],
                 [
                     Str('hh')
@@ -264,6 +297,18 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         ->substring(-30)
                         ->get(),
                     '1234567890',
+                ],
+                [
+                    Str('1234567890')
+                        ->substringFromEnd(30)
+                        ->get(),
+                    '1234567890',
+                ],
+                [
+                    Str('1234567890')
+                        ->substringFromEnd(3)
+                        ->get(),
+                    '890',
                 ],
                 [
                     Str('1234567890')
@@ -457,8 +502,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
         $this->foreachTrue(
             [
-                Str('')->isMatch(''),
-                Str(' 3521')->isMatch(''),
                 Str(' 3521')->isMatch('\d+'),
                 Str('3521')->isMatch('^\d+$'),
                 Str('3521')->isMatch('\d\d\d\d'),
@@ -2138,37 +2181,23 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $text = '23sd re23w 23dfrgt23 xsdf 23 23 97 7 86 sds
                  sdfsd 678 9899 9899';
 
+        $text2 = '23sd re23w 23dfrgt23 xsdf 23_23 97 7 86 sds
+                 sdfsd 678-9899 9899';
+
         $this->foreachSame(
             [
-                [Str('')->matches('\d{2}'), []],
-                [Str('dsd')->matches(''), []],
-                [Str('')->matches(''), []],
+                [Str('')->getMatches('\d{2}'), []],
+                [Str('dsd')->getMatches(''), []],
+                [Str('')->getMatches(''), []],
                 [
-                    Str($text)->matches('\d{4}'),
+                    Str($text)->getMatches('\d{4}'),
                     [
                         '9899',
                         '9899',
                     ],
                 ],
                 [
-                    Str($text)->matches('\d+'),
-                    [
-                        '23',
-                        '23',
-                        '23',
-                        '23',
-                        '23',
-                        '23',
-                        '97',
-                        '7',
-                        '86',
-                        '678',
-                        '9899',
-                        '9899',
-                    ],
-                ],
-                [
-                    Str($text)->matches('\w+'),
+                    Str($text)->getMatches('\b\S+\b'),
                     [
                         '23sd',
                         're23w',
@@ -2186,9 +2215,62 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         '9899',
                     ],
                 ],
-                [Str($text)->matches('zzz'), []],
                 [
-                    Str($text)->matches('[^\s]*sd[^\s]*'),
+                    Str($text2)->getMatches('\b\S+\b'),
+                    [
+                        '23sd',
+                        're23w',
+                        '23dfrgt23',
+                        'xsdf',
+                        '23_23',
+                        '97',
+                        '7',
+                        '86',
+                        'sds',
+                        'sdfsd',
+                        '678-9899',
+                        '9899',
+                    ],
+                ],
+                [
+                    Str($text)->getMatches('\d+'),
+                    [
+                        '23',
+                        '23',
+                        '23',
+                        '23',
+                        '23',
+                        '23',
+                        '97',
+                        '7',
+                        '86',
+                        '678',
+                        '9899',
+                        '9899',
+                    ],
+                ],
+                [
+                    Str($text)->getMatches('\w+'),
+                    [
+                        '23sd',
+                        're23w',
+                        '23dfrgt23',
+                        'xsdf',
+                        '23',
+                        '23',
+                        '97',
+                        '7',
+                        '86',
+                        'sds',
+                        'sdfsd',
+                        '678',
+                        '9899',
+                        '9899',
+                    ],
+                ],
+                [Str($text)->getMatches('zzz'), []],
+                [
+                    Str($text)->getMatches('[^\s]*sd[^\s]*'),
                     [
                         '23sd',
                         'xsdf',
