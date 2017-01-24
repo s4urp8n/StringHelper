@@ -330,62 +330,52 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 ],
                 [
                     Str('superstring')
-                        ->getFirstChars(0)
-                        ->get(),
+                        ->getFirstChars(0),
                     '',
                 ],
                 [
                     Str('superstring')
-                        ->getFirstChars(-5)
-                        ->get(),
+                        ->getFirstChars(-5),
                     'tring',
                 ],
                 [
                     Str('superstring')
-                        ->getFirstChars(5)
-                        ->get(),
+                        ->getFirstChars(5),
                     'super',
                 ],
                 [
                     Str('superstring')
-                        ->getFirstChars(500)
-                        ->get(),
+                        ->getFirstChars(500),
                     'superstring',
                 ],
                 [
                     Str('superstring')
-                        ->getFirstChars(-500)
-                        ->get(),
+                        ->getFirstChars(-500),
                     'superstring',
                 ],
                 [
                     Str('superstring')
-                        ->getLastChars(6)
-                        ->get(),
+                        ->getLastChars(6),
                     'string',
                 ],
                 [
                     Str('superstring')
-                        ->getLastChars(-5)
-                        ->get(),
+                        ->getLastChars(-5),
                     'super',
                 ],
                 [
                     Str('superstring')
-                        ->getLastChars(0)
-                        ->get(),
+                        ->getLastChars(0),
                     '',
                 ],
                 [
                     Str('superstring')
-                        ->getLastChars(600)
-                        ->get(),
+                        ->getLastChars(600),
                     'superstring',
                 ],
                 [
                     Str('superstring')
-                        ->getLastChars(-600)
-                        ->get(),
+                        ->getLastChars(-600),
                     'superstring',
                 ],
             ]

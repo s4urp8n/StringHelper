@@ -580,17 +580,17 @@ namespace Zver {
             if ($fromBeginning) {
 
                 if ($str->getClone()
-                        ->getFirstChars($maxChars - $end->length() + 1)
+                        ->substring(0, $maxChars - $end->length() + 1)
                         ->getLastChars(1) == ' '
                 ) {
                     $preview->set(
-                        $str->getFirstChars($maxChars - $end->length())
+                        $str->substring(0, $maxChars - $end->length())
                             ->trimSpaces()
                             ->get()
                     );
                 } else {
                     $preview->set(
-                        $str->getFirstChars($maxChars - $end->length())
+                        $str->substring(0, $maxChars - $end->length())
                             ->remove('[^\s]+$')
                             ->trimSpaces()
                             ->get()
@@ -600,17 +600,17 @@ namespace Zver {
                         ->concat($end);
             } else {
                 if ($str->getClone()
-                        ->getLastChars($maxChars - $end->length() + 1)
+                        ->substringFromEnd($maxChars - $end->length() + 1)
                         ->getFirstChars(1) == ' '
                 ) {
                     $preview->set(
-                        $str->getLastChars($maxChars - $end->length())
+                        $str->substringFromEnd($maxChars - $end->length())
                             ->trimSpaces()
                             ->get()
                     );
                 } else {
                     $preview->set(
-                        $str->getLastChars($maxChars - $end->length())
+                        $str->substringFromEnd($maxChars - $end->length())
                             ->remove('^[^\s]+')
                             ->trimSpaces()
                             ->get()
@@ -1461,13 +1461,15 @@ namespace Zver {
         public function getFirstChars($length)
         {
             if ($length == 0) {
-                return $this->set('');
+                return '';
             }
             if ($length < 0) {
                 return $this->getLastChars(-$length);
             }
 
-            return $this->substring(0, $length);
+            return $this->getClone()
+                        ->substring(0, $length)
+                        ->get();
         }
 
         /**
@@ -1482,13 +1484,15 @@ namespace Zver {
         public function getLastChars($length)
         {
             if ($length == 0) {
-                return $this->set('');
+                return '';
             }
             if ($length < 0) {
                 return $this->getFirstChars(-$length);
             }
 
-            return $this->substring(-$length);
+            return $this->getClone()
+                        ->substring(-$length)
+                        ->get();
         }
 
         /**
@@ -1512,7 +1516,7 @@ namespace Zver {
          */
         public function substringFromEnd($length)
         {
-            return $this->getLastChars($length);
+            return $this->substring(-$length);
         }
 
     }
