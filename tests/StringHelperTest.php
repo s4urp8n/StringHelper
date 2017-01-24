@@ -1467,6 +1467,21 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         );
     }
 
+    public function testClone()
+    {
+
+        $original = Str('String');
+        $cloned = $original->getClone();
+
+        $this->foreachSame([
+                               [json_encode($original), json_encode($cloned)],
+                               [gettype($original), gettype($cloned)],
+                               [get_class($original), get_class($cloned)],
+                               [get_class_methods($original), get_class_methods($cloned)],
+                               [get_class_vars($original), get_class_vars($cloned)],
+                           ]);
+    }
+
     public function testShuffleCharacters()
     {
 
