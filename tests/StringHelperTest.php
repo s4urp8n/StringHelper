@@ -153,18 +153,34 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $originText = 'OrIGin';
         $origin = Str($originText);
 
+        $origin->getLevenshteinDistance('dsdsd');
+        $origin->getPreview();
+        $origin->getPreview(3);
+        $origin->getPreview(5);
+        $origin->getPreview(500);
+        $origin->getMatches('\w+');
+        $origin->getLastChars(10);
+        $origin->getParts();
+        $origin->getFirstPart();
+        $origin->getLastPart();
+        $origin->getFirstChars(10);
+        $origin->getPosition('s');
+        $origin->getPositionIgnoreCase('s');
+        $origin->getPositionFromEnd('s');
+        $origin->getPositionFromEndIgnoreCase('s');
+        $origin->getSplittedBy('\w+');
+
         $origin->isTitleCase();
         $origin->isLowerCase();
         $origin->isUpperCase();
         $origin->isEmpty();
-        $origin->getLevenshteinDistance('dsdsd');
-        $origin->isEmptyWithoutTags();
         $origin->isEquals('dsdsdsd');
         $origin->isSerialized();
         $origin->isJSON();
+        $origin->isMatch('\w');
+        $origin->isEquals('str');
+        $origin->isEqualsSome(['str']);
         $origin->isEndsWith('');
-        $origin->getFirstChars(10);
-        $origin->getLastChars(10);
         $origin->isEndsWithIgnoreCase('');
         $origin->isStartsWith('');
         $origin->isStartsWithIgnoreCase('');
@@ -209,40 +225,14 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
     {
         $this->foreachSame(
             [
-                [Str('helloпривет')->length(), 11],
-                [Str('а')->length(), 1],
-                [Str('привет日本語')->length(), 9],
-                [Str('')->length(), 0],
-                [Str('helloпривет')->length(), 11],
-                [Str('а')->length(), 1],
-                [Str('привет日本語')->length(), 9],
-                [Str('')->length(), 0],
-            ]
-        );
-
-        $this->foreachSame(
-            [
-                [Str('helloпривет')->len(), 11],
-                [Str('а')->len(), 1],
-                [Str('привет日本語')->len(), 9],
-                [Str('')->len(), 0],
-                [Str('helloпривет')->len(), 11],
-                [Str('а')->len(), 1],
-                [Str('привет日本語')->len(), 9],
-                [Str('')->len(), 0],
-            ]
-        );
-
-        $this->foreachSame(
-            [
-                [Str('helloпривет')->count(), 11],
-                [Str('а')->count(), 1],
-                [Str('привет日本語')->count(), 9],
-                [Str('')->count(), 0],
-                [Str('helloпривет')->count(), 11],
-                [Str('а')->count(), 1],
-                [Str('привет日本語')->count(), 9],
-                [Str('')->count(), 0],
+                [Str('helloпривет')->getLength(), 11],
+                [Str('а')->getLength(), 1],
+                [Str('привет日本語')->getLength(), 9],
+                [Str('')->getLength(), 0],
+                [Str('helloпривет')->getLength(), 11],
+                [Str('а')->getLength(), 1],
+                [Str('привет日本語')->getLength(), 9],
+                [Str('')->getLength(), 0],
             ]
         );
     }
@@ -523,15 +513,9 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('')->isEmpty(),
                 Str('      +_)(*&^%$#@!   _')->isEmpty(),
                 Str('__')->isEmpty(),
+                Str("\n\n---\n....\n!@#$#%#^#&+_)(*&#$%^&*(")->isEmpty(),
                 Str('       _   ')->isEmpty(),
-                Str('  ... ')->isEmptyWithoutTags(),
-                Str('')->isEmptyWithoutTags(),
-                Str('      +_)(*&^%$#@!   _')->isEmptyWithoutTags(),
-                Str('      +_)(*&^%$#@! <p wdwdwdwdwd></p>  _')->isEmptyWithoutTags(),
-                Str('__')->isEmptyWithoutTags(),
-                Str('       _   ')->isEmptyWithoutTags(),
-                Str('<p></p>')->isEmptyWithoutTags(),
-                Str('<p></p> <p> ... </p>')->isEmptyWithoutTags(),
+                Str('       _   ')->isEmpty(),
             ]
         );
 
@@ -542,13 +526,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                 Str('  fdfвава3     _   ')->isEmpty(),
                 Str('  4     _   ')->isEmpty(),
                 Str('  привет     _   ')->isEmpty(),
+                Str('  п     _   ')->isEmpty(),
+                Str('п')->isEmpty(),
+                Str('0')->isEmpty(),
+                Str('  а     _   ')->isEmpty(),
+                Str('  f     _   ')->isEmpty(),
                 Str('привет')->isEmpty(),
-                Str('0')->isEmptyWithoutTags(),
-                Str('  f     _   ')->isEmptyWithoutTags(),
-                Str('  fdfвава3     _   ')->isEmptyWithoutTags(),
-                Str('  4     _   ')->isEmptyWithoutTags(),
-                Str('  привет     _   ')->isEmptyWithoutTags(),
-                Str('привет')->isEmptyWithoutTags(),
             ]
         );
 
@@ -1045,30 +1028,30 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
         $this->foreachTrue(
             [
-                Str('hello')->contains('l'),
-                Str('hello')->contains('hello'),
-                Str('привет')->contains('привет'),
-                Str('привет')->contains('приве'),
-                Str('привет')->contains('прив'),
-                Str('привет')->contains('при'),
-                Str('привет')->contains('пр'),
-                Str('привет')->contains('п'),
-                Str('привет')->contains('и'),
-                Str('привет')->contains('е'),
-                Str('hello')->containsIgnoreCase('HELLO'),
-                Str('hello')->contains('o'),
-                Str('hello')->contains('h'),
-                Str('hello')->containsIgnoreCase('L'),
+                Str('hello')->isContain('l'),
+                Str('hello')->isContain('hello'),
+                Str('привет')->isContain('привет'),
+                Str('привет')->isContain('приве'),
+                Str('привет')->isContain('прив'),
+                Str('привет')->isContain('при'),
+                Str('привет')->isContain('пр'),
+                Str('привет')->isContain('п'),
+                Str('привет')->isContain('и'),
+                Str('привет')->isContain('е'),
+                Str('hello')->isContainIgnoreCase('HELLO'),
+                Str('hello')->isContain('o'),
+                Str('hello')->isContain('h'),
+                Str('hello')->isContainIgnoreCase('L'),
             ]
         );
 
         $this->foreachFalse(
             [
-                Str('привет')->contains('ф'),
-                Str('привет')->contains('ра'),
-                Str('hello')->contains('L'),
-                Str('hello')->contains('Ll'),
-                Str('hello')->containsIgnoreCase('z'),
+                Str('привет')->isContain('ф'),
+                Str('привет')->isContain('ра'),
+                Str('hello')->isContain('L'),
+                Str('hello')->isContain('Ll'),
+                Str('hello')->isContainIgnoreCase('z'),
             ]
         );
     }
@@ -1117,7 +1100,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $this->foreachSame(
             [
                 [
-                    Str('1 2 3 4 5        6 7 8 9_0')->split('[\s_]+'),
+                    Str('1 2 3 4 5        6 7 8 9_0')->getSplittedBy('[\s_]+'),
                     [
                         '1',
                         '2',
@@ -1131,7 +1114,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         '0',
                     ],
                 ],
-                [Str('1 2 3 4 5 6 7 8 9_0')->split('x'), ['1 2 3 4 5 6 7 8 9_0']],
+                [Str('1 2 3 4 5 6 7 8 9_0')->getSplittedBy('x'), ['1 2 3 4 5 6 7 8 9_0']],
             ]
         );
     }
@@ -1263,50 +1246,42 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                                 1,
                                 0,
                             ], '-', ':'
-                        )
-                        ->get(),
+                        ),
                     '01:11:2011',
                 ],
                 [
                     Str('2011-11-01')
-                        ->getParts([2], '-', ':')
-                        ->get(),
+                        ->getParts([2], '-', ':'),
                     '01',
                 ],
                 [
                     Str('2011-11-01')
-                        ->getParts(2, '-', ':')
-                        ->get(),
+                        ->getParts(2, '-', ':'),
                     '01',
                 ],
                 [
                     Str('2011-11-01')
-                        ->getParts(0, '-', ':')
-                        ->get(),
+                        ->getParts(0, '-', ':'),
                     '2011',
                 ],
                 [
                     Str('2011 11 01')
-                        ->getParts()
-                        ->get(),
+                        ->getParts(),
                     '2011',
                 ],
                 [
                     Str('2011 11 01')
-                        ->getParts(0)
-                        ->get(),
+                        ->getParts(0),
                     '2011',
                 ],
                 [
                     Str('2011 11 01')
-                        ->getParts(1)
-                        ->get(),
+                        ->getParts(1),
                     '11',
                 ],
                 [
                     Str('2011 11 01')
-                        ->getParts(2)
-                        ->get(),
+                        ->getParts(2),
                     '01',
                 ],
                 [
@@ -1319,38 +1294,32 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                                 3,
                                 0,
                             ]
-                        )
-                        ->get(),
+                        ),
                     '01 01 01 2011',
                 ],
                 [
                     Str('2011-11-01')
-                        ->getFirstPart('-')
-                        ->get(),
+                        ->getFirstPart('-'),
                     '2011',
                 ],
                 [
                     Str('2011')
-                        ->getFirstPart('-')
-                        ->get(),
+                        ->getFirstPart('-'),
                     '2011',
                 ],
                 [
                     Str()
-                        ->getFirstPart('-')
-                        ->get(),
+                        ->getFirstPart('-'),
                     '',
                 ],
                 [
                     Str('2011-11-01')
-                        ->getLastPart('-')
-                        ->get(),
+                        ->getLastPart('-'),
                     '01',
                 ],
                 [
                     Str('2011')
-                        ->getLastPart('-')
-                        ->get(),
+                        ->getLastPart('-'),
                     '2011',
                 ],
             ]
@@ -1463,6 +1432,18 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
                         ->get(),
                     '',
                 ],
+                [
+                    Str('-hell-llo--loo---')
+                        ->slugify()
+                        ->get(),
+                    'hell-llo-loo',
+                ],
+                [
+                    Str('-__hell-__-llo-__-loo---____')
+                        ->slugify()
+                        ->get(),
+                    'hell-llo-loo',
+                ],
             ]
         );
     }
@@ -1493,7 +1474,7 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
         $shuffledArray = $shuffled->getCharactersArray();
 
-        $this->assertEquals($shuffled->length(), mb_strlen($original, 'UTF-8'));
+        $this->assertEquals($shuffled->getLength(), mb_strlen($original, 'UTF-8'));
 
         $this->assertNotEquals($original, $shuffled->get());
 
@@ -1510,15 +1491,11 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         $this->foreachSame(
             [
                 [
-                    Str()
-                        ->footerYears($currentYear - 100)
-                        ->get(),
+                    StringHelper::getFooterYears($currentYear - 100),
                     ($currentYear - 100) . '—' . $currentYear,
                 ],
                 [
-                    Str()
-                        ->footerYears($currentYear)
-                        ->get(),
+                    StringHelper::getFooterYears($currentYear),
                     $currentYear,
                 ],
             ]
@@ -1532,6 +1509,12 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ->trimSpaces();
 
         $this->assertEquals($html, 'PHP: mb_ereg - Manual');
+
+        $html = Str(file_get_contents(packageTestFile('html.html')))
+            ->removeTags('<title>')
+            ->trimSpaces();
+
+        $this->assertEquals($html, '<title>PHP: mb_ereg - Manual</title>');
     }
 
     public function testLevenshtein()
@@ -2118,76 +2101,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
         );
     }
 
-    public function testSpanify()
-    {
-        $this->assertEquals(
-            Str('')
-                ->spanify()
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str(' ')
-                ->spanify()
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('    ')
-                ->spanify()
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('             ')
-                ->spanify()
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('one')
-                ->spanify()
-                ->get(),
-            '<span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span>'
-        );
-        $this->assertEquals(
-            Str('one    one                 ')
-                ->spanify()
-                ->get(),
-            '<span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span><span class="space"> </span><span class="word"><span class="char">o</span><span class="char">n</span><span class="char">e</span></span>'
-        );
-
-        $this->assertEquals(
-            Str('')
-                ->spanify('prefix-')
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str(' ')
-                ->spanify('prefix-')
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('    ')
-                ->spanify('prefix-')
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('             ')
-                ->spanify('prefix-')
-                ->get(), ''
-        );
-        $this->assertEquals(
-            Str('one')
-                ->spanify('prefix-')
-                ->get(),
-            '<span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span>'
-        );
-        $this->assertEquals(
-            Str('one    one                 ')
-                ->spanify('prefix-')
-                ->get(),
-            '<span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span><span class="prefix-space"> </span><span class="prefix-word"><span class="prefix-char">o</span><span class="prefix-char">n</span><span class="prefix-char">e</span></span>'
-        );
-
-    }
-
     public function testMatches()
     {
         $text = '23sd re23w 23dfrgt23 xsdf 23 23 97 7 86 sds
@@ -2293,32 +2206,6 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
             ]
         );
 
-    }
-
-    public function testNowrap()
-    {
-        $this->foreachSame(
-            [
-                [
-                    Str(' ')
-                        ->noneBreakableSpaces()
-                        ->get(),
-                    '&nbsp;',
-                ],
-                [
-                    Str('  ')
-                        ->noneBreakableSpaces()
-                        ->get(),
-                    '&nbsp;&nbsp;',
-                ],
-                [
-                    Str('')
-                        ->noneBreakableSpaces()
-                        ->get(),
-                    '',
-                ],
-            ]
-        );
     }
 
 }
