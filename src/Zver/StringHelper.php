@@ -1423,5 +1423,33 @@ namespace Zver {
             return $this->substring(-$length);
         }
 
+        public function insertAt($stringable, $startIndex)
+        {
+            if ($startIndex < 0 || $startIndex > $this->getLength()) {
+                throw new \InvalidArgumentException('Start index must be 0 or greater but less or equals length of loaded string');
+            }
+
+            $leftPart = $this->getClone()
+                             ->substring(0, $startIndex);
+
+            $rightPart = $this->getClone()
+                              ->substring($startIndex);
+
+            if ($startIndex == 0) {
+                $leftPart = '';
+                $rightPart = $this->get();
+            }
+
+            if ($startIndex == $this->getLength()) {
+                $leftPart = $this->get();
+                $rightPart = '';
+            }
+
+            return $this->set($leftPart)
+                        ->append($stringable)
+                        ->append($rightPart);
+
+        }
+
     }
 }

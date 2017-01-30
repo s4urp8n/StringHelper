@@ -2208,4 +2208,69 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
     }
 
+    public function testInsertAt()
+    {
+
+        $this->assertException(function () {
+            Str('')->insertAt('', -1);
+        }, '\InvalidArgumentException');
+
+        $this->assertException(function () {
+            Str('')->insertAt('', -2);
+        }, '\InvalidArgumentException');
+
+        $this->assertException(function () {
+            Str('')->insertAt('', -10);
+        }, '\InvalidArgumentException');
+
+        $this->assertException(function () {
+            Str('')->insertAt('', -100);
+        }, '\InvalidArgumentException');
+
+        $this->assertException(function () {
+            Str('')->insertAt('', 1);
+        }, '\InvalidArgumentException');
+
+        $this->assertException(function () {
+            Str('str')->insertAt('', 10);
+        }, '\InvalidArgumentException');
+
+        $this->foreachSame([
+                               [
+                                   Str('')
+                                       ->insertAt('', 0)
+                                       ->get(),
+                                   '',
+                               ],
+                               [
+                                   Str('s')
+                                       ->insertAt('tr', 1)
+                                       ->get(),
+                                   'str',
+                               ],
+                               [
+                                   Str('s')
+                                       ->insertAt('tr', 0)
+                                       ->get(),
+                                   'trs',
+                               ],
+                               [
+                                   Str('sting')
+                                       ->insertAt('r', 2)
+                                       ->get(),
+                                   'string',
+                               ],
+                               [
+                                   Str('')
+                                       ->insertAt('r', 0)
+                                       ->insertAt('i', 1)
+                                       ->insertAt('ng', 2)
+                                       ->insertAt('st', 0)
+                                       ->get(),
+                                   'string',
+                               ],
+                           ]);
+
+    }
+
 }
