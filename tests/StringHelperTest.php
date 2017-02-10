@@ -1,11 +1,12 @@
 <?php
 
+use Zver\Common;
 use Zver\StringHelper;
 
 class StringHelperCest extends PHPUnit\Framework\TestCase
 {
 
-    use Package\Test;
+    use \Zver\Package\Test;
 
     public function testStringLoadAndGet()
     {
@@ -1504,13 +1505,13 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
     public function testRemoveTags()
     {
-        $html = Str(file_get_contents(packageTestFile('html.html')))
+        $html = Str(file_get_contents(Common::getPackageTestFilePath('html.html')))
             ->removeTags()
             ->trimSpaces();
 
         $this->assertEquals($html, 'PHP: mb_ereg - Manual');
 
-        $html = Str(file_get_contents(packageTestFile('html.html')))
+        $html = Str(file_get_contents(Common::getPackageTestFilePath('html.html')))
             ->removeTags('<title>')
             ->trimSpaces();
 
@@ -2208,32 +2209,32 @@ class StringHelperCest extends PHPUnit\Framework\TestCase
 
     }
 
+    public function testInsertAtException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Str('')->insertAt('', -1);
+    }
+
+    public function testInsertAtException2()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Str('')->insertAt('', -10);
+    }
+
+    public function testInsertAtException3()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Str('123')->insertAt('', 4);
+    }
+
+    public function testInsertAtException4()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Str('123')->insertAt('', 5);
+    }
+
     public function testInsertAt()
     {
-
-        $this->assertException(function () {
-            Str('')->insertAt('', -1);
-        }, '\InvalidArgumentException');
-
-        $this->assertException(function () {
-            Str('')->insertAt('', -2);
-        }, '\InvalidArgumentException');
-
-        $this->assertException(function () {
-            Str('')->insertAt('', -10);
-        }, '\InvalidArgumentException');
-
-        $this->assertException(function () {
-            Str('')->insertAt('', -100);
-        }, '\InvalidArgumentException');
-
-        $this->assertException(function () {
-            Str('')->insertAt('', 1);
-        }, '\InvalidArgumentException');
-
-        $this->assertException(function () {
-            Str('str')->insertAt('', 10);
-        }, '\InvalidArgumentException');
 
         $this->foreachSame([
                                [
