@@ -3,10 +3,82 @@
 use Zver\Common;
 use Zver\StringHelper;
 
-class StringHelperCest extends PHPUnit\Framework\TestCase
+class StringHelperTest extends PHPUnit\Framework\TestCase
 {
 
     use \Zver\Package\Test;
+
+    public function testGetColumns()
+    {
+
+        $tests = [
+            "
+         
+         
+         drwxrwxr-x  3 jm72 jm72  4096      2  16:39       my Dir
+         
+         
+         -rw-rw-r--  1 jm72 jm72   257 Nov  2     16:39    my Fi l e
+         
+         
+        ",
+            "
+         jm72 jm72  4096      2
+         jm72 jm72   257
+        ",
+            "
+         jm72 jm72
+        ",
+            "
+         jm72
+        ",
+            "",
+            "
+         jm72 jm72 jm 72
+         jm72 jm72 jm72
+        ",
+        ];
+
+        $expectedResults = [
+            [
+                ['drwxrwxr-x', '-rw-rw-r--'],
+                ['3', '1'],
+                ['jm72', 'jm72'],
+                ['jm72', 'jm72'],
+                ['4096', '257'],
+                ['', 'Nov'],
+                ['2', '2'],
+                ['16:39', '16:39'],
+                ['my', 'my'],
+                ['Dir', 'Fi l'],
+                ['', 'e'],
+            ],
+            [
+                ['jm72', 'jm72'],
+                ['jm72', 'jm72'],
+                ['4096', '257'],
+                ['2', ''],
+            ],
+            [
+                ['jm72'],
+                ['jm72'],
+            ],
+            [
+                ['jm72'],
+            ],
+            [],
+            [
+                ['jm72', 'jm72'],
+                ['jm72', 'jm72'],
+                ['jm 72', 'jm72'],
+            ],
+        ];
+
+        foreach ($tests as $index => $test) {
+            $this->assertSame(Str($test)->getColumns(), $expectedResults[$index]);
+        }
+
+    }
 
     public function testStringLoadAndGet()
     {

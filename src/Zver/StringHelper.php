@@ -1451,5 +1451,112 @@ namespace Zver {
 
         }
 
+        /**
+         * Get array of columns of multi-line string output (like consoles output) using space as separator
+         *
+         * @return array
+         */
+        public function getColumns()
+        {
+            $columns = [];
+            $positions = [];
+
+            $rows = $this->getLinesArray();
+            $maxLength = 0;
+
+            /**
+             * Trim rows
+             */
+            foreach ($rows as $rowIndex => $row) {
+                $trimmed = static::load($row)
+                                 ->trimSpacesLeft()
+                                 ->trimSpacesRight();
+
+                if ($trimmed->getLength() > 0) {
+                    $rows[$rowIndex] = $trimmed;
+
+                    if ($trimmed->getLength() > $maxLength) {
+                        $maxLength = $trimmed->getLength();
+                    }
+
+                } else {
+                    unset($rows[$rowIndex]);
+                }
+            }
+
+            $rowsCount = count($rows);
+            if ($rowsCount > 0) {
+
+                foreach ($rows as $row) {
+                    foreach ($row->fillRight(' ', $maxLength)
+                                 ->getCharactersArray() as $characterPosition => $character) {
+                        if ($character == ' ') {
+                            $positions[] = $characterPosition;
+                        }
+                    }
+                }
+
+                $positions = array_count_values($positions);
+
+                /**
+                 * Unset broken positions
+                 */
+                foreach ($positions as $position => $countPositions) {
+                    if ($countPositions != $rowsCount) {
+                        unset($positions[$position]);
+                    }
+                }
+
+                $positions = array_values(array_keys($positions));
+
+                if (empty($positions)) {
+                    $positions = [0];
+                } else {
+
+                    if ($positions[0] != 0) {
+                        $positions = array_values(array_merge([0], $positions));
+                    }
+                }
+                $positions[] = $maxLength;
+
+                $positionsCount = count($positions);
+
+                /**
+                 * Collecting columns
+                 */
+                for ($i = 1; $i < $positionsCount; $i++) {
+                    $column = [];
+                    /** @var StringHelper $row */
+                    foreach ($rows as $row) {
+
+                        $currentPosition = $positions[$i];
+                        $previousPosition = $positions[$i - 1];
+                        $length = $currentPosition - $previousPosition;
+
+                        $column[] = $row->getClone()
+                                        ->substring($previousPosition, $length)
+                                        ->trimSpacesRight()
+                                        ->trimSpacesLeft()
+                                        ->get();
+                    }
+
+                    $notEmpty = false;
+                    foreach ($column as $value) {
+                        if ($value != '') {
+                            $notEmpty = true;
+                            break;
+                        }
+                    }
+
+                    if ($notEmpty) {
+                        $columns[] = $column;
+                    }
+
+                }
+            }
+
+            return $columns;
+        }
+
     }
 }
