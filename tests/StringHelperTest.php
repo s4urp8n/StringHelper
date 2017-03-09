@@ -256,6 +256,10 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
         $origin->isEndsWith('');
         $origin->isEndsWithIgnoreCase('');
         $origin->isStartsWith('');
+        $origin->isStartsWith('dr');
+        $origin->isStartsWith('dragon');
+        $origin->isContain('dr');
+        $origin->isContainIgnoreCase('dr');
         $origin->isStartsWithIgnoreCase('');
 
         $this->assertSame($origin->get(), $originText);
@@ -2343,6 +2347,40 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                                    'string',
                                ],
                            ]);
+
+    }
+
+    public function testSpecial()
+    {
+
+        $falsies = [
+            '-rwxr-xr-x   1 618      618       3971693 Jul 23  2002 adsldrv.exe',
+            '-rwxr-xr-x   1 618      618        210896 Jul 23  2002 maneng.exe',
+            '-rwxr-xr-x   1 618      618       4020623 May  8  2003 usbdrv22.exe',
+            '-rwxr-xr-x   1 618      618       3971693 Jul 23  2002 adsldrv.exe',
+            '-rwxr-xr-x   1 618      618        210896 Jul 23  2002 maneng.exe',
+            '-rwxr-xr-x   1 618      618       4020623 May  8  2003 usbdrv22.exe',
+            '09-23-15  01:04PM                 SITA RFB',
+        ];
+
+        $trues = [
+            '02-17-16  11:28AM       <DIR>          ProlineDrivers',
+            '08-19-15  02:52PM       <DIR>          CITYOFCT',
+            '09-23-15  01:04PM       <dir>          SITA RFB',
+            'drwxr-sr-x   2 618      618          4096 Nov 13  2002 manual',
+            'drwxr-sr-x   2 618      618          4096 Nov 13  2002 manual',
+        ];
+
+        foreach ($trues as $true) {
+            $this->assertTrue(Str($true)->isStartsWith('dr') || Str($true)->isContainIgnoreCase('<dir>'));
+        }
+
+        foreach ($falsies as $false) {
+            $this->assertFalse(Str($false)->isStartsWith('dr') && Str($false)->isContainIgnoreCase('<dir>'));
+            $this->assertFalse(Str($false)->isStartsWith('dr') || Str($false)->isContainIgnoreCase('<dir>'));
+            $this->assertFalse(Str($false)->isStartsWith('dr'));
+            $this->assertFalse(Str($false)->isContainIgnoreCase('<dir>'));
+        }
 
     }
 
