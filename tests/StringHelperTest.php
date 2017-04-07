@@ -6,7 +6,7 @@ use Zver\StringHelper;
 class StringHelperTest extends PHPUnit\Framework\TestCase
 {
 
-    use \Zver\Package\Test;
+    use \Zver\Package\Helper;
 
     public function testGetColumns()
     {
@@ -1581,13 +1581,13 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     public function testRemoveTags()
     {
-        $html = Str(file_get_contents(Common::getPackageTestFilePath('html.html')))
+        $html = Str(file_get_contents(static::getPackagePath('tests/files/html.html')))
             ->removeTags()
             ->trimSpaces();
 
         $this->assertEquals($html, 'PHP: mb_ereg - Manual');
 
-        $html = Str(file_get_contents(Common::getPackageTestFilePath('html.html')))
+        $html = Str(file_get_contents(static::getPackagePath('tests/files/html.html')))
             ->removeTags('<title>')
             ->trimSpaces();
 
