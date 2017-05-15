@@ -1558,5 +1558,40 @@ namespace Zver {
             return $columns;
         }
 
+        /**
+         * Wrap loaded string with argument string
+         *
+         * @param $stringable
+         * @return StringHelper
+         */
+        public function wrap($stringable)
+        {
+            return $this->append($stringable)
+                        ->prepend($stringable);
+        }
+
+        /**
+         * Unwrap loaded string
+         *
+         * @param $stringable
+         * @return StringHelper
+         */
+        public function unwrap($stringable)
+        {
+            return $this->removeBeginning($stringable)
+                        ->removeEnding($stringable);
+        }
+
+        /**
+         * Return true if loaded string is starts and ends of argument string
+         *
+         * @param $stringable
+         * @return bool
+         */
+        public function isWrappedBy($stringable)
+        {
+            return $this->isStartsWith($stringable) && $this->isEndsWith($stringable);
+        }
+
     }
 }

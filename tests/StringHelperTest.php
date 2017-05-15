@@ -1,6 +1,5 @@
 <?php
 
-use Zver\Common;
 use Zver\StringHelper;
 
 class StringHelperTest extends PHPUnit\Framework\TestCase
@@ -2381,6 +2380,115 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
             $this->assertFalse(Str($false)->isStartsWith('dr'));
             $this->assertFalse(Str($false)->isContainIgnoreCase('<dir>'));
         }
+
+    }
+
+    public function testWrap()
+    {
+        $this->foreachSame([
+                               [
+                                   StringHelper::load('str')
+                                               ->wrap('+')
+                                               ->get(),
+                                   '+str+',
+                               ],
+                               [
+                                   StringHelper::load('+str+')
+                                               ->wrap('+')
+                                               ->get(),
+                                   '++str++',
+                               ],
+                               [
+                                   StringHelper::load('+str')
+                                               ->wrap('+')
+                                               ->get(),
+                                   '++str+',
+                               ],
+                               [
+                                   StringHelper::load('str+')
+                                               ->wrap('+')
+                                               ->get(),
+                                   '+str++',
+                               ],
+                           ]);
+
+    }
+
+    public function testUnwrap()
+    {
+        $this->foreachSame([
+                               [
+                                   StringHelper::load('str')
+                                               ->unwrap('+')
+                                               ->get(),
+                                   'str',
+                               ],
+                               [
+                                   StringHelper::load('+str')
+                                               ->unwrap('+')
+                                               ->get(),
+                                   'str',
+                               ],
+                               [
+                                   StringHelper::load('str+')
+                                               ->unwrap('+')
+                                               ->get(),
+                                   'str',
+                               ],
+                               [
+                                   StringHelper::load('+str+')
+                                               ->unwrap('+')
+                                               ->get(),
+                                   'str',
+                               ],
+                               [
+                                   StringHelper::load('++str++')
+                                               ->unwrap('+')
+                                               ->get(),
+                                   '+str+',
+                               ],
+                           ]);
+
+    }
+
+    public function testIsWrapped()
+    {
+        $this->foreachTrue([
+                               StringHelper::load('-str-')
+                                           ->isWrappedBy('-'),
+
+                               StringHelper::load('str')
+                                           ->isWrappedBy(''),
+
+                               StringHelper::load('+str++')
+                                           ->isWrappedBy('+'),
+                           ]);
+
+        $this->foreachFalse([
+                                StringHelper::load('str')
+                                            ->isWrappedBy('+'),
+
+                                StringHelper::load('str')
+                                            ->isWrappedBy('s'),
+
+                                StringHelper::load('-str-')
+                                            ->isWrappedBy('+'),
+
+                                StringHelper::load('-str')
+                                            ->isWrappedBy('-'),
+
+                                StringHelper::load('+str-')
+                                            ->isWrappedBy('-'),
+
+                                StringHelper::load('+str-')
+                                            ->isWrappedBy('+'),
+
+                                StringHelper::load('str')
+                                            ->isWrappedBy('t'),
+
+                                StringHelper::load('str')
+                                            ->isWrappedBy('-'),
+                            ]);
 
     }
 
