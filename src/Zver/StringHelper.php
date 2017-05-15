@@ -1593,5 +1593,15 @@ namespace Zver {
             return $this->isStartsWith($stringable) && $this->isEndsWith($stringable);
         }
 
+        public function setLastPart($delimiter = ' ')
+        {
+            return $this->set($this->getLastPart($delimiter));
+        }
+
+        public function setFirstPart($delimiter = ' ')
+        {
+            return $this->set($this->getFirstPart($delimiter));
+        }
+
     }
 }

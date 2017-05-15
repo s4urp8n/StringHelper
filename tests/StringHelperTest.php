@@ -7,6 +7,50 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testSetFirstLastPart()
+    {
+        $test = "1_2_3_4 5 6 7 8";
+
+        $this->foreachSame([
+                               [
+                                   StringHelper::load($test)
+                                               ->setFirstPart('|')
+                                               ->get(),
+                                   $test,
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->setLastPart('|')
+                                               ->get(),
+                                   $test,
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->setLastPart()
+                                               ->get(),
+                                   '8',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->setLastPart('_')
+                                               ->get(),
+                                   '4 5 6 7 8',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->setFirstPart()
+                                               ->get(),
+                                   '1_2_3_4',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->setFirstPart('_')
+                                               ->get(),
+                                   '1',
+                               ],
+                           ]);
+    }
+
     public function testGetColumns()
     {
 
