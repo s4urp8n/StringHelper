@@ -1206,6 +1206,10 @@ namespace Zver {
         public function getParts($positions = 0, $delimiter = ' ', $glue = ' ')
         {
 
+            if (empty($delimiter)) {
+                throw  new \Exception('Empty delimiter is not allowed!');
+            }
+
             if (!is_array($positions)) {
                 $positions = [$positions];
             }
@@ -1231,6 +1235,11 @@ namespace Zver {
          */
         public function getLastPart($delimiter = ' ')
         {
+
+            if (empty($delimiter)) {
+                throw  new \Exception('Empty delimiter is not allowed!');
+            }
+
             $partsCount = count(explode($delimiter, $this->string)) - 1;
 
             return $this->getParts($partsCount, $delimiter);
@@ -1615,6 +1624,23 @@ namespace Zver {
         public function removeCharacters(array $chars)
         {
             return $this->replaceCharacters($chars, '');
+        }
+
+        public function removeLastPart($delimiter = ' ')
+        {
+            return $this->removeEnding($this->getLastPart($delimiter))
+                        ->removeEnding($delimiter);
+        }
+
+        public function removeFirstPart($delimiter = ' ')
+        {
+            return $this->removeBeginning($this->getFirstPart($delimiter))
+                        ->removeBeginning($delimiter);
+        }
+
+        public function setParts($positions = 0, $delimiter = ' ', $glue = ' ')
+        {
+            return $this->set($this->getParts($positions, $delimiter, $glue));
         }
 
     }

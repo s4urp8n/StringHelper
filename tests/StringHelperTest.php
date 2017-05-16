@@ -7,6 +7,94 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testSetParts()
+    {
+
+        $tests = [
+            [
+                '2011-11-01',
+                [1, 2, 0],
+                '-',
+                '+',
+                '11+01+2011',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+
+            $this->assertSame(StringHelper::load($test[0])
+                                          ->setParts($test[1], $test[2], $test[3])
+                                          ->get(), $test[4]);
+
+        }
+
+    }
+
+    public function testRemoveLastPart()
+    {
+        $tests = [
+            [
+                '/123/456/789/',
+                '/',
+                '/123/456/789',
+            ],
+            [
+                '/123/456/789/33',
+                '/',
+                '/123/456/789',
+            ],
+            [
+                '1/2/3',
+                '/',
+                '1/2',
+            ],
+            [
+                '1--2',
+                '-',
+                '1-',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+
+            $this->assertSame(StringHelper::load($test[0])
+                                          ->removeLastPart($test[1])
+                                          ->get(), $test[2]);
+
+        }
+
+    }
+
+    public function testRemoveFirstPart()
+    {
+        $tests = [
+            [
+                '/123/456/789/',
+                '/',
+                '123/456/789/',
+            ],
+            [
+                '1/2',
+                '/',
+                '2',
+            ],
+            [
+                '1-/-2-',
+                '-',
+                '/-2-',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+
+            $this->assertSame(StringHelper::load($test[0])
+                                          ->removeFirstPart($test[1])
+                                          ->get(), $test[2]);
+
+        }
+
+    }
+
     public function testReplaceChars()
     {
         $test = "1234!@\#$%^&/*()_+|";
@@ -1384,6 +1472,46 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 ],
             ]
         );
+    }
+
+    public function testGetPartsException()
+    {
+
+        $this->expectException(\Exception::class);
+
+        StringHelper::load('1213')
+                    ->getLastPart('');
+
+        $this->expectException(\Exception::class);
+
+        StringHelper::load('1213')
+                    ->getFirstPart('');
+
+        $this->expectException(\Exception::class);
+
+        StringHelper::load('1213')
+                    ->getParts([1], '', '-');
+
+    }
+
+    public function testGetPartsException2()
+    {
+
+        $this->expectException(\Exception::class);
+
+        StringHelper::load('1213')
+                    ->getFirstPart('');
+
+    }
+
+    public function testGetPartsException3()
+    {
+
+        $this->expectException(\Exception::class);
+
+        StringHelper::load('1213')
+                    ->getParts([1], '', '-');
+
     }
 
     public function testGetParts()
