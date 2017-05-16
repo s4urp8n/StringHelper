@@ -1603,5 +1603,19 @@ namespace Zver {
             return $this->set($this->getFirstPart($delimiter));
         }
 
+        public function replaceCharacters(array $chars, $replacement)
+        {
+            foreach ($chars as $char) {
+                $this->replace(preg_quote($char), $replacement);
+            }
+
+            return $this;
+        }
+
+        public function removeCharacters(array $chars)
+        {
+            return $this->replaceCharacters($chars, '');
+        }
+
     }
 }

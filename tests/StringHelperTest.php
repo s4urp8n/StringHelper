@@ -7,6 +7,38 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testReplaceChars()
+    {
+        $test = "1234!@\#$%^&/*()_+|";
+
+        $this->foreachSame([
+                               [
+                                   StringHelper::load($test)
+                                               ->replaceCharacters(['!', '/', '\\', '(', ')', '|', '#'], ' ')
+                                               ->get(),
+                                   '1234 @  $%^& *  _+ ',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->removeCharacters(['!', '/', '\\', '(', ')', '|', '#'])
+                                               ->get(),
+                                   '1234@$%^&*_+',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->replaceCharacters(['!', '/', '\\', '(', ')', '|', '#'], '-')
+                                               ->get(),
+                                   '1234-@--$%^&-*--_+-',
+                               ],
+                               [
+                                   StringHelper::load($test)
+                                               ->replaceCharacters(['1', '2'], '-')
+                                               ->get(),
+                                   "--34!@\#$%^&/*()_+|",
+                               ],
+                           ]);
+    }
+
     public function testSetFirstLastPart()
     {
         $test = "1_2_3_4 5 6 7 8";
