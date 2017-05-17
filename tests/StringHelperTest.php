@@ -7,6 +7,43 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testIsStartsEndsWithSome()
+    {
+
+        $test = 'File.exe';
+
+        $this->foreachTrue([
+                               StringHelper::load($test)
+                                           ->isStartsWithSome(['F', 'i']),
+                               StringHelper::load($test)
+                                           ->isStartsWithSome(['t', 'F', 'i']),
+                               StringHelper::load($test)
+                                           ->isStartsWithSomeIgnoreCase(['f', 'i']),
+                               StringHelper::load($test)
+                                           ->isStartsWithSomeIgnoreCase(['t', 'F', 'i']),
+                               StringHelper::load($test)
+                                           ->isStartsWithSomeIgnoreCase(['t', 'f', 'i']),
+                               StringHelper::load($test)
+                                           ->isEndsWithSome(['t', 'f', 'i', 'e']),
+                               StringHelper::load($test)
+                                           ->isEndsWithSomeIgnoreCase(['t', 'f', 'i', 'E']),
+                               StringHelper::load($test)
+                                           ->isEndsWithSomeIgnoreCase(['t', 'f', 'i', 'e']),
+                           ]);
+
+        $this->foreachFalse([
+                                StringHelper::load($test)
+                                            ->isStartsWithSome(['f', 'i', 'l', 'e']),
+                                StringHelper::load($test)
+                                            ->isStartsWithSomeIgnoreCase(['x', 'i', 'l', 'e']),
+                                StringHelper::load($test)
+                                            ->isEndsWithSome(['t', 'f', 'i']),
+                                StringHelper::load($test)
+                                            ->isEndsWithSomeIgnoreCase(['t', 'f', 'I']),
+                            ]);
+
+    }
+
     public function testSetParts()
     {
 

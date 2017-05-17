@@ -1643,5 +1643,61 @@ namespace Zver {
             return $this->set($this->getParts($positions, $delimiter, $glue));
         }
 
+        public function isEndsWithSome(array $endings)
+        {
+            $ends = false;
+
+            foreach ($endings as $ending) {
+                if ($this->isEndsWith($ending)) {
+                    $ends = true;
+                    break;
+                }
+            }
+
+            return $ends;
+        }
+
+        public function isStartsWithSome(array $starts)
+        {
+            $started = false;
+
+            foreach ($starts as $start) {
+                if ($this->isStartsWith($start)) {
+                    $started = true;
+                    break;
+                }
+            }
+
+            return $started;
+        }
+
+        public function isEndsWithSomeIgnoreCase(array $endings)
+        {
+            $ends = false;
+
+            foreach ($endings as $ending) {
+                if ($this->isEndsWithIgnoreCase($ending)) {
+                    $ends = true;
+                    break;
+                }
+            }
+
+            return $ends;
+        }
+
+        public function isStartsWithSomeIgnoreCase(array $starts)
+        {
+            $started = false;
+
+            foreach ($starts as $start) {
+                if ($this->isStartsWithIgnoreCase($start)) {
+                    $started = true;
+                    break;
+                }
+            }
+
+            return $started;
+        }
+
     }
 }
