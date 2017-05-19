@@ -7,6 +7,122 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testMatches2()
+    {
+        $test = "      [STRING_DLL] => Array
+                (
+                    [0] => hpzst5in.DLL,hpzst5in.DLL,,0x00000020
+                    [1] => hpz3c5in.dll,hpz3c5in.dll,,0x00000020
+                    [2] => hpzur5in.dll,hpzur5in.dll,,0x00000020
+                )
+
+            [DATA_FILES] => Array
+                (
+                    [0] => hplj4600.CFG,hplj4600.CF_,,0x00000020
+                    [1] => hpc4600s.XML,hpc4600s.XML,,0x00000020
+                    [2] => hpzsc5in.DTD,hpzsc5in.DTD,,0x00000020
+                    [3] => hpc4600s.PPD,hpc4600s.PPD,,0x00000020
+                    [4] => hpc4600d.INI,hpc4600d.INI,,0x00000020
+                    [5] => hpzfn5in.NTF,hpzfn5in.NTF,,0x00000020
+                )
+
+            [MANUAL_DUPLEX] => Array
+                (
+                    [0] => hpzev5in.DLL,hpzev5in.DLL,,0x00000020
+                )
+
+            [SERVICES] => Array
+                (
+                    [0] => hpzls5in.DLL,hpzls5in.DLL,,0x00000020
+                    [1] => hpzss5in.DLL,hpzss5in.DLL,,0x00000020
+                )
+
+            [HELP] => Array
+                (
+                    [0] => HPZHL5in.CAB,HPZHL5in.CAB,,0x00000020
+                )
+
+            [PNPDLL] => Array
+                (
+                    [0] => hpzpnp.dll,hpzpnp.dll,,0x00000020
+                )
+
+            [PNPDLL_SYSCOPY] => Array
+                (
+                    [0] => hpzpnp.dll,hpzpnp.dll,,0x00000020
+                )";
+
+        $this->assertSame(StringHelper::load($test)
+                                      ->getMatches('\b\w+\.\w{3}\b'),
+                          [
+                              'hpzst5in.DLL',
+                              'hpzst5in.DLL',
+                              'hpz3c5in.dll',
+                              'hpz3c5in.dll',
+                              'hpzur5in.dll',
+                              'hpzur5in.dll',
+                              'hplj4600.CFG',
+                              'hplj4600.CF_',
+                              'hpc4600s.XML',
+                              'hpc4600s.XML',
+                              'hpzsc5in.DTD',
+                              'hpzsc5in.DTD',
+                              'hpc4600s.PPD',
+                              'hpc4600s.PPD',
+                              'hpc4600d.INI',
+                              'hpc4600d.INI',
+                              'hpzfn5in.NTF',
+                              'hpzfn5in.NTF',
+                              'hpzev5in.DLL',
+                              'hpzev5in.DLL',
+                              'hpzls5in.DLL',
+                              'hpzls5in.DLL',
+                              'hpzss5in.DLL',
+                              'hpzss5in.DLL',
+                              'HPZHL5in.CAB',
+                              'HPZHL5in.CAB',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                          ]
+
+        );
+
+        $this->assertSame(StringHelper::load($test)
+                                      ->getMatches('\b\w+\.(d|D)(l|L)(l|L)\b'),
+                          [
+                              'hpzst5in.DLL',
+                              'hpzst5in.DLL',
+                              'hpz3c5in.dll',
+                              'hpz3c5in.dll',
+                              'hpzur5in.dll',
+                              'hpzur5in.dll',
+                              'hpzev5in.DLL',
+                              'hpzev5in.DLL',
+                              'hpzls5in.DLL',
+                              'hpzls5in.DLL',
+                              'hpzss5in.DLL',
+                              'hpzss5in.DLL',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                              'hpzpnp.dll',
+                          ]
+
+        );
+
+        $this->assertSame(StringHelper::load($test)
+                                      ->getMatches('\b\w+\.(x|X)(m|M)(l|L)\b'),
+                          [
+                              'hpc4600s.XML',
+                              'hpc4600s.XML',
+                          ]
+
+        );
+
+    }
+
     public function testIsStartsEndsWithSome()
     {
 

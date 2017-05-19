@@ -982,7 +982,7 @@ namespace Zver {
          *
          * @return array Array of matches
          */
-        public function getMatches($regexp)
+        public function getMatches($regexp, $options = 'mr')
         {
 
             $result = [];
@@ -991,7 +991,8 @@ namespace Zver {
 
             if (!empty($currentString) && !empty($regexp)) {
 
-                mb_ereg_search_init($this->get(), $regexp);
+                mb_ereg_search_init($this->get(), $regexp, $options);
+
                 if (mb_ereg_search()) {
                     $matches = [mb_ereg_search_getregs()];
                     do {
