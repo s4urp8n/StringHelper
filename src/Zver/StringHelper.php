@@ -975,6 +975,33 @@ namespace Zver {
             return $this->set(mb_ereg_replace($regexp, $replacement, $this->get(), $options));
         }
 
+        public static function getCaseInsensitiveRegexpString($string)
+        {
+            $result = '';
+            foreach (static::load($string)
+                           ->getCharactersArray() as $character) {
+
+                $helper = StringHelper::load($character);
+
+                $upper = $helper->getClone()
+                                ->toUpperCase()
+                                ->get();
+
+                $lower = $helper->getClone()
+                                ->toLowerCase()
+                                ->get();
+
+                if ($lower !== $upper) {
+                    $result .= '(' . $upper . '|' . $lower . ')';
+                } else {
+                    $result .= $character;
+                }
+
+            }
+
+            return $result;
+        }
+
         /**
          * Return array of matches by regular expression found in loaded string
          *

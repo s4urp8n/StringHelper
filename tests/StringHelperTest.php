@@ -7,6 +7,32 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testGetCaseInsensitiveRegexpString()
+    {
+        $tests = [
+            [
+                'cat',
+                '(C|c)(A|a)(T|t)',
+            ],
+            [
+                ' cat - file ',
+                ' (C|c)(A|a)(T|t) - (F|f)(I|i)(L|l)(E|e) ',
+            ],
+            [
+                't',
+                '(T|t)',
+            ],
+            [
+                '',
+                '',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+            $this->assertSame(StringHelper::getCaseInsensitiveRegexpString($test[0]), $test[1]);
+        }
+    }
+
     public function testMatches2()
     {
         $test = "      [STRING_DLL] => Array
