@@ -213,6 +213,11 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
     {
         $tests = [
             [
+                '123456789',
+                '/',
+                '123456789',
+            ],
+            [
                 '/123/456/789/',
                 '/',
                 '/123/456/789',
@@ -251,6 +256,11 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 '/123/456/789/',
                 '/',
                 '123/456/789/',
+            ],
+            [
+                '123456789',
+                '/',
+                '123456789',
             ],
             [
                 '1/2',

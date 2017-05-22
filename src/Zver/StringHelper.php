@@ -1656,14 +1656,22 @@ namespace Zver {
 
         public function removeLastPart($delimiter = ' ')
         {
-            return $this->removeEnding($this->getLastPart($delimiter))
-                        ->removeEnding($delimiter);
+            if ($this->isContainIgnoreCase($delimiter)) {
+                return $this->removeEnding($this->getLastPart($delimiter))
+                            ->removeEnding($delimiter);
+            }
+
+            return $this;
         }
 
         public function removeFirstPart($delimiter = ' ')
         {
-            return $this->removeBeginning($this->getFirstPart($delimiter))
-                        ->removeBeginning($delimiter);
+            if ($this->isContainIgnoreCase($delimiter)) {
+                return $this->removeBeginning($this->getFirstPart($delimiter))
+                            ->removeBeginning($delimiter);
+            }
+
+            return $this;
         }
 
         public function setParts($positions = 0, $delimiter = ' ', $glue = ' ')
