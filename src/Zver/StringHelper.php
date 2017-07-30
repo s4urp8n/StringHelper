@@ -1061,6 +1061,11 @@ namespace Zver {
          */
         public function getPositionIgnoreCase($stringable, $offset = 0)
         {
+
+            if (empty($stringable) || empty($this->get())) {
+                return false;
+            }
+
             return mb_stripos(
                 $this->get(), static::load($stringable)
                                     ->get(), $offset, Common::getDefaultEncoding()
@@ -1077,6 +1082,11 @@ namespace Zver {
          */
         public function getPosition($stringable, $offset = 0)
         {
+
+            if (empty($stringable) || empty($this->get())) {
+                return false;
+            }
+
             return mb_strpos($this->get(), $stringable, $offset, Common::getDefaultEncoding());
         }
 
@@ -1090,6 +1100,11 @@ namespace Zver {
          */
         public function getPositionFromEnd($stringable, $offset = 0)
         {
+
+            if (empty($stringable) || empty($this->get())) {
+                return false;
+            }
+
             return mb_strrpos(
                 $this->get(), static::load($stringable)
                                     ->get(), $offset, Common::getDefaultEncoding()
@@ -1106,6 +1121,10 @@ namespace Zver {
          */
         public function getPositionFromEndIgnoreCase($stringable, $offset = 0)
         {
+            if (empty($stringable) || empty($this->get())) {
+                return false;
+            }
+
             return mb_strripos(
                 $this->get(), static::load($stringable)
                                     ->get(), $offset, Common::getDefaultEncoding()
@@ -1119,6 +1138,10 @@ namespace Zver {
          */
         public function isContain($stringable)
         {
+            if (empty($stringable)) {
+                return true;
+            }
+
             return ($this->getPosition($stringable) !== false);
         }
 
@@ -1129,6 +1152,11 @@ namespace Zver {
          */
         public function isContainIgnoreCase($stringable)
         {
+
+            if (empty($stringable)) {
+                return true;
+            }
+
             return ($this->getPositionIgnoreCase($stringable) !== false);
         }
 

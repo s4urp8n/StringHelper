@@ -1471,6 +1471,8 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 Str('hello')->isContain('o'),
                 Str('hello')->isContain('h'),
                 Str('hello')->isContainIgnoreCase('L'),
+                Str('hello')->isContain(''),
+                Str('hello')->isContainIgnoreCase(''),
             ]
         );
 
@@ -1490,9 +1492,13 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
         $this->foreachFalse(
             [
                 Str('')->getPosition('l'),
+                Str('')->getPosition(''),
                 Str('')->getPositionFromEnd('l'),
+                Str('')->getPositionFromEnd(''),
                 Str('')->getPositionIgnoreCase('l'),
+                Str('')->getPositionIgnoreCase(''),
                 Str('')->getPositionFromEndIgnoreCase('l'),
+                Str('')->getPositionFromEndIgnoreCase(''),
             ]
         );
 

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cd7aaa98827d6752c2b75af533023b0",
+    "content-hash": "9c7c3d60f0e6e713b7f56cab7c038bf2",
     "packages": [
         {
             "name": "zver/common",
-            "version": "3.0.1",
+            "version": "3.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/s4urp8n/common.git",
-                "reference": "0303661def5f072d79f51f28183bd2ab8b55995f"
+                "reference": "63df2ec6b70f86487ecb0104f765607072b7a210"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/s4urp8n/common/zipball/0303661def5f072d79f51f28183bd2ab8b55995f",
-                "reference": "0303661def5f072d79f51f28183bd2ab8b55995f",
+                "url": "https://api.github.com/repos/s4urp8n/common/zipball/63df2ec6b70f86487ecb0104f765607072b7a210",
+                "reference": "63df2ec6b70f86487ecb0104f765607072b7a210",
                 "shasum": ""
             },
             "type": "library",
@@ -31,7 +31,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "common class of ZVER",
-            "time": "2017-04-07T21:36:02+00:00"
+            "time": "2017-07-21T11:44:44+00:00"
         }
     ],
     "packages-dev": [],
