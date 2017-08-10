@@ -1481,6 +1481,7 @@ namespace Zver {
          * Get length characters from end of loaded string
          *
          * @param $length
+         *
          * @return StringHelper
          */
         public function substringFromEnd($length)
@@ -1627,6 +1628,7 @@ namespace Zver {
          * Wrap loaded string with argument string
          *
          * @param $stringable
+         *
          * @return StringHelper
          */
         public function wrap($stringable)
@@ -1639,6 +1641,7 @@ namespace Zver {
          * Unwrap loaded string
          *
          * @param $stringable
+         *
          * @return StringHelper
          */
         public function unwrap($stringable)
@@ -1651,6 +1654,7 @@ namespace Zver {
          * Return true if loaded string is starts and ends of argument string
          *
          * @param $stringable
+         *
          * @return bool
          */
         public function isWrappedBy($stringable)
@@ -1761,6 +1765,35 @@ namespace Zver {
             }
 
             return $started;
+        }
+
+        public function removeFirstChars($length = 0)
+        {
+
+            if ($length < 0) {
+                return $this->removeLastChars(-$length);
+            }
+
+            if ($length >= $this->getLength()) {
+                return $this->set('');
+            }
+
+            return $this->set($this->substring($length));
+
+        }
+
+        public function removeLastChars($length = 0)
+        {
+
+            if ($length < 0) {
+                return $this->removeFirstChars(-$length);
+            }
+
+            if ($length >= $this->getLength()) {
+                return $this->set('');
+            }
+
+            return $this->set($this->substring(0, $this->getLength() - $length));
         }
 
     }

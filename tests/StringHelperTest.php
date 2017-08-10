@@ -7,6 +7,101 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testRemoveFirstLastChars()
+    {
+
+        $tests = [
+            [
+                'cat',
+                'last',
+                0,
+                'cat',
+            ],
+            [
+                'cat',
+                'last',
+                -1,
+                'at',
+            ],
+            [
+                'cat',
+                'last',
+                1,
+                'ca',
+            ],
+            [
+                'cat',
+                'last',
+                2,
+                'c',
+            ],
+            [
+                'cat',
+                'last',
+                3,
+                '',
+            ],
+            [
+                'cat',
+                'last',
+                33,
+                '',
+            ],
+            [
+                'cat',
+                'first',
+                0,
+                'cat',
+            ],
+            [
+                'cat',
+                'first',
+                -1,
+                'ca',
+            ],
+            [
+                'cat',
+                'first',
+                1,
+                'at',
+            ],
+            [
+                'cat',
+                'first',
+                2,
+                't',
+            ],
+            [
+                'cat',
+                'first',
+                3,
+                '',
+            ],
+            [
+                'cat',
+                'first',
+                33,
+                '',
+            ],
+
+        ];
+
+        foreach ($tests as $test) {
+
+            $result = StringHelper::load($test[0]);
+
+            if ($test[1] == 'last') {
+                $result->removeLastChars($test[2]);
+            } else {
+                $result->removeFirstChars($test[2]);
+            }
+
+            $this->assertSame($result->get(), $test[3]);
+
+        }
+
+    }
+
     public function testGetCaseInsensitiveRegexpString()
     {
         $tests = [
