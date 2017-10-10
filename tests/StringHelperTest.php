@@ -7,6 +7,58 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testPregMatchGetMatches()
+    {
+        $text = ' this is my phone number: 7 911 111 99 88 7711 22';
+        $matches = [
+            [
+                '7',
+                '911',
+                '111',
+                '99',
+                '88',
+                '7711',
+                '22',
+            ],
+        ];
+
+        $this->assertSame(Str($text)->getPregMatches('#\b\d+\b#i'), $matches);
+    }
+
+    public function testPregMatchAndSome()
+    {
+        $this->foreachTrue([
+                               StringHelper::load('123')
+                                           ->isPregMatch('#^\d+$#'),
+                               StringHelper::load('123')
+                                           ->isPregMatch('#\d+#'),
+                               StringHelper::load('hello')
+                                           ->isPregMatch('#\w+#'),
+                               StringHelper::load('7918-123-1434')
+                                           ->isPregMatch('#\d+#'),
+                               StringHelper::load('hello')
+                                           ->isPregMatchSome([
+                                                                 '#123#',
+                                                                 '#hhh#',
+                                                                 '#^h#',
+                                                             ]),
+                           ]);
+
+        $this->foreachFalse([
+                                StringHelper::load('123')
+                                            ->isPregMatch('#^\d{2}$#'),
+                                StringHelper::load('123')
+                                            ->isPregMatch('#^\d$#'),
+                                StringHelper::load('hello')
+                                            ->isPregMatchSome([
+                                                                  '#123#',
+                                                                  '#hhh#',
+                                                                  '#^fh#',
+                                                              ]),
+                            ]);
+
+    }
+
     public function testRemoveFirstLastChars()
     {
 
@@ -1015,12 +1067,14 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('\w+\s'),
                 Str('стринг2' . PHP_EOL . 'CNhbyu22')->isMatch('[A-Z]+'),
                 Str('стринг')->isMatch('^\w+$'),
+                Str('стринг')->isMatchSome(['^\w+$']),
             ]
         );
 
         $this->foreachFalse(
             [
                 Str('')->isMatch('/d+'),
+                Str('')->isMatchSome(['/d+']),
                 Str(' 3521')->isMatch('^\d+$'),
                 Str('')->isMatch('\d'),
                 Str('2' . PHP_EOL . 'CN22')->isMatch('[a-z]+'),
@@ -1553,6 +1607,7 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
         $this->foreachTrue(
             [
                 Str('hello')->isContain('l'),
+                Str('hello')->isContainSome(['l', 'hell']),
                 Str('hello')->isContain('hello'),
                 Str('привет')->isContain('привет'),
                 Str('привет')->isContain('приве'),
@@ -1568,6 +1623,7 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 Str('hello')->isContainIgnoreCase('L'),
                 Str('hello')->isContain(''),
                 Str('hello')->isContainIgnoreCase(''),
+                Str('hello')->isContainSomeIgnoreCase(['z', 'f', 'g', 'l']),
             ]
         );
 
@@ -1575,9 +1631,11 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
             [
                 Str('привет')->isContain('ф'),
                 Str('привет')->isContain('ра'),
+                Str('привет')->isContainSome(['ра']),
                 Str('hello')->isContain('L'),
                 Str('hello')->isContain('Ll'),
                 Str('hello')->isContainIgnoreCase('z'),
+                Str('hello')->isContainSomeIgnoreCase(['z', 'f']),
             ]
         );
     }
@@ -1653,6 +1711,12 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
     {
         $this->foreachSame(
             [
+                [
+                    Str('12345qwe2 4 r 5 t4 6y75 46 35 ')
+                        ->replace('\s+|\d+', '')
+                        ->get(),
+                    'qwerty',
+                ],
                 [
                     Str('12345qwe2 4 r 5 t4 6y75 46 35 ')
                         ->replace('\s+|\d+', '')

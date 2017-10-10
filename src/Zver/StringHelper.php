@@ -1051,6 +1051,43 @@ namespace Zver {
             return (mb_ereg($regexp, $this->get()) !== false);
         }
 
+        public function isMatchSome(array $regexps)
+        {
+            foreach ($regexps as $regexp) {
+                if ($this->isMatch($regexp)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public function isPregMatch($regexp)
+        {
+            return preg_match($regexp, $this->get()) == 1;
+        }
+
+        public function isPregMatchSome(array $regexps)
+        {
+            foreach ($regexps as $regexp) {
+                if ($this->isPregMatch($regexp)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public function getPregMatches($regexp)
+        {
+
+            $matches = null;
+
+            preg_match_all($regexp, $this->get(), $matches);
+
+            return $matches;
+        }
+
         /**
          * Return position of first occurrence $string in loaded string. If $string not found return FALSE
          *
@@ -1145,6 +1182,17 @@ namespace Zver {
             return ($this->getPosition($stringable) !== false);
         }
 
+        public function isContainSome(array $strings)
+        {
+            foreach ($strings as $string) {
+                if ($this->isContain($string)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         /**
          * Return TRUE if arguments contains in loaded string. Ignore case
          *
@@ -1158,6 +1206,17 @@ namespace Zver {
             }
 
             return ($this->getPositionIgnoreCase($stringable) !== false);
+        }
+
+        public function isContainSomeIgnoreCase(array $strings)
+        {
+            foreach ($strings as $string) {
+                if ($this->isContainIgnoreCase($string)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /**
