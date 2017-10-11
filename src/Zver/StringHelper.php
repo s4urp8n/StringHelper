@@ -1193,6 +1193,28 @@ namespace Zver {
             return false;
         }
 
+        public function isContainAll(array $strings)
+        {
+            foreach ($strings as $string) {
+                if (!$this->isContain($string)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public function isContainAllIgnoreCase(array $strings)
+        {
+            foreach ($strings as $string) {
+                if (!$this->isContainIgnoreCase($string)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         /**
          * Return TRUE if arguments contains in loaded string. Ignore case
          *

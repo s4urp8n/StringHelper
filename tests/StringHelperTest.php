@@ -1624,11 +1624,16 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 Str('hello')->isContain(''),
                 Str('hello')->isContainIgnoreCase(''),
                 Str('hello')->isContainSomeIgnoreCase(['z', 'f', 'g', 'l']),
+                Str('hello')->isContainAllIgnoreCase(['L', 'O', 'e']),
+                Str('hello')->isContainAll(['h', 'e', 'l']),
             ]
         );
 
         $this->foreachFalse(
             [
+                Str('hello')->isContainAll(['H', 'E', 'L']),
+                Str('hello')->isContainAllIgnoreCase(['z', 'f', 'g', 'L']),
+                Str('hello')->isContainAllIgnoreCase(['z', 'f', 'g', 'l']),
                 Str('привет')->isContain('ф'),
                 Str('привет')->isContain('ра'),
                 Str('привет')->isContainSome(['ра']),
