@@ -7,6 +7,36 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testSetFirstLastChars()
+    {
+
+        $str = 'this is my string';
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->get(), $str);
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->setFirstChars(4)
+                                      ->get(), 'this');
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->setFirstChars(2)
+                                      ->get(), 'th');
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->setFirstChars(-2)
+                                      ->get(), 'ng');
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->setLastChars(2)
+                                      ->get(), 'ng');
+
+        $this->assertSame(StringHelper::load($str)
+                                      ->setLastChars(200)
+                                      ->get(), $str);
+
+    }
+
     public function testPregMatchGetMatches()
     {
         $text = ' this is my phone number: 7 911 111 99 88 7711 22';
@@ -41,6 +71,19 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                                                                  '#123#',
                                                                  '#hhh#',
                                                                  '#^h#',
+                                                             ]),
+                               StringHelper::load('hello')
+                                           ->isPregMatchSome([
+                                                                 '#123#i',
+                                                                 '#123#i',
+                                                                 '#123#i',
+                                                                 '#123#i',
+                                                                 '#123#i',
+                                                                 '#hhh#i',
+                                                                 '#hhh#i',
+                                                                 '#hhh#i',
+                                                                 '#hhh#i',
+                                                                 '#^\w+$#i',
                                                              ]),
                            ]);
 

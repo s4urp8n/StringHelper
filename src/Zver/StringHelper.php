@@ -1753,6 +1753,16 @@ namespace Zver {
             return $this->set($this->getFirstPart($delimiter));
         }
 
+        public function setFirstChars($length)
+        {
+            return $this->set($this->getFirstChars($length));
+        }
+
+        public function setLastChars($length)
+        {
+            return $this->set($this->getLastChars($length));
+        }
+
         public function replaceCharacters(array $chars, $replacement)
         {
             foreach ($chars as $char) {
