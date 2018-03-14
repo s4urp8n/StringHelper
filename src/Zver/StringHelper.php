@@ -437,7 +437,7 @@ namespace Zver {
          */
         public function fromPunyCode()
         {
-            return $this->set(idn_to_utf8($this->get()));
+            return $this->set(idn_to_utf8($this->get(), 0, INTL_IDNA_VARIANT_UTS46));
         }
 
         /**
@@ -448,7 +448,7 @@ namespace Zver {
         public function toPunyCode()
         {
             return $this->toLowerCase()
-                        ->set(\idn_to_ascii($this->get()));
+                        ->set(\idn_to_ascii($this->get(), 0, INTL_IDNA_VARIANT_UTS46));
         }
 
         /**
