@@ -661,8 +661,7 @@ namespace Zver {
                 }
 
                 return true;
-            }
-            catch (\Exception $e) {
+            } catch (\Exception $e) {
                 $isSerialized = false;
             }
 
@@ -1261,8 +1260,14 @@ namespace Zver {
             $commaSign = ', ',
             $periodSign = ' - ',
             $from = ' / '
-        ) {
+        )
+        {
             $info = '';
+
+            if ($itemsPerPage > $totalItems) {
+                $itemsPerPage = $totalItems;
+                $offset = 0;
+            }
 
             $commaCheck = function ($a, $b) use ($commaSign, $periodSign) {
                 if ($a == $b) {

@@ -2319,6 +2319,10 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
     {
         $this->foreachSame(
             [
+                [StringHelper::getScrollPaginationInfo(8, 15, 0), '1 - 8 / 8'],
+                [StringHelper::getScrollPaginationInfo(8, 15, 10), '1 - 8 / 8'],
+                [StringHelper::getScrollPaginationInfo(8, 15, 20), '1 - 8 / 8'],
+                [StringHelper::getScrollPaginationInfo(8, 15, 2), '1 - 8 / 8'],
                 [StringHelper::getScrollPaginationInfo(10, 1, 0), '1 / 10'],
                 [StringHelper::getScrollPaginationInfo(10, 1, 1), '2 / 10'],
                 [StringHelper::getScrollPaginationInfo(10, 1, 2), '3 / 10'],
