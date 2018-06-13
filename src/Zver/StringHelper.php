@@ -7,6 +7,49 @@ namespace Zver {
 
         protected $string = '';
 
+        public function replaceFirstPart($replacer, $delimiter = ' ')
+        {
+
+            if ($this->isStartsWith($delimiter)) {
+                return $this->prepend($replacer);
+            }
+
+            $original = $this->get();
+            $parted = $this->getClone()
+                           ->removeFirstPart($delimiter)
+                           ->get();
+
+            //have part
+            if ($original != $parted) {
+                return $this->set($parted)
+                            ->prepend($delimiter)
+                            ->prepend($replacer);
+            }
+
+            return $this;
+        }
+
+        public function replaceLastPart($replacer, $delimiter = ' ')
+        {
+
+            if ($this->isEndsWith($delimiter)) {
+                return $this->append($replacer);
+            }
+
+            $original = $this->get();
+            $parted = $this->getClone()
+                           ->removeLastPart($delimiter)
+                           ->get();
+
+            if ($original != $parted) {
+                return $this->set($parted)
+                            ->append($delimiter)
+                            ->append($replacer);
+            }
+
+            return $this;
+        }
+
         /**
          * Set beginning of loaded string if it not exist
          *

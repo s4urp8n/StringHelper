@@ -7,6 +7,86 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testReplaceLastPart()
+    {
+        $tests = [
+            [
+                'input'     => 's4.exe',
+                'delimiter' => '.',
+                'replacer'  => 's4',
+                'output'    => 's4.s4',
+            ],
+            [
+                'input'     => 's4.exe.',
+                'delimiter' => '.',
+                'replacer'  => 's4',
+                'output'    => 's4.exe.s4',
+            ],
+            [
+                'input'     => 's4.exe.',
+                'delimiter' => ' ',
+                'replacer'  => 's4',
+                'output'    => 's4.exe.',
+            ],
+            [
+                'input'     => 's4.exe.',
+                'delimiter' => '',
+                'replacer'  => 's4',
+                'output'    => 's4.exe.s4',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+            $this->assertSame(StringHelper::load($test['input'])
+                                          ->replaceLastPart($test['replacer'], $test['delimiter'])
+                                          ->get(),
+                              $test['output']);
+        }
+    }
+
+    public function testReplaceFirstPart()
+    {
+        $tests = [
+            [
+                'input'     => 's4.exe',
+                'delimiter' => '.',
+                'replacer'  => 's5',
+                'output'    => 's5.exe',
+            ],
+            [
+                'input'     => 's4.exe',
+                'delimiter' => ' ',
+                'replacer'  => 's5',
+                'output'    => 's4.exe',
+            ],
+            [
+                'input'     => 's4.exe',
+                'delimiter' => 'e',
+                'replacer'  => 's5',
+                'output'    => 's5exe',
+            ],
+            [
+                'input'     => 's4.exe.e.r.t.y.w',
+                'delimiter' => '.',
+                'replacer'  => '5',
+                'output'    => '5.exe.e.r.t.y.w',
+            ],
+            [
+                'input'     => 's4.exe.',
+                'delimiter' => '',
+                'replacer'  => 's4',
+                'output'    => 's4s4.exe.',
+            ],
+        ];
+
+        foreach ($tests as $test) {
+            $this->assertSame(StringHelper::load($test['input'])
+                                          ->replaceFirstPart($test['replacer'], $test['delimiter'])
+                                          ->get(),
+                              $test['output']);
+        }
+    }
+
     public function testSetFirstLastChars()
     {
 
