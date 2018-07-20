@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "zver/common",
-            "version": "3.0.40",
+            "version": "3.0.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/s4urp8n/common.git",
-                "reference": "198721efbbc0540a662e62b71304b40aee5cc650"
+                "reference": "9f700950963b1f0fae0803c62842a617012075b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/s4urp8n/common/zipball/198721efbbc0540a662e62b71304b40aee5cc650",
-                "reference": "198721efbbc0540a662e62b71304b40aee5cc650",
+                "url": "https://api.github.com/repos/s4urp8n/common/zipball/9f700950963b1f0fae0803c62842a617012075b2",
+                "reference": "9f700950963b1f0fae0803c62842a617012075b2",
                 "shasum": ""
             },
             "type": "library",
@@ -31,7 +31,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "common class of ZVER",
-            "time": "2018-03-14T12:02:07+00:00"
+            "time": "2018-07-10T12:45:49+00:00"
         }
     ],
     "packages-dev": [],

@@ -7,6 +7,26 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
 
     use \Zver\Package\Helper;
 
+    public function testIncrement()
+    {
+        $tests = [
+            'inc100_200' => 'inc100_201',
+            'inc'        => 'inc1',
+            'inc100'     => 'inc101',
+            'inc_100'    => 'inc_101',
+            'inc0'       => 'inc1',
+            'inc01'      => 'inc2',
+            '01'         => '2',
+            '1'          => '2',
+        ];
+
+        foreach ($tests as $input => $output) {
+            $this->assertSame(StringHelper::load($input)
+                                          ->increment()
+                                          ->get(), $output);
+        }
+    }
+
     public function testReplaceLastPart()
     {
         $tests = [

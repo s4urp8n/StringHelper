@@ -7,6 +7,19 @@ namespace Zver {
 
         protected $string = '';
 
+        public function increment()
+        {
+            $number = 0;
+
+            if ($this->isMatch('\d+$')) {
+                $number = $this->getMatches('\d+$')[0];
+                $this->remove('\d+$');
+            }
+
+            return $this->append(++$number);
+
+        }
+
         public function replaceFirstPart($replacer, $delimiter = ' ')
         {
 
