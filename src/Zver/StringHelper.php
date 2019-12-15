@@ -901,7 +901,7 @@ namespace Zver {
         {
             $fillLen = $length - $this->getLength();
 
-            if ($fillLen > 0 && !empty($filler)) {
+            if ($fillLen > 0 && (!empty($filler) || $filler === '0')) {
                 return $this->set(
                     static::load($filler)
                           ->repeat($fillLen)
@@ -926,7 +926,7 @@ namespace Zver {
         {
             $fillLen = $length - $this->getLength();
 
-            if ($fillLen > 0 && !empty($filler)) {
+            if ($fillLen > 0 &&  (!empty($filler) || $filler === '0')) {
                 return $this->set(
                     static::load($filler)
                           ->repeat($fillLen)

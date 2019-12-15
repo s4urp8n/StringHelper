@@ -2,7 +2,7 @@
 
 use Zver\StringHelper;
 
-class StringHelperTest extends PHPUnit\Framework\TestCase
+class StringHelperTest extends PHPUnit_Framework_TestCase
 {
 
     use \Zver\Package\Helper;
@@ -1700,6 +1700,12 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                 ],
                 [
                     Str('а')
+                        ->fillLeft('0', 2)
+                        ->get(),
+                    '0а',
+                ],
+                [
+                    Str('а')
                         ->fillLeft('п23', 5)
                         ->get(),
                     'п23па',
@@ -1740,6 +1746,13 @@ class StringHelperTest extends PHPUnit\Framework\TestCase
                         ->get(),
                     'а',
                 ],
+                [
+                    Str('а')
+                        ->fillRight('0', 2)
+                        ->get(),
+                    'а0',
+                ],
+
             ]
         );
     }
