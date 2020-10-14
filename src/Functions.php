@@ -1,7 +1,6 @@
 <?php
 
-if (!function_exists('Str'))
-{
+if (!function_exists('Str')) {
     /**
      * Shortcut to get string helper instance
      *
