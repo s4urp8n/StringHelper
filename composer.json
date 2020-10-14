@@ -20,11 +20,11 @@
   },
   "require": {
     "zver/common": "^3.0",
-    "phpunit/phpunit": "^8.5",
     "ext-mbstring": "*",
     "ext-json": "*",
     "ext-intl": "*"
   },
   "require-dev": {
+    "phpunit/phpunit": "^8.5"
   }
 }

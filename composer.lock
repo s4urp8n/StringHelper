@@ -4,8 +4,37 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3aa3cf09b983d7099c67bb1cf9ea8cc",
+    "content-hash": "b938bb87f77bc99b2672ac975be607a6",
     "packages": [
+        {
+            "name": "zver/common",
+            "version": "3.0.41",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/s4urp8n/common.git",
+                "reference": "9f700950963b1f0fae0803c62842a617012075b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/s4urp8n/common/zipball/9f700950963b1f0fae0803c62842a617012075b2",
+                "reference": "9f700950963b1f0fae0803c62842a617012075b2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                },
+                "files": [
+                    "src/Functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "common class of ZVER",
+            "time": "2018-07-10T12:45:49+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.3.1",
@@ -1572,42 +1601,18 @@
                 "validate"
             ],
             "time": "2020-07-08T17:02:28+00:00"
-        },
-        {
-            "name": "zver/common",
-            "version": "3.0.41",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/s4urp8n/common.git",
-                "reference": "9f700950963b1f0fae0803c62842a617012075b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/s4urp8n/common/zipball/9f700950963b1f0fae0803c62842a617012075b2",
-                "reference": "9f700950963b1f0fae0803c62842a617012075b2",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "": "src/"
-                },
-                "files": [
-                    "src/Functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "common class of ZVER",
-            "time": "2018-07-10T12:45:49+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "ext-intl": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
 }
