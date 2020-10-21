@@ -1,7 +1,7 @@
 {
   "name": "zver/string-helper",
   "description": "this is universal package template for development and testing",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "config": {
     "optimize-autoloader": true
   },
@@ -19,7 +19,7 @@
     }
   },
   "require": {
-    "zver/common": "^3.0",
+    "zver/common": "dev-master",
     "ext-mbstring": "*",
     "ext-json": "*",
     "ext-intl": "*"
